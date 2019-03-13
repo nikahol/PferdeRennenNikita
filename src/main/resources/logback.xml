@@ -9,11 +9,26 @@
         </encoder>
     </appender>
 
+    <appender name="FILE" class="ch.qos.Logback.core.rolling.RollingFileAppender">
+        <file>src/main/resources/wendys-rennpferde-{yyyy-MM-dd}.log</file>
+        <rollingPolicy class="ch.qos.Logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_ARCHIVE}/wendys-rennpferde-%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} | %-5level | %40logger{0}: %msg%n</pattern>
+        </encoder>
+        <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+            <maxFileSize>512MB</maxFileSize>
+        </timeBasedFileNamingAndTriggeringPolicy>
+    </appender>
+
     <logger name="at.ac.tuwien.sepm.assignment.individual" level="DEBUG" additivity="false">
         <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
     </logger>
 
     <root level="WARN">
         <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
     </root>
 </configuration>
