@@ -33,7 +33,11 @@ public class HorseService implements IHorseService {
     }
     public Horse insertHorse(Horse horse) throws ServiceException, NotFoundException{
         LOGGER.info("Inserting horse in service layer " + horse.toString());
+        if(horse.getMaxSpeed() > 60 || horse.getMinSpeed() < 40 || horse.getMaxSpeed() < horse.getMinSpeed()){
+            throw new ServiceException("Horses cannot be faster than 60 km/h, slower than 40 km/h or have their minimal speed lower than their max speed.", null);
+        }
         try{
+
             return horseDao.insertHorse(horse);
 
         }catch (PersistenceException e){
