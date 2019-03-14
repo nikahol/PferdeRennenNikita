@@ -13,5 +13,6 @@ public interface IHorseService {
      * @throws NotFoundException will be thrown if the horse could not be found in the system.
      */
     Horse findOneById(Integer id) throws ServiceException, NotFoundException;
+    Horse insertHorse(Horse horse) throws ServiceException, NotFoundException;
 
 }

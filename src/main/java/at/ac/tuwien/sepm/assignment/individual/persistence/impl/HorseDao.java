@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 
 @Repository
@@ -59,5 +60,39 @@ public class HorseDao implements IHorseDao {
         } else {
             throw new NotFoundException("Could not find horse with id " + id);
         }
+    }
+
+    public Horse insertHorse(Horse horse) throws PersistenceException, NotFoundException{
+        LOGGER.info("insert Horse " + horse.toString());
+        String sql = "INSERT INTO horse (name, breed, min_speed, max_speed, created, updated) VALUES (?,?,?,?, DEFAULT, DEFAULT)";
+        Horse ret = null;
+        int id = 0;
+        try{
+            PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, horse.getName());
+            statement.setString(2, horse.getBreed());
+            statement.setDouble(3, horse.getMinSpeed());
+            statement.setDouble(4, horse.getMaxSpeed());
+
+            statement.execute();
+
+            ResultSet rs = statement.getGeneratedKeys();
+
+            if(rs.next()){
+                id = rs.getInt(1);
+            }
+            ret = findOneById(id);
+
+        }catch(SQLException e){
+            LOGGER.error("Problem inserting following horse into the database: " + horse.toString() + " " + e);
+            throw new PersistenceException("Could not insert horse " + horse.toString(),e);
+        }
+        if(ret == null){
+            throw new NotFoundException("Could not find newly generated horse with id: " + id);
+        }else{
+            LOGGER.info("Successfully inserted horse with id: " + id);
+            return ret;
+        }
+
     }
 }

@@ -1,0 +1,30 @@
+13:30:21.896 | INFO  |              WendysRennpferdeApplication: Starting WendysRennpferdeApplication on DESKTOP-9S8DPDA with PID 37748 (C:\Users\nikit\Documents\UNI\SEPM2019\sepm-individual-assignment-java-template\01526589\target\classes started by nikit in C:\Users\nikit\Documents\UNI\SEPM2019\sepm-individual-assignment-java-template\01526589)
+13:30:21.905 | DEBUG |              WendysRennpferdeApplication: Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+13:30:21.909 | INFO  |              WendysRennpferdeApplication: No active profile set, falling back to default profiles: default
+13:30:25.005 | INFO  |              WendysRennpferdeApplication: Started WendysRennpferdeApplication in 3.861 seconds (JVM running for 30.505)
+13:30:27.067 | INFO  |                      DBConnectionManager: Close database connection
+13:33:24.266 | INFO  |              WendysRennpferdeApplication: Starting WendysRennpferdeApplication on DESKTOP-9S8DPDA with PID 40328 (C:\Users\nikit\Documents\UNI\SEPM2019\sepm-individual-assignment-java-template\01526589\target\classes started by nikit in C:\Users\nikit\Documents\UNI\SEPM2019\sepm-individual-assignment-java-template\01526589)
+13:33:24.275 | DEBUG |              WendysRennpferdeApplication: Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+13:33:24.278 | INFO  |              WendysRennpferdeApplication: No active profile set, falling back to default profiles: default
+13:33:27.916 | INFO  |              WendysRennpferdeApplication: Started WendysRennpferdeApplication in 4.458 seconds (JVM running for 16.513)
+13:33:39.394 | INFO  |                            HorseEndpoint: GET /api/v1/horses/1
+13:33:39.397 | INFO  |                             HorseService: Get horse with id 1
+13:33:39.399 | INFO  |                                 HorseDao: Get horse with id 1
+13:33:39.400 | INFO  |                      DBConnectionManager: Get database connection
+13:33:39.402 | INFO  |                      DBConnectionManager: Establish database connection
+14:09:43.624 | INFO  |                      DBConnectionManager: Close database connection
+14:41:24.261 | INFO  |              WendysRennpferdeApplication: Starting WendysRennpferdeApplication on DESKTOP-9S8DPDA with PID 47032 (C:\Users\nikit\Documents\UNI\SEPM2019\sepm-individual-assignment-java-template\01526589\target\classes started by nikit in C:\Users\nikit\Documents\UNI\SEPM2019\sepm-individual-assignment-java-template\01526589)
+14:41:24.271 | DEBUG |              WendysRennpferdeApplication: Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+14:41:24.274 | INFO  |              WendysRennpferdeApplication: No active profile set, falling back to default profiles: default
+14:41:27.585 | INFO  |              WendysRennpferdeApplication: Started WendysRennpferdeApplication in 4.14 seconds (JVM running for 14.294)
+14:42:13.403 | INFO  |                            HorseEndpoint: POST /api/v1/horses HorseDto{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+14:42:13.412 | INFO  |                             HorseService: Inserting horse in service layer Horse{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+14:42:13.415 | INFO  |                                 HorseDao: insert Horse Horse{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+14:42:13.419 | INFO  |                      DBConnectionManager: Get database connection
+14:42:13.423 | INFO  |                      DBConnectionManager: Establish database connection
+14:42:13.790 | ERROR |                                 HorseDao: Problem inserting following horse into the database: Horse{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+14:44:46.623 | INFO  |                            HorseEndpoint: POST /api/v1/horses HorseDto{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+14:45:00.312 | INFO  |                             HorseService: Inserting horse in service layer Horse{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+14:45:00.313 | INFO  |                                 HorseDao: insert Horse Horse{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+14:45:00.314 | INFO  |                      DBConnectionManager: Get database connection
+14:45:00.316 | ERROR |                                 HorseDao: Problem inserting following horse into the database: Horse{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}

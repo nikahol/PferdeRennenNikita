@@ -31,4 +31,13 @@ public class HorseService implements IHorseService {
             throw new ServiceException(e.getMessage(), e);
         }
     }
+    public Horse insertHorse(Horse horse) throws ServiceException, NotFoundException{
+        LOGGER.info("Inserting horse in service layer " + horse.toString());
+        try{
+            return horseDao.insertHorse(horse);
+
+        }catch (PersistenceException e){
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
 }

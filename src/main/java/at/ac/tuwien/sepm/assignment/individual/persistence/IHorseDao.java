@@ -13,5 +13,6 @@ public interface IHorseDao {
      * @throws NotFoundException    will be thrown if the horse could not be found in the database.
      */
     Horse findOneById(Integer id) throws PersistenceException, NotFoundException;
+    Horse insertHorse(Horse horse) throws PersistenceException, NotFoundException;
 
 }
