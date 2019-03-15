@@ -9,7 +9,9 @@ import at.ac.tuwien.sepm.assignment.individual.service.exceptions.ServiceExcepti
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class JockeyService implements IJockeyService {
     private static final Logger LOGGER = LoggerFactory.getLogger(JockeyService.class);
     private final IJockeyDao jockeyDao;

@@ -16,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+@Repository
 public class JockeyDao implements IJockeyDao {
     private static Logger LOGGER = LoggerFactory.getLogger(JockeyDao.class);
     private final DBConnectionManager dbConnectionManager;
@@ -25,11 +26,11 @@ public class JockeyDao implements IJockeyDao {
 
     private static Jockey dbResultToJockey(ResultSet result) throws SQLException {
         return new Jockey(
-            result.getInt("id"),
-            result.getString("name"),
-            result.getDouble("skill"),
-            result.getTimestamp("created").toLocalDateTime(),
-            result.getTimestamp("updated").toLocalDateTime());
+            result.getInt(1),
+            result.getString(2),
+            result.getDouble(3),
+            result.getTimestamp(4).toLocalDateTime(),
+            result.getTimestamp(5).toLocalDateTime());
     }
 
     @Override
@@ -44,6 +45,7 @@ public class JockeyDao implements IJockeyDao {
             while (result.next()) {
                 jockey = dbResultToJockey(result);
             }
+
         } catch (SQLException e) {
             LOGGER.error("Problem while executing SQL select statement for reading jockey with id " + id, e);
             throw new PersistenceException("Could not read jockey with id " + id, e);
@@ -57,32 +59,32 @@ public class JockeyDao implements IJockeyDao {
 
     @Override
     public Jockey insertJockey(Jockey jockey) throws PersistenceException, NotFoundException{
-        LOGGER.info("insert Horse " + jockey.toString());
-        String sql = "INSERT INTO horse (name, skill, created, updated) VALUES (?,?, DEFAULT, DEFAULT)";
+        LOGGER.info("insert Jockey " + jockey.toString());
+        String sql = "INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT)";
         Jockey ret = null;
+        int id = 0;
         try{
             PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, jockey.getName());
             statement.setDouble(2, jockey.getSkill());
 
-
             statement.execute();
-
             ResultSet rs = statement.getGeneratedKeys();
-
             if(rs.next()){
-                ret = dbResultToJockey(rs);
+                id = rs.getInt("id");
+
             }
+            ret = findOneById(id);
 
 
         }catch(SQLException e){
-            LOGGER.error("Problem inserting following horse into the database: " + jockey.toString() + " " + e);
-            throw new PersistenceException("Could not insert horse " + jockey.toString(),e);
+            LOGGER.error("Problem inserting following jockey into the database: " + jockey.toString() + " " + e);
+            throw new PersistenceException("Could not insert jockey " + jockey.toString(),e);
         }
         if(ret == null){
-            throw new NotFoundException("Could not find newly generated horse with id: " + ret.getId());
+            throw new NotFoundException("Could not find newly generated jockey with id: " + ret.getId());
         }else{
-            LOGGER.info("Successfully inserted horse with id: " + ret.getId());
+            LOGGER.info("Successfully inserted jockey with id: " + ret.getId());
             return ret;
         }
 

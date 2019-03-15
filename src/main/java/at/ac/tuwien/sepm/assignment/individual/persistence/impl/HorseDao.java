@@ -29,13 +29,13 @@ public class HorseDao implements IHorseDao {
 
     private static Horse dbResultToHorse(ResultSet result) throws SQLException {
         return new Horse(
-            result.getInt("id"),
-            result.getString("name"),
-            result.getString("breed"),
-            result.getDouble("min_speed"),
-            result.getDouble("max_speed"),
-            result.getTimestamp("created").toLocalDateTime(),
-            result.getTimestamp("updated").toLocalDateTime());
+            result.getInt(1),
+            result.getString(2),
+            result.getString(3),
+            result.getDouble(4),
+            result.getDouble(5),
+            result.getTimestamp(6).toLocalDateTime(),
+            result.getTimestamp(7).toLocalDateTime());
     }
 
 
@@ -67,6 +67,7 @@ public class HorseDao implements IHorseDao {
         LOGGER.info("insert Horse " + horse.toString());
         String sql = "INSERT INTO horse (name, breed, min_speed, max_speed, created, updated) VALUES (?,?,?,?, DEFAULT, DEFAULT)";
         Horse ret = null;
+        int id = 0;
         try{
             PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, horse.getName());
@@ -79,9 +80,10 @@ public class HorseDao implements IHorseDao {
             ResultSet rs = statement.getGeneratedKeys();
 
             if(rs.next()){
-                ret = dbResultToHorse(rs);
-            }
+                id = rs.getInt("id");
 
+            }
+            ret = findOneById(id);
 
         }catch(SQLException e){
             LOGGER.error("Problem inserting following horse into the database: " + horse.toString() + " " + e);

@@ -5,7 +5,6 @@ import at.ac.tuwien.sepm.assignment.individual.exceptions.NotFoundException;
 import at.ac.tuwien.sepm.assignment.individual.service.exceptions.ServiceException;
 
 public interface IJockeyService {
-
     /**
         * @param id of the jockey to find.
         * @return the jockey with the specified id.
