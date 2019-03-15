@@ -27,7 +27,7 @@ public class HorseDao implements IHorseDao {
         this.dbConnectionManager = dbConnectionManager;
     }
 
-    private static Horse dbResultToHorseDto(ResultSet result) throws SQLException {
+    private static Horse dbResultToHorse(ResultSet result) throws SQLException {
         return new Horse(
             result.getInt("id"),
             result.getString("name"),
@@ -49,7 +49,7 @@ public class HorseDao implements IHorseDao {
             statement.setInt(1, id);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-                horse = dbResultToHorseDto(result);
+                horse = dbResultToHorse(result);
             }
         } catch (SQLException e) {
             LOGGER.error("Problem while executing SQL select statement for reading horse with id " + id, e);
@@ -67,7 +67,6 @@ public class HorseDao implements IHorseDao {
         LOGGER.info("insert Horse " + horse.toString());
         String sql = "INSERT INTO horse (name, breed, min_speed, max_speed, created, updated) VALUES (?,?,?,?, DEFAULT, DEFAULT)";
         Horse ret = null;
-        int id = 0;
         try{
             PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, horse.getName());
@@ -80,18 +79,18 @@ public class HorseDao implements IHorseDao {
             ResultSet rs = statement.getGeneratedKeys();
 
             if(rs.next()){
-                id = rs.getInt(1);
+                ret = dbResultToHorse(rs);
             }
-            ret = findOneById(id);
+
 
         }catch(SQLException e){
             LOGGER.error("Problem inserting following horse into the database: " + horse.toString() + " " + e);
             throw new PersistenceException("Could not insert horse " + horse.toString(),e);
         }
         if(ret == null){
-            throw new NotFoundException("Could not find newly generated horse with id: " + id);
+            throw new NotFoundException("Could not find newly generated horse with id: " + ret.getId());
         }else{
-            LOGGER.info("Successfully inserted horse with id: " + id);
+            LOGGER.info("Successfully inserted horse with id: " + ret.getId());
             return ret;
         }
 

@@ -1,20 +1,20 @@
-package at.ac.tuwien.sepm.assignment.individual.entity;
+package at.ac.tuwien.sepm.assignment.individual.rest.dto;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Jockey {
+public class JockeyDto {
     private Integer id;
     private String name;
     private double skill;
     private LocalDateTime created;
     private LocalDateTime updated;
 
-    public Jockey(){
+    public JockeyDto(){
 
     }
 
-    public Jockey(Integer id, String name, double skill, LocalDateTime created, LocalDateTime updated){
+    public JockeyDto(Integer id, String name, double skill, LocalDateTime created, LocalDateTime updated){
         this.id = id;
         this.name = name;
         this.skill = skill;
@@ -65,13 +65,13 @@ public class Jockey {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Jockey)) return false;
-        Jockey jockey = (Jockey) o;
-        return Double.compare(jockey.skill, skill) == 0 &&
-            Objects.equals(id, jockey.id) &&
-            Objects.equals(name, jockey.name) &&
-            Objects.equals(created, jockey.created) &&
-            Objects.equals(updated, jockey.updated);
+        if (!(o instanceof JockeyDto)) return false;
+        JockeyDto jockeyDto = (JockeyDto) o;
+        return Double.compare(jockeyDto.skill, skill) == 0 &&
+            Objects.equals(id, jockeyDto.id) &&
+            Objects.equals(name, jockeyDto.name) &&
+            Objects.equals(created, jockeyDto.created) &&
+            Objects.equals(updated, jockeyDto.updated);
     }
 
     @Override

@@ -31,6 +31,8 @@ public class HorseService implements IHorseService {
             throw new ServiceException(e.getMessage(), e);
         }
     }
+
+    @Override
     public Horse insertHorse(Horse horse) throws ServiceException, NotFoundException{
         LOGGER.info("Inserting horse in service layer " + horse.toString());
         if(horse.getMaxSpeed() > 60 || horse.getMinSpeed() < 40 || horse.getMaxSpeed() < horse.getMinSpeed()){
@@ -44,6 +46,8 @@ public class HorseService implements IHorseService {
             throw new ServiceException(e.getMessage(), e);
         }
     }
+
+    @Override
     public Horse updateHorse(Horse horse) throws ServiceException, NotFoundException{
         LOGGER.info("Updating horse in service layer " + horse.toString());
         if(horse.getMaxSpeed() > 60 || horse.getMinSpeed() < 40 || horse.getMaxSpeed() < horse.getMinSpeed()){

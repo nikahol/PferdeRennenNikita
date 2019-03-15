@@ -11,5 +11,11 @@ public interface IJockeyDao {
      * @throws NotFoundException    will be thrown if the horse could not be found in the database.
      */
     Jockey findOneById(Integer id) throws PersistenceException, NotFoundException;
-    Jockey insertHorse(Jockey jockey) throws PersistenceException, NotFoundException;
+    /**
+     * @param jockey is the jockey we will insert into the database.
+     * @return the inserted jockey.
+     * @throws PersistenceException will be thrown if something goes wrong during the database access.
+     * @throws NotFoundException    will be thrown if the jockey could not be found in the database.
+     */
+    Jockey insertJockey(Jockey jockey) throws PersistenceException, NotFoundException;
 }
