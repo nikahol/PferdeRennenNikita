@@ -13,7 +13,19 @@ public interface IHorseDao {
      * @throws NotFoundException    will be thrown if the horse could not be found in the database.
      */
     Horse findOneById(Integer id) throws PersistenceException, NotFoundException;
+    /**
+     * @param horse is the horse we want to insert into the database
+     * @return the horse we inserted
+     * @throws PersistenceException will be thrown if something goes wrong during the database access.
+     * @throws NotFoundException    will be thrown if the horse could not be found in the database.
+     */
     Horse insertHorse(Horse horse) throws PersistenceException, NotFoundException;
+    /**
+     * @param horse is the horse we want to update in the database
+     * @return the horse after updates
+     * @throws PersistenceException will be thrown if something goes wrong during the database access.
+     * @throws NotFoundException    will be thrown if the horse could not be found in the database.
+     */
     Horse updateHorse(Horse horse) throws PersistenceException, NotFoundException;
 
 }

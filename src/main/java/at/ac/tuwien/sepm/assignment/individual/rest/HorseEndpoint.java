@@ -39,16 +39,28 @@ public class HorseEndpoint {
         }
     }
 
-
     @RequestMapping(method = RequestMethod.POST)
-    public HorseDto insertHorse(@RequestBody HorseDto horseDto, @PathVariable("id") Integer id) {
-        LOGGER.info("POST " + BASE_URL + " " + id);
+    public HorseDto insertHorse(@RequestBody HorseDto horseDto) {
+        LOGGER.info("POST " + BASE_URL + " " + horseDto.toString());
         try {
-            return horseMapper.entityToDto(horseService.updateHorse(horseMapper.dtoToEntity(horseDto)));
+            return horseMapper.entityToDto(horseService.insertHorse(horseMapper.dtoToEntity(horseDto)));
         } catch (ServiceException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to insert horse: " + horseDto.toString(), e);
         } catch (NotFoundException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error attempting to insert horse " + e.getMessage(), e);
+        }
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public HorseDto updateHorse(@RequestBody HorseDto horseDto, @PathVariable("id") Integer id) {
+        LOGGER.info("POST " + BASE_URL + " " + id);
+        horseDto.setId(id);
+        try {
+            return horseMapper.entityToDto(horseService.updateHorse(horseMapper.dtoToEntity(horseDto)));
+        } catch (ServiceException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to update horse: " + horseDto.toString(), e);
+        } catch (NotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error attempting to update horse " + e.getMessage(), e);
         }
     }
 

@@ -99,9 +99,8 @@ public class HorseDao implements IHorseDao {
 
     public Horse updateHorse(Horse horse) throws PersistenceException, NotFoundException{
         LOGGER.info("updating Horse " + horse.toString());
-        String sql = "UPDATE horse SET (name = ?, breed = ?, min_speed =?, max_speed =?, updated=DEFAULT)";
+        String sql = "UPDATE horse SET name=?, breed = ?, min_speed =?, max_speed =?, updated=DEFAULT";
         Horse ret = null;
-        int id = 0;
         try{
             PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, horse.getName());
@@ -110,15 +109,15 @@ public class HorseDao implements IHorseDao {
             statement.setDouble(4, horse.getMaxSpeed());
 
             statement.execute();
-            ret = findOneById(id);
+            ret = findOneById(horse.getId());
         }catch(SQLException e){
             LOGGER.error("Problem updating horse in the database" + horse.toString() + " " + e);
             throw new PersistenceException("Could not update horse" + horse.toString(),e);
         }
         if(ret == null){
-            throw new NotFoundException("Could not find newly updated horse with id: " + id);
+            throw new NotFoundException("Could not find newly updated horse with id: " + horse.getId());
         }else{
-            LOGGER.info("Successfully updated horse with id: " + id);
+            LOGGER.info("Successfully updated horse with id: " + horse.getId());
             return ret;
         }
 
