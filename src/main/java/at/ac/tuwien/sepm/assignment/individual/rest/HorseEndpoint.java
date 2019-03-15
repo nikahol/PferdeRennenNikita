@@ -38,11 +38,13 @@ public class HorseEndpoint {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error during reading horse: " + e.getMessage(), e);
         }
     }
+
+
     @RequestMapping(method = RequestMethod.POST)
-    public HorseDto insertHorse(@RequestBody HorseDto horseDto) {
-        LOGGER.info("POST " + BASE_URL + " " + horseDto.toString());
+    public HorseDto insertHorse(@RequestBody HorseDto horseDto, @PathVariable("id") Integer id) {
+        LOGGER.info("POST " + BASE_URL + " " + id);
         try {
-            return horseMapper.entityToDto(horseService.insertHorse(horseMapper.dtoToEntity(horseDto)));
+            return horseMapper.entityToDto(horseService.updateHorse(horseMapper.dtoToEntity(horseDto)));
         } catch (ServiceException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to insert horse: " + horseDto.toString(), e);
         } catch (NotFoundException e) {

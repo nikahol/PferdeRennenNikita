@@ -14,5 +14,6 @@ public interface IHorseDao {
      */
     Horse findOneById(Integer id) throws PersistenceException, NotFoundException;
     Horse insertHorse(Horse horse) throws PersistenceException, NotFoundException;
+    Horse updateHorse(Horse horse) throws PersistenceException, NotFoundException;
 
 }

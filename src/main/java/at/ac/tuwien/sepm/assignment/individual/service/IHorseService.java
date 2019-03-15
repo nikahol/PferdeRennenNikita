@@ -14,5 +14,7 @@ public interface IHorseService {
      */
     Horse findOneById(Integer id) throws ServiceException, NotFoundException;
     Horse insertHorse(Horse horse) throws ServiceException, NotFoundException;
+    Horse updateHorse(Horse horse) throws ServiceException, NotFoundException;
+
 
 }

@@ -62,6 +62,7 @@ public class HorseDao implements IHorseDao {
         }
     }
 
+    @Override
     public Horse insertHorse(Horse horse) throws PersistenceException, NotFoundException{
         LOGGER.info("insert Horse " + horse.toString());
         String sql = "INSERT INTO horse (name, breed, min_speed, max_speed, created, updated) VALUES (?,?,?,?, DEFAULT, DEFAULT)";
@@ -91,6 +92,33 @@ public class HorseDao implements IHorseDao {
             throw new NotFoundException("Could not find newly generated horse with id: " + id);
         }else{
             LOGGER.info("Successfully inserted horse with id: " + id);
+            return ret;
+        }
+
+    }
+
+    public Horse updateHorse(Horse horse) throws PersistenceException, NotFoundException{
+        LOGGER.info("updating Horse " + horse.toString());
+        String sql = "UPDATE horse SET (name = ?, breed = ?, min_speed =?, max_speed =?, updated=DEFAULT)";
+        Horse ret = null;
+        int id = 0;
+        try{
+            PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, horse.getName());
+            statement.setString(2, horse.getBreed());
+            statement.setDouble(3, horse.getMinSpeed());
+            statement.setDouble(4, horse.getMaxSpeed());
+
+            statement.execute();
+            ret = findOneById(id);
+        }catch(SQLException e){
+            LOGGER.error("Problem updating horse in the database" + horse.toString() + " " + e);
+            throw new PersistenceException("Could not update horse" + horse.toString(),e);
+        }
+        if(ret == null){
+            throw new NotFoundException("Could not find newly updated horse with id: " + id);
+        }else{
+            LOGGER.info("Successfully updated horse with id: " + id);
             return ret;
         }
 

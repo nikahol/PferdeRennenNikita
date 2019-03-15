@@ -1,4 +1,4 @@
-package at.ac.tuwien.sepm.assignment.individual.persistence.util;
+package at.ac.tuwien.sepm.assignment.individual.persistence;
 
 import at.ac.tuwien.sepm.assignment.individual.entity.Jockey;
 import at.ac.tuwien.sepm.assignment.individual.exceptions.NotFoundException;
