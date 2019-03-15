@@ -35,7 +35,8 @@ public class HorseDao implements IHorseDao {
             result.getDouble(4),
             result.getDouble(5),
             result.getTimestamp(6).toLocalDateTime(),
-            result.getTimestamp(7).toLocalDateTime());
+            result.getTimestamp(7).toLocalDateTime(),
+            result.getBoolean(8));
     }
 
 
@@ -55,6 +56,9 @@ public class HorseDao implements IHorseDao {
             LOGGER.error("Problem while executing SQL select statement for reading horse with id " + id, e);
             throw new PersistenceException("Could not read horses with id " + id, e);
         }
+        if(horse.isDeleted()){
+            throw new NotFoundException("Could not find horse with id " + id);
+        }
         if (horse != null) {
             return horse;
         } else {
@@ -65,7 +69,7 @@ public class HorseDao implements IHorseDao {
     @Override
     public Horse insertHorse(Horse horse) throws PersistenceException, NotFoundException{
         LOGGER.info("insert Horse " + horse.toString());
-        String sql = "INSERT INTO horse (name, breed, min_speed, max_speed, created, updated) VALUES (?,?,?,?, DEFAULT, DEFAULT)";
+        String sql = "INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT)";
         Horse ret = null;
         int id = 0;
         try{
@@ -104,6 +108,14 @@ public class HorseDao implements IHorseDao {
         Horse ret = null;
         try{
             PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ret = findOneById(horse.getId());
+            if(horse.getName() == null){
+                horse.setName(ret.getName());
+            }if(horse.getMaxSpeed() == null){
+                horse.setMaxSpeed(ret.getMaxSpeed());
+            }if(horse.getMinSpeed() == null){
+                horse.setMinSpeed(ret.getMinSpeed());
+            }
             statement.setString(1, horse.getName());
             statement.setString(2, horse.getBreed());
             statement.setDouble(3, horse.getMinSpeed());
@@ -122,5 +134,27 @@ public class HorseDao implements IHorseDao {
             return ret;
         }
 
+    }
+
+    public Horse deleteHorse(Integer id) throws PersistenceException, NotFoundException{
+        LOGGER.info("deleting horse with id " + id);
+        String sql = "UPDATE horse SET deleted = 1 WHERE id = ?";
+        Horse horse = null;
+        try{
+            horse = findOneById(id);
+            PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
+            statement.setInt(1,id);
+            statement.executeUpdate();
+            horse.setDeleted(true);
+        }catch(SQLException e){
+            LOGGER.error("Problem deleting horse in the database with id " + id + " " + e);
+            throw new PersistenceException("Could not delete horse with id " + id,e);
+        }
+        if(horse == null){
+            throw new NotFoundException("Could not find horse with id: " + horse.getId());
+        }else{
+            LOGGER.info("Successfully deleted horse with id: " + horse.getId());
+            return horse;
+        }
     }
 }

@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 public class HorseMapper {
 
     public HorseDto entityToDto(Horse horse) {
-        return new HorseDto(horse.getId(), horse.getName(), horse.getBreed(), horse.getMinSpeed(), horse.getMaxSpeed(), horse.getCreated(), horse.getUpdated());
+        return new HorseDto(horse.getId(), horse.getName(), horse.getBreed(), horse.getMinSpeed(), horse.getMaxSpeed(), horse.getCreated(), horse.getUpdated(), horse.isDeleted());
     }
     public Horse dtoToEntity(HorseDto horse) {
-        return new Horse(horse.getId(), horse.getName(), horse.getBreed(), horse.getMinSpeed(), horse.getMaxSpeed(), horse.getCreated(), horse.getUpdated());
+        return new Horse(horse.getId(), horse.getName(), horse.getBreed(), horse.getMinSpeed(), horse.getMaxSpeed(), horse.getCreated(), horse.getUpdated(), horse.isDeleted());
     }
 }

@@ -11,11 +11,12 @@ public class HorseDto {
     private Double maxSpeed;
     private LocalDateTime created;
     private LocalDateTime updated;
+    private boolean deleted;
 
     public HorseDto() {
     }
 
-    public HorseDto(Integer id, String name, String breed, Double minSpeed, Double maxSpeed, LocalDateTime created, LocalDateTime updated) {
+    public HorseDto(Integer id, String name, String breed, Double minSpeed, Double maxSpeed, LocalDateTime created, LocalDateTime updated, boolean deleted) {
         this.id = id;
         this.name = name;
         this.breed = breed;
@@ -23,6 +24,15 @@ public class HorseDto {
         this.maxSpeed = maxSpeed;
         this.created = created;
         this.updated = updated;
+        this.deleted = deleted;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 
     public Integer getId() {

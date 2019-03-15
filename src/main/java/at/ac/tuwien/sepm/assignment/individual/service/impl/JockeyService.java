@@ -31,6 +31,9 @@ public class JockeyService implements IJockeyService {
 
     @Override
     public Jockey insertJockey(Jockey jockey) throws ServiceException, NotFoundException{
+        if(jockey.getName() == null){
+            throw new ServiceException("Jockeys need to have a name and skill level. If you are reading this it is because one of these attributes was missing during creation.", null);
+        }
         LOGGER.info("Inserting Jockey: " + jockey.toString());
         try{
             return jockeyDao.insertJockey(jockey);

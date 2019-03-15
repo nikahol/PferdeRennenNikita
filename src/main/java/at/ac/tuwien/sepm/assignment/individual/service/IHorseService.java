@@ -27,6 +27,13 @@ public interface IHorseService {
      * @throws NotFoundException will be thrown if the horse could not be found in the system
      */
     Horse updateHorse(Horse horse) throws ServiceException, NotFoundException;
+    /**
+     * @param id is the id of th horse we want to delete in the system
+     * @return the horse we deleted
+     * @throws ServiceException will be thrown if something goes wrong during data processing.
+     * @throws NotFoundException will be thrown if the horse could not be found in the system
+     */
+    Horse deleteHorse(Integer id) throws ServiceException, NotFoundException;
 
 
 }
