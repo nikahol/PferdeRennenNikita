@@ -4,6 +4,8 @@ import at.ac.tuwien.sepm.assignment.individual.entity.Horse;
 import at.ac.tuwien.sepm.assignment.individual.exceptions.NotFoundException;
 import at.ac.tuwien.sepm.assignment.individual.service.exceptions.ServiceException;
 
+import java.util.LinkedList;
+
 public interface IHorseService {
 
     /**
@@ -35,5 +37,18 @@ public interface IHorseService {
      */
     Horse deleteHorse(Integer id) throws ServiceException, NotFoundException;
 
+    /**
+     * @return a list of all horses in the database
+     * @throws ServiceException will be thrown if something goes wrong during data processing.
+     */
+    LinkedList<Horse> getAllHorses() throws ServiceException;
+
+    /**
+     * @param horse is a container for the search options
+     * @return a list of all horses in the database
+     * @throws ServiceException will be thrown if something goes wrong during data processing.
+     * @throws NotFoundException will be thrown if there are no search results
+     */
+    LinkedList<Horse> getAllHorsesFiltered(Horse horse) throws ServiceException, NotFoundException;
 
 }

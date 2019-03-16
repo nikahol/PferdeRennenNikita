@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
+
 @Service
 public class HorseService implements IHorseService {
 
@@ -67,6 +69,26 @@ public class HorseService implements IHorseService {
         try{
             return horseDao.deleteHorse(id);
 
+        }catch(PersistenceException e){
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public LinkedList<Horse> getAllHorses()throws ServiceException{
+        LOGGER.info("Getting all horses in service layer");
+        try{
+            return horseDao.getAllHorses();
+        }catch(PersistenceException e){
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public LinkedList<Horse> getAllHorsesFiltered(Horse horse) throws ServiceException, NotFoundException{
+        LOGGER.info("Getting all horses in service layer");
+        try{
+            return horseDao.getAllHorsesFiltered(horse);
         }catch(PersistenceException e){
             throw new ServiceException(e.getMessage(), e);
         }

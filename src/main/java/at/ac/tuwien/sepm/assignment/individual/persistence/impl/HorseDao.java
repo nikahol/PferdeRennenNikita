@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 
 
 @Repository
@@ -101,7 +102,7 @@ public class HorseDao implements IHorseDao {
         }
 
     }
-
+    @Override
     public Horse updateHorse(Horse horse) throws PersistenceException, NotFoundException{
         LOGGER.info("updating Horse " + horse.toString());
         String sql = "UPDATE horse SET name=?, breed = ?, min_speed =?, max_speed =?, updated=DEFAULT";
@@ -135,7 +136,7 @@ public class HorseDao implements IHorseDao {
         }
 
     }
-
+    @Override
     public Horse deleteHorse(Integer id) throws PersistenceException, NotFoundException{
         LOGGER.info("deleting horse with id " + id);
         String sql = "UPDATE horse SET deleted = 1 WHERE id = ?";
@@ -156,5 +157,50 @@ public class HorseDao implements IHorseDao {
             LOGGER.info("Successfully deleted horse with id: " + horse.getId());
             return horse;
         }
+    }
+
+    @Override
+    public LinkedList<Horse> getAllHorses() throws PersistenceException{
+        LOGGER.info("Getting all Horses from database");
+        String sql = "SELECT * FROM horse Where deleted=0";
+        LinkedList<Horse> horseList = new LinkedList<>();
+        try{
+            PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
+
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()){
+                horseList.add(dbResultToHorse(rs));
+            }
+        }catch(SQLException e){
+            LOGGER.error("Problem getting all horses from database " + e);
+            throw new PersistenceException("Could not get all horses from database" ,e);
+        }
+
+            LOGGER.info("Successfully got all horses");
+            return horseList;
+
+    }
+
+    public LinkedList<Horse> getAllHorsesFiltered(Horse horse) throws PersistenceException, NotFoundException{
+        LOGGER.info("Getting all horses Filtered from database");
+        String sql = "SELECT * From horse WHERE name LIKE ? AND breed LIKE ? AND min_speed >= ? AND max_speed <= ?";
+
+        LinkedList<Horse> horseList = new LinkedList<>();
+        try{
+            PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
+            statement.setString(1, ("'%" + horse.getName() + "%'"));
+            statement.setString(2,("'%" + horse.getBreed() + "%'"));
+            statement.setDouble(3,horse.getMinSpeed());
+            statement.setDouble(4,horse.getMaxSpeed());
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()){
+                horseList.add(dbResultToHorse(rs));
+            }
+            return horseList;
+        }catch(SQLException e){
+            LOGGER.error("Problem getting all horses filtered from database " + e);
+            throw new PersistenceException("Could not get all horses filtered from database" ,e);
+        }
+
     }
 }

@@ -4,6 +4,8 @@ import at.ac.tuwien.sepm.assignment.individual.entity.Horse;
 import at.ac.tuwien.sepm.assignment.individual.exceptions.NotFoundException;
 import at.ac.tuwien.sepm.assignment.individual.persistence.exceptions.PersistenceException;
 
+import java.util.LinkedList;
+
 public interface IHorseDao {
 
     /**
@@ -34,4 +36,18 @@ public interface IHorseDao {
      * @throws NotFoundException    will be thrown if the horse could not be found in the database.
      */
     Horse deleteHorse(Integer id) throws PersistenceException, NotFoundException;
+
+    /**
+     * @return a list of all horses in the database
+     * @throws PersistenceException will be thrown if something goes wrong during the database access.
+     * @throws NotFoundException    will be thrown if the horse could not be found in the database.
+     */
+    LinkedList<Horse> getAllHorses() throws PersistenceException;
+    /**
+     * @param horse is a container for search paramaters
+     * @return a list of horses matching search criteria
+     * @throws PersistenceException will be thrown if something goes wrong during the database access.
+     * @throws NotFoundException    will be thrown if the horse could not be found in the database.
+     */
+    LinkedList<Horse> getAllHorsesFiltered(Horse horse) throws PersistenceException, NotFoundException;
 }
