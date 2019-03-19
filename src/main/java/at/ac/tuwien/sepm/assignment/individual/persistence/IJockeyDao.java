@@ -8,7 +8,7 @@ public interface IJockeyDao {
      * @param id of the jockey to find.
      * @return the jockey with the specified id.
      * @throws PersistenceException will be thrown if something goes wrong during the database access.
-     * @throws NotFoundException    will be thrown if the horse could not be found in the database.
+     * @throws NotFoundException    will be thrown if the jockey could not be found in the database.
      */
     Jockey findOneById(Integer id) throws PersistenceException, NotFoundException;
     /**
@@ -25,4 +25,10 @@ public interface IJockeyDao {
      * @throws NotFoundException    will be thrown if the jockey could not be found in the database.
      */
     Jockey updateJockey(Jockey jockey)throws PersistenceException, NotFoundException;
+    /**
+     * @param id of the jockey to delete.
+     * @throws PersistenceException will be thrown if something goes wrong during the database access.
+     * @throws NotFoundException    will be thrown if the jockey could not be found in the database.
+     */
+    void deleteJockey(Integer id) throws PersistenceException, NotFoundException;
 }

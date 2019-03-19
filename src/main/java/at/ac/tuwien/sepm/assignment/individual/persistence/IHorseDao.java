@@ -31,11 +31,10 @@ public interface IHorseDao {
     Horse updateHorse(Horse horse) throws PersistenceException, NotFoundException;
     /**
      * @param id is the id of the horse we want to delete in the database
-     * @return the horse we deleted
      * @throws PersistenceException will be thrown if something goes wrong during the database access.
      * @throws NotFoundException    will be thrown if the horse could not be found in the database.
      */
-    Horse deleteHorse(Integer id) throws PersistenceException, NotFoundException;
+    void deleteHorse(Integer id) throws PersistenceException, NotFoundException;
 
     /**
      * @return a list of all horses in the database

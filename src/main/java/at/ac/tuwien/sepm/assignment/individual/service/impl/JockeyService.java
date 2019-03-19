@@ -59,4 +59,13 @@ public class JockeyService implements IJockeyService {
         }
     }
 
+    public void deleteJockey(Integer id)throws ServiceException, NotFoundException{
+        LOGGER.info("Deleting Jockey with id " + id + " in service layer");
+        try{
+            jockeyDao.deleteJockey(id);
+        }catch (PersistenceException e){
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+
 }

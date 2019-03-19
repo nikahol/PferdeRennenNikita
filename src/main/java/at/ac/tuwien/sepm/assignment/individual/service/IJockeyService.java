@@ -29,6 +29,12 @@ public interface IJockeyService {
      * @throws BadRequestException will be thrown if some inputs are not accepted
      */
     Jockey updateJockey(Jockey jockey) throws ServiceException, NotFoundException;
+    /**
+     * @param id is the id of the jockey we want to delete from the system
+     * @throws ServiceException will be thrown if something goes wrong during data processing.
+     * @throws NotFoundException will be thrown if the jockey could not be found in the system
+     */
+    void deleteJockey(Integer id) throws ServiceException, NotFoundException;
 
 
 }

@@ -78,11 +78,10 @@ public class HorseService implements IHorseService {
     }
 
     @Override
-    public Horse deleteHorse(Integer id) throws ServiceException, NotFoundException{
+    public void deleteHorse(Integer id) throws ServiceException, NotFoundException{
         LOGGER.info("Deleting horse with id " + id + " in service layer");
         try{
-            return horseDao.deleteHorse(id);
-
+            horseDao.deleteHorse(id);
         }catch(PersistenceException e){
             throw new ServiceException(e.getMessage(), e);
         }

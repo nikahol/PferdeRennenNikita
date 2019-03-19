@@ -129,7 +129,7 @@ public class HorseDao implements IHorseDao {
 
     }
     @Override
-    public Horse deleteHorse(Integer id) throws PersistenceException, NotFoundException{
+    public void deleteHorse(Integer id) throws PersistenceException, NotFoundException{
         LOGGER.info("deleting horse with id " + id);
         String sql = "UPDATE horse SET deleted = 1 WHERE id = ?";
         Horse horse = null;
@@ -145,10 +145,9 @@ public class HorseDao implements IHorseDao {
         }
         if(horse == null){
             throw new NotFoundException("Could not find horse with id: " + horse.getId());
-        }else{
-            LOGGER.info("Successfully deleted horse with id: " + horse.getId());
-            return horse;
         }
+        LOGGER.info("Successfully deleted horse with id: " + horse.getId());
+
     }
 
     @Override

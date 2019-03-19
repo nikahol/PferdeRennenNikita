@@ -40,6 +40,7 @@ public class JockeyEndpoint {
     }
 
     @RequestMapping(method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
     public JockeyDto insertJockey(@RequestBody JockeyDto jockeyDto) {
         LOGGER.info("POST " + BASE_URL + " " + jockeyDto.toString());
         try {
@@ -58,9 +59,22 @@ public class JockeyEndpoint {
         try {
             return jockeyMapper.jockeyToJockeyDto((jockeyService.updateJockey(jockeyMapper.jockeyDtoToJockey(jockeyDto))));
         } catch (ServiceException e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to update horse: " + jockeyDto.toString(), e);
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to update jockey: " + jockeyDto.toString(), e);
         } catch (NotFoundException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error attempting to update horse " + e.getMessage(), e);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error attempting to update jockey " + e.getMessage(), e);
+        }
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteJockey(@PathVariable("id") Integer id){
+        LOGGER.info("DELETE " + BASE_URL + id);
+        try{
+            jockeyService.deleteJockey(id);
+        }catch (ServiceException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to delete jockey with id " + id, e);
+        } catch (NotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error attempting to delete jockey " + e.getMessage(), e);
         }
     }
 

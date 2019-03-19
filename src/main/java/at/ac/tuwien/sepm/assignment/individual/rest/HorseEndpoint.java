@@ -74,10 +74,11 @@ public class HorseEndpoint {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public HorseDto deleteHorse(@PathVariable("id") Integer id){
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteHorse(@PathVariable("id") Integer id){
         LOGGER.info("DELETE " + BASE_URL + " " + id);
         try{
-            return horseMapper.entityToDto(horseService.deleteHorse(id));
+            horseService.deleteHorse(id);
         }catch (ServiceException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to delete horse with id " + id, e);
         } catch (NotFoundException e) {

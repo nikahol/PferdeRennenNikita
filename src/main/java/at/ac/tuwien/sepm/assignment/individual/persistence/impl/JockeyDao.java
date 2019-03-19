@@ -36,7 +36,7 @@ public class JockeyDao implements IJockeyDao {
     @Override
     public Jockey findOneById(Integer id) throws PersistenceException, NotFoundException {
         LOGGER.info("Get jockey with id " + id);
-        String sql = "SELECT * FROM jockey WHERE id=?";
+        String sql = "SELECT * FROM jockey WHERE id=? AND deleted = 0";
         Jockey jockey = null;
         try {
             PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
@@ -114,5 +114,26 @@ public class JockeyDao implements IJockeyDao {
             return ret;
         }
 
+    }
+
+    @Override
+    public void deleteJockey(Integer id) throws PersistenceException, NotFoundException{
+        LOGGER.info("Deleting jockey with id " + id);
+        String sql = "UPDATE jockey SET deleted = 1 WHERE id = ?";
+        Jockey jockey = null;
+        try{
+            jockey = findOneById(id);
+            PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
+            statement.setInt(1,id);
+            statement.executeUpdate();
+
+        }catch(SQLException e){
+            LOGGER.error("Problem deleting jockey in the database with id " + id + " " + e);
+            throw new PersistenceException("Could not delete jockey with id " + id,e);
+        }
+        if(jockey == null){
+            throw new NotFoundException("Could not find jockey with id: " + jockey.getId());
+        }
+        LOGGER.info("Successfully deleted jockey with id: " + jockey.getId());
     }
 }

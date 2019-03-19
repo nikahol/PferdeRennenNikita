@@ -9,7 +9,6 @@ public class Jockey {
     private Double skill;
     private LocalDateTime created;
     private LocalDateTime updated;
-
     public Jockey(){
 
     }
