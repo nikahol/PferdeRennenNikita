@@ -83,14 +83,9 @@ public class HorseEndpoint {
     @RequestMapping(method = RequestMethod.GET)
     public LinkedList<HorseDto> getAllHorses(){
         LOGGER.info("GET " + BASE_URL);
-        LinkedList<HorseDto> res = new LinkedList<>();
         try{
-            LinkedList<Horse> horseList = horseService.getAllHorses();
-            for (Horse x: horseList
-                 ) {
-                res.add(horseMapper.entityToDto(x));
-            }
-            return res;
+
+            return horseMapper.horseListToHorseDtoList(horseService.getAllHorses());
         }catch(ServiceException e){
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to get all horses" + e, e);
         }
@@ -100,15 +95,23 @@ public class HorseEndpoint {
     @RequestMapping(params =  {"name", "breed", "minSpeed", "maxSpeed"},method = RequestMethod.GET)
     public LinkedList<HorseDto> getAllHorsesFiltered(@RequestParam("name") String name, @RequestParam("breed") String breed, @RequestParam("minSpeed") Double minSpeed, @RequestParam("maxSpeed") Double maxSpeed){
         LOGGER.info("GET " + BASE_URL);
-        LinkedList<HorseDto> res = new LinkedList<>();
+        if(name == null){
+            name = "";
+        }
+        if(breed == null){
+            breed = "";
+        }
+        if(minSpeed == null){
+            minSpeed = 40.0;
+        }
+        if(maxSpeed == null){
+            maxSpeed = 60.0;
+        }
         HorseDto horse = new HorseDto(null, name,breed,minSpeed,maxSpeed,null,null,false);
         try{
-            LinkedList<Horse> horseList = horseService.getAllHorsesFiltered(horseMapper.dtoToEntity(horse));
-            for (Horse x: horseList
-            ) {
-                res.add(horseMapper.entityToDto(x));
-            }
-            return res;
+            return horseMapper.horseListToHorseDtoList(horseService.getAllHorsesFiltered(horseMapper.dtoToEntity(horse)));
+
+
         }catch(ServiceException e){
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to get all horses " + e, e);
         }catch (NotFoundException e) {

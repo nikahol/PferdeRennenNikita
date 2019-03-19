@@ -86,7 +86,7 @@ public class HorseService implements IHorseService {
 
     @Override
     public LinkedList<Horse> getAllHorsesFiltered(Horse horse) throws ServiceException, NotFoundException{
-        LOGGER.info("Getting all horses in service layer");
+        LOGGER.info("Getting all horses filtered in service layer");
         try{
             return horseDao.getAllHorsesFiltered(horse);
         }catch(PersistenceException e){

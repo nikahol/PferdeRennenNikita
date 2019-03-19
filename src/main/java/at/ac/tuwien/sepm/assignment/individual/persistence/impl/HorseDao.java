@@ -183,15 +183,16 @@ public class HorseDao implements IHorseDao {
 
     public LinkedList<Horse> getAllHorsesFiltered(Horse horse) throws PersistenceException, NotFoundException{
         LOGGER.info("Getting all horses Filtered from database");
-        String sql = "SELECT * From horse WHERE name LIKE ? AND breed LIKE ? AND min_speed >= ? AND max_speed <= ?";
+        String sql = "SELECT * From horse WHERE name LIKE ? AND breed LIKE ? AND min_speed >= ? AND max_speed <= ? AND deleted = 0";
 
         LinkedList<Horse> horseList = new LinkedList<>();
         try{
             PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
-            statement.setString(1, ("'%" + horse.getName() + "%'"));
-            statement.setString(2,("'%" + horse.getBreed() + "%'"));
+            statement.setString(1, ("%" + horse.getName() + "%"));
+            statement.setString(2,("%" + horse.getBreed() + "%"));
             statement.setDouble(3,horse.getMinSpeed());
             statement.setDouble(4,horse.getMaxSpeed());
+            System.out.println(statement);
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
                 horseList.add(dbResultToHorse(rs));
