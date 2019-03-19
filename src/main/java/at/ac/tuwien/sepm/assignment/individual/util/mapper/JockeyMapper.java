@@ -4,6 +4,8 @@ import at.ac.tuwien.sepm.assignment.individual.entity.Jockey;
 import at.ac.tuwien.sepm.assignment.individual.rest.dto.JockeyDto;
 import org.springframework.stereotype.Component;
 
+import java.util.LinkedList;
+
 
 @Component
 public class JockeyMapper {
@@ -14,5 +16,23 @@ public class JockeyMapper {
 
     public JockeyDto jockeyToJockeyDto(Jockey jockey){
         return new JockeyDto(jockey.getId(), jockey.getName(), jockey.getSkill(), jockey.getCreated(), jockey.getUpdated());
+    }
+
+    public LinkedList<JockeyDto> jockeyListToJockeyDtoList(LinkedList<Jockey> jockeys){
+        LinkedList<JockeyDto> res = new LinkedList<>();
+        for (Jockey x: jockeys
+        ) {
+            res.add(jockeyToJockeyDto(x));
+        }
+        return res;
+    }
+
+    public LinkedList<Jockey> jockeyDtoListToJockeyList(LinkedList<JockeyDto> jockeyDtos){
+        LinkedList<Jockey> res = new LinkedList<>();
+        for (JockeyDto x: jockeyDtos
+        ) {
+            res.add(jockeyDtoToJockey(x));
+        }
+        return res;
     }
 }

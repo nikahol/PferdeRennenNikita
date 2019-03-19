@@ -3,6 +3,10 @@ package at.ac.tuwien.sepm.assignment.individual.persistence;
 import at.ac.tuwien.sepm.assignment.individual.entity.Jockey;
 import at.ac.tuwien.sepm.assignment.individual.exceptions.NotFoundException;
 import at.ac.tuwien.sepm.assignment.individual.persistence.exceptions.PersistenceException;
+import at.ac.tuwien.sepm.assignment.individual.service.exceptions.ServiceException;
+
+import java.util.LinkedList;
+
 public interface IJockeyDao {
     /**
      * @param id of the jockey to find.
@@ -31,4 +35,10 @@ public interface IJockeyDao {
      * @throws NotFoundException    will be thrown if the jockey could not be found in the database.
      */
     void deleteJockey(Integer id) throws PersistenceException, NotFoundException;
+
+    /**
+     * @return list of all jockeys in the database
+     * @throws PersistenceException will be thrown if something goes wrong during data processing.
+     */
+    LinkedList<Jockey> getAllJockeys() throws PersistenceException;
 }

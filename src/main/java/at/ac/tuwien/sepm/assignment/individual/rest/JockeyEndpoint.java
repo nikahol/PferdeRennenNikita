@@ -13,6 +13,8 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.LinkedList;
+
 @RestController
 @RequestMapping("/api/v1/jockeys")
 public class JockeyEndpoint {
@@ -78,4 +80,14 @@ public class JockeyEndpoint {
         }
     }
 
+    @RequestMapping(method = RequestMethod.GET)
+    public LinkedList<JockeyDto> getAllJockeys(){
+        LOGGER.info("GET " + BASE_URL);
+        try{
+
+            return jockeyMapper.jockeyListToJockeyDtoList(jockeyService.getAllJockeys());
+        }catch(ServiceException e){
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to get all horses" + e, e);
+        }
+    }
 }

@@ -12,6 +12,8 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
+
 @Service
 public class JockeyService implements IJockeyService {
     private static final Logger LOGGER = LoggerFactory.getLogger(JockeyService.class);
@@ -43,6 +45,7 @@ public class JockeyService implements IJockeyService {
         }
     }
 
+    @Override
     public Jockey updateJockey(Jockey jockey) throws ServiceException, NotFoundException{
         LOGGER.info("Updating Jockey in service layer " + jockey.toString());
         try{
@@ -59,11 +62,22 @@ public class JockeyService implements IJockeyService {
         }
     }
 
+    @Override
     public void deleteJockey(Integer id)throws ServiceException, NotFoundException{
         LOGGER.info("Deleting Jockey with id " + id + " in service layer");
         try{
             jockeyDao.deleteJockey(id);
         }catch (PersistenceException e){
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public LinkedList<Jockey> getAllJockeys() throws ServiceException{
+        LOGGER.info("Getting all jockeys in service layer");
+        try{
+            return jockeyDao.getAllJockeys();
+        }catch(PersistenceException e){
             throw new ServiceException(e.getMessage(), e);
         }
     }

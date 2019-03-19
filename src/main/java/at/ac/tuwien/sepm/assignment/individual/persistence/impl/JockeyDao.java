@@ -15,6 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
 
 @Repository
 public class JockeyDao implements IJockeyDao {
@@ -135,5 +136,27 @@ public class JockeyDao implements IJockeyDao {
             throw new NotFoundException("Could not find jockey with id: " + jockey.getId());
         }
         LOGGER.info("Successfully deleted jockey with id: " + jockey.getId());
+    }
+
+    @Override
+    public LinkedList<Jockey> getAllJockeys() throws PersistenceException {
+        LOGGER.info("Getting all jockeys");
+        String sql = "SELECT * FROM jockey WHERE deleted = 0";
+        LinkedList<Jockey> jockeyList = new LinkedList<>();
+        try{
+            PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
+
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()){
+                jockeyList.add(dbResultToJockey(rs));
+            }
+        }catch(SQLException e){
+            LOGGER.error("Problem getting all horses from database " + e);
+            throw new PersistenceException("Could not get all horses from database" ,e);
+        }
+
+        LOGGER.info("Successfully got all horses");
+        return jockeyList;
+
     }
 }

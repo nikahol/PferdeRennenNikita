@@ -5,6 +5,8 @@ import at.ac.tuwien.sepm.assignment.individual.exceptions.BadRequestException;
 import at.ac.tuwien.sepm.assignment.individual.exceptions.NotFoundException;
 import at.ac.tuwien.sepm.assignment.individual.service.exceptions.ServiceException;
 
+import java.util.LinkedList;
+
 public interface IJockeyService {
     /**
         * @param id of the jockey to find.
@@ -35,6 +37,12 @@ public interface IJockeyService {
      * @throws NotFoundException will be thrown if the jockey could not be found in the system
      */
     void deleteJockey(Integer id) throws ServiceException, NotFoundException;
+
+    /**
+     * @return list of all jockeys in the database
+     * @throws ServiceException will be thrown if something goes wrong during data processing.
+     */
+    LinkedList<Jockey> getAllJockeys() throws ServiceException;
 
 
 }

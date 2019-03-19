@@ -39,7 +39,6 @@ public interface IHorseDao {
     /**
      * @return a list of all horses in the database
      * @throws PersistenceException will be thrown if something goes wrong during the database access.
-     * @throws NotFoundException    will be thrown if the horse could not be found in the database.
      */
     LinkedList<Horse> getAllHorses() throws PersistenceException;
     /**
