@@ -105,13 +105,13 @@ public class JockeyDao implements IJockeyDao {
             statement.execute();
             ret = findOneById(jockey.getId());
         }catch(SQLException e){
-            LOGGER.error("Problem updating horse in the database" + jockey.toString() + " " + e);
-            throw new PersistenceException("Could not update horse" + jockey.toString(),e);
+            LOGGER.error("Problem updating jockey in the database" + jockey.toString() + " " + e);
+            throw new PersistenceException("Could not update jockey" + jockey.toString(),e);
         }
         if(ret == null){
-            throw new NotFoundException("Could not find newly updated horse with id: " + jockey.getId());
+            throw new NotFoundException("Could not find newly updated jockey with id: " + jockey.getId());
         }else{
-            LOGGER.info("Successfully updated horse with id: " + jockey.getId());
+            LOGGER.info("Successfully updated jockey with id: " + jockey.getId());
             return ret;
         }
 
@@ -151,12 +151,33 @@ public class JockeyDao implements IJockeyDao {
                 jockeyList.add(dbResultToJockey(rs));
             }
         }catch(SQLException e){
-            LOGGER.error("Problem getting all horses from database " + e);
-            throw new PersistenceException("Could not get all horses from database" ,e);
+            LOGGER.error("Problem getting all jockeys from database " + e);
+            throw new PersistenceException("Could not get all jockeys from database" ,e);
         }
 
-        LOGGER.info("Successfully got all horses");
+        LOGGER.info("Successfully got all jockeys");
         return jockeyList;
+
+    }
+
+    public LinkedList<Jockey> getAllJockeysFiltered(Jockey jockey) throws PersistenceException{
+        LOGGER.info("Getting all jockeys Filtered from database");
+        String sql = "SELECT * From jockey WHERE name LIKE ? AND skill >= ? AND deleted = 0";
+
+        LinkedList<Jockey> jockeyList = new LinkedList<>();
+        try{
+            PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
+            statement.setString(1, ("%" + jockey.getName() + "%"));
+            statement.setDouble(2,jockey.getSkill());
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()){
+                jockeyList.add(dbResultToJockey(rs));
+            }
+            return jockeyList;
+        }catch(SQLException e){
+            LOGGER.error("Problem getting all jockeys filtered from database " + e);
+            throw new PersistenceException("Could not get all jockeys filtered from database" ,e);
+        }
 
     }
 }

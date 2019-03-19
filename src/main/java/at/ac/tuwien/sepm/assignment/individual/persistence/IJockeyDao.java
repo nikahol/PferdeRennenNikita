@@ -41,4 +41,11 @@ public interface IJockeyDao {
      * @throws PersistenceException will be thrown if something goes wrong during data processing.
      */
     LinkedList<Jockey> getAllJockeys() throws PersistenceException;
+
+    /**
+     * @param jockey is a container for values to filter by
+     * @return list of all jockeys in the database
+     * @throws PersistenceException will be thrown if something goes wrong during data processing.
+     */
+    LinkedList<Jockey> getAllJockeysFiltered(Jockey jockey) throws PersistenceException;
 }

@@ -49,8 +49,7 @@ public interface IHorseService {
      * @param horse is a container for the search options
      * @return a list of all horses in the database
      * @throws ServiceException will be thrown if something goes wrong during data processing.
-     * @throws NotFoundException will be thrown if there are no search results
      */
-    LinkedList<Horse> getAllHorsesFiltered(Horse horse) throws ServiceException, NotFoundException;
+    LinkedList<Horse> getAllHorsesFiltered(Horse horse) throws ServiceException;
 
 }

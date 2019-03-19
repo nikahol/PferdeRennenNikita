@@ -45,7 +45,6 @@ public interface IHorseDao {
      * @param horse is a container for search paramaters
      * @return a list of horses matching search criteria
      * @throws PersistenceException will be thrown if something goes wrong during the database access.
-     * @throws NotFoundException    will be thrown if the horse could not be found in the database.
      */
-    LinkedList<Horse> getAllHorsesFiltered(Horse horse) throws PersistenceException, NotFoundException;
+    LinkedList<Horse> getAllHorsesFiltered(Horse horse) throws PersistenceException;
 }

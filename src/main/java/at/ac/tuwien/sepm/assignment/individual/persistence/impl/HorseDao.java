@@ -172,7 +172,7 @@ public class HorseDao implements IHorseDao {
 
     }
 
-    public LinkedList<Horse> getAllHorsesFiltered(Horse horse) throws PersistenceException, NotFoundException{
+    public LinkedList<Horse> getAllHorsesFiltered(Horse horse) throws PersistenceException{
         LOGGER.info("Getting all horses Filtered from database");
         String sql = "SELECT * From horse WHERE name LIKE ? AND breed LIKE ? AND min_speed >= ? AND max_speed <= ? AND deleted = 0";
 

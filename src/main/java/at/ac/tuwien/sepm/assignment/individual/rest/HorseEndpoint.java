@@ -120,8 +120,6 @@ public class HorseEndpoint {
 
         }catch(ServiceException e){
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to get all horses " + e, e);
-        }catch (NotFoundException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error attempting to get filtered horses " + e.getMessage(), e);
         }
     }
 

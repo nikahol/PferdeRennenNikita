@@ -1,5 +1,6 @@
 package at.ac.tuwien.sepm.assignment.individual.rest;
 
+import at.ac.tuwien.sepm.assignment.individual.entity.Jockey;
 import at.ac.tuwien.sepm.assignment.individual.exceptions.BadRequestException;
 import at.ac.tuwien.sepm.assignment.individual.exceptions.NotFoundException;
 import at.ac.tuwien.sepm.assignment.individual.rest.dto.JockeyDto;
@@ -87,7 +88,25 @@ public class JockeyEndpoint {
 
             return jockeyMapper.jockeyListToJockeyDtoList(jockeyService.getAllJockeys());
         }catch(ServiceException e){
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to get all horses" + e, e);
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to get all jockeys" + e, e);
+        }
+    }
+    @RequestMapping(params =  {"name", "skill"},method = RequestMethod.GET)
+    public LinkedList<JockeyDto> getAllJockeysFiltered(@RequestParam("name") String name, @RequestParam("skill") Double skill){
+        LOGGER.info("GET " + BASE_URL);
+        if(name == null){
+            name = "";
+        }
+        if(skill == null){
+            skill = Double.MIN_VALUE;
+        }
+        JockeyDto jockey = new JockeyDto(null, name, skill, null, null);
+        try{
+            return jockeyMapper.jockeyListToJockeyDtoList(jockeyService.getAllJockeysFiltered(jockeyMapper.jockeyDtoToJockey(jockey)));
+
+
+        }catch(ServiceException e){
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to get all jockeys " + e, e);
         }
     }
 }

@@ -44,5 +44,7 @@ public interface IJockeyService {
      */
     LinkedList<Jockey> getAllJockeys() throws ServiceException;
 
+    LinkedList<Jockey> getAllJockeysFiltered(Jockey jockey) throws ServiceException;
+
 
 }

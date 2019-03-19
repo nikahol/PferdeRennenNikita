@@ -1,7 +1,6 @@
 package at.ac.tuwien.sepm.assignment.individual.service.impl;
 
 import at.ac.tuwien.sepm.assignment.individual.entity.Jockey;
-import at.ac.tuwien.sepm.assignment.individual.exceptions.BadRequestException;
 import at.ac.tuwien.sepm.assignment.individual.exceptions.NotFoundException;
 import at.ac.tuwien.sepm.assignment.individual.persistence.IJockeyDao;
 import at.ac.tuwien.sepm.assignment.individual.persistence.exceptions.PersistenceException;
@@ -77,6 +76,16 @@ public class JockeyService implements IJockeyService {
         LOGGER.info("Getting all jockeys in service layer");
         try{
             return jockeyDao.getAllJockeys();
+        }catch(PersistenceException e){
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public LinkedList<Jockey> getAllJockeysFiltered(Jockey jockey) throws ServiceException{
+        LOGGER.info("Getting all jockeys in service layer");
+        try{
+            return jockeyDao.getAllJockeysFiltered(jockey);
         }catch(PersistenceException e){
             throw new ServiceException(e.getMessage(), e);
         }
