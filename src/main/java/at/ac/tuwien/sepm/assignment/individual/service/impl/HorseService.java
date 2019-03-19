@@ -58,6 +58,19 @@ public class HorseService implements IHorseService {
             throw new BadRequestException("Horses cannot be faster than 60 km/h, slower than 40 km/h or have their minimal speed lower than their max speed.");
         }
         try{
+            Horse horseCheck = horseDao.findOneById(horse.getId());
+            if(horse.getName() == null){
+                horse.setName(horseCheck.getName());
+            }if(horse.getBreed() == null){
+                horse.setName(horseCheck.getBreed());
+            }if(horse.getMaxSpeed() == null){
+                horse.setMaxSpeed(horseCheck.getMaxSpeed());
+            }if(horse.getMinSpeed() == null){
+                horse.setMinSpeed(horseCheck.getMinSpeed());
+            }
+            if(horse.getMaxSpeed() < horse.getMinSpeed()){
+                throw new BadRequestException("Horses cannot be faster than 60 km/h, slower than 40 km/h or have their minimal speed lower than their max speed.");
+            }
             return horseDao.updateHorse(horse);
         }catch (PersistenceException e){
             throw new ServiceException(e.getMessage(), e);

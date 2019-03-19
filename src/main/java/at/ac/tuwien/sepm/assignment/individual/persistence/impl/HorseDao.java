@@ -109,14 +109,6 @@ public class HorseDao implements IHorseDao {
         Horse ret = null;
         try{
             PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ret = findOneById(horse.getId());
-            if(horse.getName() == null){
-                horse.setName(ret.getName());
-            }if(horse.getMaxSpeed() == null){
-                horse.setMaxSpeed(ret.getMaxSpeed());
-            }if(horse.getMinSpeed() == null){
-                horse.setMinSpeed(ret.getMinSpeed());
-            }
             statement.setString(1, horse.getName());
             statement.setString(2, horse.getBreed());
             statement.setDouble(3, horse.getMinSpeed());
