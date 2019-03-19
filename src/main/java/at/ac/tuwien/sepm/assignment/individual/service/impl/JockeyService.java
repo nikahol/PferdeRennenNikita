@@ -1,6 +1,7 @@
 package at.ac.tuwien.sepm.assignment.individual.service.impl;
 
 import at.ac.tuwien.sepm.assignment.individual.entity.Jockey;
+import at.ac.tuwien.sepm.assignment.individual.exceptions.BadRequestException;
 import at.ac.tuwien.sepm.assignment.individual.exceptions.NotFoundException;
 import at.ac.tuwien.sepm.assignment.individual.persistence.IJockeyDao;
 import at.ac.tuwien.sepm.assignment.individual.persistence.exceptions.PersistenceException;
@@ -38,6 +39,22 @@ public class JockeyService implements IJockeyService {
         try{
             return jockeyDao.insertJockey(jockey);
         }catch(PersistenceException e){
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+
+    public Jockey updateJockey(Jockey jockey) throws ServiceException, NotFoundException{
+        LOGGER.info("Updating Jockey in service layer " + jockey.toString());
+        try{
+            Jockey jockeyCheck = jockeyDao.findOneById(jockey.getId());
+            if(jockey.getName() == null || jockey.getName().isEmpty()){
+                jockey.setName(jockeyCheck.getName());
+            }
+            if(jockey.getSkill() == null){
+                jockey.setSkill(jockeyCheck.getSkill());
+            }
+            return jockeyDao.updateJockey(jockey);
+        }catch (PersistenceException e){
             throw new ServiceException(e.getMessage(), e);
         }
     }

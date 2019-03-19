@@ -105,7 +105,7 @@ public class HorseDao implements IHorseDao {
     @Override
     public Horse updateHorse(Horse horse) throws PersistenceException, NotFoundException{
         LOGGER.info("updating Horse " + horse.toString());
-        String sql = "UPDATE horse SET name=?, breed = ?, min_speed =?, max_speed =?, updated=DEFAULT";
+        String sql = "UPDATE horse SET name=?, breed = ?, min_speed =?, max_speed =?, updated=DEFAULT WHERE id = ? AND deleted = 0";
         Horse ret = null;
         try{
             PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -113,7 +113,7 @@ public class HorseDao implements IHorseDao {
             statement.setString(2, horse.getBreed());
             statement.setDouble(3, horse.getMinSpeed());
             statement.setDouble(4, horse.getMaxSpeed());
-
+            statement.setInt(5, horse.getId());
             statement.execute();
             ret = findOneById(horse.getId());
         }catch(SQLException e){

@@ -89,4 +89,30 @@ public class JockeyDao implements IJockeyDao {
         }
 
     }
+
+    @Override
+    public Jockey updateJockey(Jockey jockey)throws PersistenceException, NotFoundException{
+        LOGGER.info("Updating jockey " + jockey.toString());
+        String sql = "UPDATE jockey SET name = ?, skill = ?, updated=DEFAULT WHERE id = ? AND deleted = 0";
+        Jockey ret = null;
+        try{
+            PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
+            statement.setString(1, jockey.getName());
+            statement.setDouble(2,jockey.getSkill());
+            statement.setInt(3, jockey.getId());
+
+            statement.execute();
+            ret = findOneById(jockey.getId());
+        }catch(SQLException e){
+            LOGGER.error("Problem updating horse in the database" + jockey.toString() + " " + e);
+            throw new PersistenceException("Could not update horse" + jockey.toString(),e);
+        }
+        if(ret == null){
+            throw new NotFoundException("Could not find newly updated horse with id: " + jockey.getId());
+        }else{
+            LOGGER.info("Successfully updated horse with id: " + jockey.getId());
+            return ret;
+        }
+
+    }
 }

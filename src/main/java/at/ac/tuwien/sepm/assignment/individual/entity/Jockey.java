@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Jockey {
     private Integer id;
     private String name;
-    private double skill;
+    private Double skill;
     private LocalDateTime created;
     private LocalDateTime updated;
 
@@ -38,11 +38,11 @@ public class Jockey {
         this.name = name;
     }
 
-    public double getSkill() {
+    public Double getSkill() {
         return skill;
     }
 
-    public void setSkill(double skill) {
+    public void setSkill(Double skill) {
         this.skill = skill;
     }
 

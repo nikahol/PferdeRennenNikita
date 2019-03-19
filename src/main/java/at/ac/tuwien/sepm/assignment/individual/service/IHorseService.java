@@ -21,6 +21,7 @@ public interface IHorseService {
      * @return the horse we inserted
      * @throws ServiceException will be thrown if something goes wrong during data processing.
      * @throws NotFoundException will be thrown if the horse could not be found in the system
+     * @throws BadRequestException will be thrown if the input is not as expected
      */
     Horse insertHorse(Horse horse) throws ServiceException, NotFoundException, BadRequestException;
     /**
@@ -28,6 +29,7 @@ public interface IHorseService {
      * @return the horse we updated
      * @throws ServiceException will be thrown if something goes wrong during data processing.
      * @throws NotFoundException will be thrown if the horse could not be found in the system
+     * @throws BadRequestException will be thrown if the input is not as expected
      */
     Horse updateHorse(Horse horse) throws ServiceException, NotFoundException, BadRequestException;
     /**

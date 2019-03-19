@@ -1,5 +1,6 @@
 package at.ac.tuwien.sepm.assignment.individual.rest;
 
+import at.ac.tuwien.sepm.assignment.individual.exceptions.BadRequestException;
 import at.ac.tuwien.sepm.assignment.individual.exceptions.NotFoundException;
 import at.ac.tuwien.sepm.assignment.individual.rest.dto.JockeyDto;
 import at.ac.tuwien.sepm.assignment.individual.service.IJockeyService;
@@ -47,6 +48,19 @@ public class JockeyEndpoint {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to insert jockey: " + jockeyDto.toString(), e);
         } catch (NotFoundException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error attempting to insert jockey " + e.getMessage(), e);
+        }
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public JockeyDto updateJockey(@RequestBody JockeyDto jockeyDto, @PathVariable("id") Integer id) {
+        LOGGER.info("PUT" + BASE_URL + " " + id);
+        jockeyDto.setId(id);
+        try {
+            return jockeyMapper.jockeyToJockeyDto((jockeyService.updateJockey(jockeyMapper.jockeyDtoToJockey(jockeyDto))));
+        } catch (ServiceException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to update horse: " + jockeyDto.toString(), e);
+        } catch (NotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error attempting to update horse " + e.getMessage(), e);
         }
     }
 
