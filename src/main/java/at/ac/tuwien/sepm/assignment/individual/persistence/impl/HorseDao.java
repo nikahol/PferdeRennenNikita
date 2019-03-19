@@ -192,7 +192,6 @@ public class HorseDao implements IHorseDao {
             statement.setString(2,("%" + horse.getBreed() + "%"));
             statement.setDouble(3,horse.getMinSpeed());
             statement.setDouble(4,horse.getMaxSpeed());
-            System.out.println(statement);
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
                 horseList.add(dbResultToHorse(rs));

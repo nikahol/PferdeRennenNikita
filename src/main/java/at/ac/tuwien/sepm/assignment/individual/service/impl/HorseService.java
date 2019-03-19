@@ -1,6 +1,7 @@
 package at.ac.tuwien.sepm.assignment.individual.service.impl;
 
 import at.ac.tuwien.sepm.assignment.individual.entity.Horse;
+import at.ac.tuwien.sepm.assignment.individual.exceptions.BadRequestException;
 import at.ac.tuwien.sepm.assignment.individual.exceptions.NotFoundException;
 import at.ac.tuwien.sepm.assignment.individual.persistence.IHorseDao;
 import at.ac.tuwien.sepm.assignment.individual.persistence.exceptions.PersistenceException;
@@ -35,13 +36,13 @@ public class HorseService implements IHorseService {
     }
 
     @Override
-    public Horse insertHorse(Horse horse) throws ServiceException, NotFoundException{
+    public Horse insertHorse(Horse horse) throws ServiceException, NotFoundException, BadRequestException{
         LOGGER.info("Inserting horse in service layer " + horse.toString());
         if(horse.getMinSpeed() == null || horse.getMaxSpeed() == null|| horse.getName() == null){
-            throw new ServiceException("Horses must have a name, min speed and max speed. If you are seeing this message, one of these attributes was not defined during creation", null);
+            throw new BadRequestException("Horses must have a name, min speed and max speed. If you are seeing this message, one of these attributes was not defined during creation");
         }
         if(horse.getMaxSpeed() > 60 || horse.getMinSpeed() < 40 || horse.getMaxSpeed() < horse.getMinSpeed()){
-            throw new ServiceException("Horses cannot be faster than 60 km/h, slower than 40 km/h or have their minimal speed lower than their max speed.", null);
+            throw new BadRequestException("Horses cannot be faster than 60 km/h, slower than 40 km/h or have their minimal speed lower than their max speed.");
         }
         try{
             return horseDao.insertHorse(horse);
@@ -51,10 +52,10 @@ public class HorseService implements IHorseService {
     }
 
     @Override
-    public Horse updateHorse(Horse horse) throws ServiceException, NotFoundException{
+    public Horse updateHorse(Horse horse) throws ServiceException, NotFoundException, BadRequestException {
         LOGGER.info("Updating horse in service layer " + horse.toString());
         if((horse.getMaxSpeed() != null && horse.getMaxSpeed() > 60) || (horse.getMinSpeed() != null && horse.getMinSpeed() < 40) || (horse.getMinSpeed() != null && horse.getMaxSpeed() != null && horse.getMinSpeed() > horse.getMaxSpeed())){
-            throw new ServiceException("Horses cannot be faster than 60 km/h, slower than 40 km/h or have their minimal speed lower than their max speed.", null);
+            throw new BadRequestException("Horses cannot be faster than 60 km/h, slower than 40 km/h or have their minimal speed lower than their max speed.");
         }
         try{
             return horseDao.updateHorse(horse);

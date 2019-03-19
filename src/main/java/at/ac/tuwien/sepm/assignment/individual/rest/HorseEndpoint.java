@@ -1,6 +1,7 @@
 package at.ac.tuwien.sepm.assignment.individual.rest;
 
 import at.ac.tuwien.sepm.assignment.individual.entity.Horse;
+import at.ac.tuwien.sepm.assignment.individual.exceptions.BadRequestException;
 import at.ac.tuwien.sepm.assignment.individual.rest.dto.HorseDto;
 import at.ac.tuwien.sepm.assignment.individual.exceptions.NotFoundException;
 import at.ac.tuwien.sepm.assignment.individual.service.IHorseService;
@@ -52,6 +53,8 @@ public class HorseEndpoint {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to insert horse: " + horseDto.toString(), e);
         } catch (NotFoundException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error attempting to insert horse " + e.getMessage(), e);
+        }catch(BadRequestException e){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Input not accepted in update horse method " + e.getMessage(), e);
         }
     }
 
@@ -65,6 +68,8 @@ public class HorseEndpoint {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to update horse: " + horseDto.toString(), e);
         } catch (NotFoundException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error attempting to update horse " + e.getMessage(), e);
+        }catch(BadRequestException e){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Input not accepted in update horse method " + e.getMessage(), e);
         }
     }
 
