@@ -12,9 +12,9 @@ import java.util.LinkedList;
 @Component
 public class SimulationMapper {
     public Simulation simDtoSim(SimulationDto simulationDto){
-        ArrayList<Participant> participants = new LinkedList<>();
+        ArrayList<Participant> participants = new ArrayList<>();
         for(ParticipantDto x : simulationDto.getSimulationParticipants()){
-            Participant bob = new Participant(x.getHorseId(), x.getJockeyId(), null, null, null, x.getluckFactor(), null, null, null);
+            Participant bob = new Participant(null, x.getHorseId(), x.getJockeyId(), null, null, null, x.getluckFactor(), null, null, null);
             participants.add(bob);
         }
         Simulation sim = new Simulation(null, simulationDto.getName(), null, participants);

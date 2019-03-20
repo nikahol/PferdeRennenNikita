@@ -48,10 +48,13 @@ public class SimulationService implements ISimulationService {
             }
             ArrayList<Participant> results = raceSim(jockeyHorses);
             Simulation inserted = simulationDao.insertSimulation(simulation);
-            inserted.setParticipants(results);
             for(Participant x: results){
                 x.setId(simulationDao.insertParticipant(inserted.getId(), x).getId());
+                horseDao.move
             }
+            inserted.setParticipants(results);
+
+
 
 
 

@@ -40,6 +40,7 @@ public class SimulationEndpoint {
         }catch(BadRequestException e){
 
         }
+        return simulationDto;
     }
 }
 
