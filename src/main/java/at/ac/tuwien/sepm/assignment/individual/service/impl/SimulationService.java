@@ -50,7 +50,8 @@ public class SimulationService implements ISimulationService {
             Simulation inserted = simulationDao.insertSimulation(simulation);
             for(Participant x: results){
                 x.setId(simulationDao.insertParticipant(inserted.getId(), x).getId());
-                horseDao.move
+                horseDao.newVersionHorse(x.getHorseId(), x.getHorseUpdate());
+                jockeyDao.newVersionJockey(x.getJockeyId(), x.getJockeyUpdate());
             }
             inserted.setParticipants(results);
 

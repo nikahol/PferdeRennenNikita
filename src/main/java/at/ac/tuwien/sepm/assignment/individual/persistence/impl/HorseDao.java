@@ -10,10 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 
@@ -172,6 +170,7 @@ public class HorseDao implements IHorseDao {
 
     }
 
+    @Override
     public LinkedList<Horse> getAllHorsesFiltered(Horse horse) throws PersistenceException{
         LOGGER.info("Getting all horses Filtered from database");
         String sql = "SELECT * From horse WHERE name LIKE ? AND breed LIKE ? AND min_speed >= ? AND max_speed <= ? AND deleted = 0";
@@ -193,5 +192,43 @@ public class HorseDao implements IHorseDao {
             throw new PersistenceException("Could not get all horses filtered from database" ,e);
         }
 
+    }
+
+    public void newVersionHorse(Integer id, LocalDateTime horseUpdate) throws NotFoundException, PersistenceException{
+        LOGGER.info("Moving horse with ID " + id + " to version table");
+        String sql = "INSERT INTO horseVersions (id, name, breed, min_speed, max_speed, created, updated) VALUES (?,?,?,?,?,?,?)";
+        try{
+            if(!checkVersionExists(id, horseUpdate)) {
+                Horse toTransfer = findOneById(id);
+                PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
+                statement.setInt(1, toTransfer.getId());
+                statement.setString(2, toTransfer.getName());
+                statement.setString(3, toTransfer.getBreed());
+                statement.setDouble(4, toTransfer.getMinSpeed());
+                statement.setDouble(5, toTransfer.getMaxSpeed());
+                statement.setTimestamp(6, Timestamp.valueOf(toTransfer.getUpdated()));
+                statement.setTimestamp(7, Timestamp.valueOf(toTransfer.getCreated()));
+                statement.execute();
+            }
+        }catch(SQLException e){
+            LOGGER.error("Cant move horse to version table");
+            throw new PersistenceException("Could not move horse to the version table", e);
+        }
+    }
+
+    private boolean checkVersionExists(Integer id, LocalDateTime horseUpdate) throws PersistenceException{
+        String sql = "SELECT * FROM horseVersions WHERE id = ? AND updated = ?";
+        try{
+            PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.setTimestamp(2, Timestamp.valueOf(horseUpdate));
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()){
+                return true;
+            }
+        }catch(SQLException e){
+            throw new PersistenceException("Could not check version existence " + id + " " + horseUpdate, e);
+        }
+        return false;
     }
 }

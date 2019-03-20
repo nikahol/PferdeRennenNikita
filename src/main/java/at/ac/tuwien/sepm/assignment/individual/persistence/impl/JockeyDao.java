@@ -11,10 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 @Repository
@@ -179,5 +177,41 @@ public class JockeyDao implements IJockeyDao {
             throw new PersistenceException("Could not get all jockeys filtered from database" ,e);
         }
 
+    }
+
+    public void newVersionJockey(Integer id, LocalDateTime jockeyUpdate) throws NotFoundException, PersistenceException{
+        LOGGER.info("Moving jockey with ID " + id + " to version table");
+        String sql = "INSERT INTO jockeyVersions (id, name, skill, created, updated) VALUES (?,?,?,?,?)";
+        try{
+            if(!checkVersionExists(id, jockeyUpdate)) {
+                Jockey toTransfer = findOneById(id);
+                PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
+                statement.setInt(1, toTransfer.getId());
+                statement.setString(2, toTransfer.getName());
+                statement.setDouble(3, toTransfer.getSkill());
+                statement.setTimestamp(4, Timestamp.valueOf(toTransfer.getUpdated()));
+                statement.setTimestamp(5, Timestamp.valueOf(toTransfer.getCreated()));
+                statement.execute();
+            }
+        }catch(SQLException e){
+            LOGGER.error("Cant move jockey to version table");
+            throw new PersistenceException("Could not move jockey to the version table", e);
+        }
+    }
+
+    private boolean checkVersionExists(Integer id, LocalDateTime jockeyUpdate) throws PersistenceException{
+        String sql = "SELECT * FROM jockeyVersions WHERE id = ? AND updated = ?";
+        try{
+            PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.setTimestamp(2, Timestamp.valueOf(jockeyUpdate));
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()){
+                return true;
+            }
+        }catch(SQLException e){
+            throw new PersistenceException("Could not check version existence " + id + " " + jockeyUpdate, e);
+        }
+        return false;
     }
 }

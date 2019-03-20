@@ -5,6 +5,7 @@ import at.ac.tuwien.sepm.assignment.individual.exceptions.NotFoundException;
 import at.ac.tuwien.sepm.assignment.individual.persistence.exceptions.PersistenceException;
 import at.ac.tuwien.sepm.assignment.individual.service.exceptions.ServiceException;
 
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 public interface IJockeyDao {
@@ -48,4 +49,12 @@ public interface IJockeyDao {
      * @throws PersistenceException will be thrown if something goes wrong during data processing.
      */
     LinkedList<Jockey> getAllJockeysFiltered(Jockey jockey) throws PersistenceException;
+
+    /**
+     * @param id of the jockey that needs new version
+     * @param lastUpdated last time jockey was updated
+     * @throws NotFoundException if the jockey does not exist in the database
+     * @throws PersistenceException will be thrown if something goes wrong during the database access.
+     */
+    void newVersionJockey(Integer id, LocalDateTime lastUpdated) throws NotFoundException, PersistenceException;
 }

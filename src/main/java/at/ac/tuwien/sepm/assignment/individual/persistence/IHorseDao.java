@@ -4,6 +4,7 @@ import at.ac.tuwien.sepm.assignment.individual.entity.Horse;
 import at.ac.tuwien.sepm.assignment.individual.exceptions.NotFoundException;
 import at.ac.tuwien.sepm.assignment.individual.persistence.exceptions.PersistenceException;
 
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 public interface IHorseDao {
@@ -42,9 +43,17 @@ public interface IHorseDao {
      */
     LinkedList<Horse> getAllHorses() throws PersistenceException;
     /**
-     * @param horse is a container for search paramaters
+     * @param horse is a container for search parameters
      * @return a list of horses matching search criteria
      * @throws PersistenceException will be thrown if something goes wrong during the database access.
      */
     LinkedList<Horse> getAllHorsesFiltered(Horse horse) throws PersistenceException;
+
+    /**
+     * @param id of the horse that needs new version
+     * @param horseUpdate last time horse was updated
+     * @throws PersistenceException will be thrown if something goes wrong during the database access.
+     * @throws NotFoundException if the horse does not exist in the database
+     */
+    void newVersionHorse(Integer id, LocalDateTime horseUpdate) throws PersistenceException, NotFoundException;
 }
