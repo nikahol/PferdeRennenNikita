@@ -8,6 +8,8 @@ import java.util.Objects;
 public class Participant {
     private Integer id;
     private Integer horseId;
+    private String horseName;
+    private String jockeyName;
     private Integer jockeyId;
     private Integer rank;
     private Double avgSpeed;
@@ -17,9 +19,11 @@ public class Participant {
     private LocalDateTime horseUpdate;
     private LocalDateTime jockeyUpdate;
 
-    public Participant(Integer id, Integer horseId, Integer jockeyId, Integer rank, Double avgSpeed, Double horseSpeed, Double luck, Double skill, LocalDateTime horseUpdate, LocalDateTime jockeyUpdate) {
+    public Participant(Integer id, Integer horseId, String horseName, String jockeyName, Integer jockeyId, Integer rank, Double avgSpeed, Double horseSpeed, Double luck, Double skill, LocalDateTime horseUpdate, LocalDateTime jockeyUpdate) {
         this.id = id;
         this.horseId = horseId;
+        this.horseName = horseName;
+        this.jockeyName = jockeyName;
         this.jockeyId = jockeyId;
         this.rank = rank;
         this.avgSpeed = avgSpeed;
@@ -110,6 +114,40 @@ public class Participant {
         this.jockeyUpdate = jockeyUpdate;
     }
 
+    public String getHorseName() {
+        return horseName;
+    }
+
+    public void setHorseName(String horseName) {
+        this.horseName = horseName;
+    }
+
+    public String getJockeyName() {
+        return jockeyName;
+    }
+
+    public void setJockeyName(String jockeyName) {
+        this.jockeyName = jockeyName;
+    }
+
+    @Override
+    public String toString() {
+        return "Participant{" +
+            "id=" + id +
+            ", horseId=" + horseId +
+            ", horseName='" + horseName + '\'' +
+            ", jockeyName='" + jockeyName + '\'' +
+            ", jockeyId=" + jockeyId +
+            ", rank=" + rank +
+            ", avgSpeed=" + avgSpeed +
+            ", horseSpeed=" + horseSpeed +
+            ", luck=" + luck +
+            ", skill=" + skill +
+            ", horseUpdate=" + horseUpdate +
+            ", jockeyUpdate=" + jockeyUpdate +
+            '}';
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -117,6 +155,8 @@ public class Participant {
         Participant that = (Participant) o;
         return Objects.equals(id, that.id) &&
             Objects.equals(horseId, that.horseId) &&
+            Objects.equals(horseName, that.horseName) &&
+            Objects.equals(jockeyName, that.jockeyName) &&
             Objects.equals(jockeyId, that.jockeyId) &&
             Objects.equals(rank, that.rank) &&
             Objects.equals(avgSpeed, that.avgSpeed) &&
@@ -129,22 +169,6 @@ public class Participant {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, horseId, jockeyId, rank, avgSpeed, horseSpeed, luck, skill, horseUpdate, jockeyUpdate);
-    }
-
-    @Override
-    public String toString() {
-        return "Participant{" +
-            "id=" + id +
-            ", horseId=" + horseId +
-            ", jockeyId=" + jockeyId +
-            ", rank=" + rank +
-            ", avgSpeed=" + avgSpeed +
-            ", horseSpeed=" + horseSpeed +
-            ", luck=" + luck +
-            ", skill=" + skill +
-            ", horseUpdate=" + horseUpdate +
-            ", jockeyUpdate=" + jockeyUpdate +
-            '}';
+        return Objects.hash(id, horseId, horseName, jockeyName, jockeyId, rank, avgSpeed, horseSpeed, luck, skill, horseUpdate, jockeyUpdate);
     }
 }

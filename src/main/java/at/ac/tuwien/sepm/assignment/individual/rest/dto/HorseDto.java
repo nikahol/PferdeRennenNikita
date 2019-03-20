@@ -11,12 +11,11 @@ public class HorseDto {
     private Double maxSpeed;
     private LocalDateTime created;
     private LocalDateTime updated;
-    private boolean deleted;
 
     public HorseDto() {
     }
 
-    public HorseDto(Integer id, String name, String breed, Double minSpeed, Double maxSpeed, LocalDateTime created, LocalDateTime updated, boolean deleted) {
+    public HorseDto(Integer id, String name, String breed, Double minSpeed, Double maxSpeed, LocalDateTime created, LocalDateTime updated) {
         this.id = id;
         this.name = name;
         this.breed = breed;
@@ -24,15 +23,6 @@ public class HorseDto {
         this.maxSpeed = maxSpeed;
         this.created = created;
         this.updated = updated;
-        this.deleted = deleted;
-    }
-
-    public boolean isDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
     }
 
     public Integer getId() {
@@ -91,10 +81,11 @@ public class HorseDto {
         this.updated = updated;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof HorseDto)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         HorseDto horseDto = (HorseDto) o;
         return Objects.equals(id, horseDto.id) &&
             Objects.equals(name, horseDto.name) &&
@@ -107,7 +98,6 @@ public class HorseDto {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(id, name, breed, minSpeed, maxSpeed, created, updated);
     }
 
@@ -123,5 +113,4 @@ public class HorseDto {
             ", updated=" + updated +
             '}';
     }
-
 }

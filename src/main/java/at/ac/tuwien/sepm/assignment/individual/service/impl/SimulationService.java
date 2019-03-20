@@ -1,6 +1,5 @@
 package at.ac.tuwien.sepm.assignment.individual.service.impl;
 
-import at.ac.tuwien.sepm.assignment.individual.entity.Jockey;
 import at.ac.tuwien.sepm.assignment.individual.entity.JockeyHorse;
 import at.ac.tuwien.sepm.assignment.individual.entity.Participant;
 import at.ac.tuwien.sepm.assignment.individual.entity.Simulation;
@@ -10,7 +9,6 @@ import at.ac.tuwien.sepm.assignment.individual.persistence.IHorseDao;
 import at.ac.tuwien.sepm.assignment.individual.persistence.IJockeyDao;
 import at.ac.tuwien.sepm.assignment.individual.persistence.ISimulationDao;
 import at.ac.tuwien.sepm.assignment.individual.persistence.exceptions.PersistenceException;
-import at.ac.tuwien.sepm.assignment.individual.persistence.impl.SimulationDao;
 import at.ac.tuwien.sepm.assignment.individual.service.ISimulationService;
 import at.ac.tuwien.sepm.assignment.individual.service.exceptions.ServiceException;
 import org.slf4j.Logger;
@@ -54,15 +52,11 @@ public class SimulationService implements ISimulationService {
                 jockeyDao.newVersionJockey(x.getJockeyId(), x.getJockeyUpdate());
             }
             inserted.setParticipants(results);
-
-
-
-
-
+            return inserted;
         }catch (PersistenceException e){
             throw new ServiceException(e.getMessage(), e);
         }
-        return simulation;
+
     }
 
     private ArrayList<Participant> raceSim(LinkedList<JockeyHorse> participants){
@@ -75,7 +69,7 @@ public class SimulationService implements ISimulationService {
             double p = roundTo4((g - 0.95) * (pmax-pmin)/(1.05-0.95) + pmin);
             double ka = roundTo4(1 + (0.15 * 1/Math.PI * Math.atan(0.2 * k)));
             double d = roundTo4(p * ka * g);
-            Participant bob = new Participant(null, horseRider.getHorse().getId(), horseRider.getJockey().getId(),null,d, p, g, k, horseRider.getHorse().getUpdated(), horseRider.getJockey().getUpdated());
+            Participant bob = new Participant(null, horseRider.getHorse().getId(), horseRider.getHorse().getName(), horseRider.getJockey().getName(), horseRider.getJockey().getId(),null,d, p, g, k, horseRider.getHorse().getUpdated(), horseRider.getJockey().getUpdated());
             if(calculated.isEmpty()){
                 calculated.add(bob);
             }else{
