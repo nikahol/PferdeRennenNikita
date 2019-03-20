@@ -6,12 +6,13 @@ import at.ac.tuwien.sepm.assignment.individual.rest.dto.ParticipantDto;
 import at.ac.tuwien.sepm.assignment.individual.rest.dto.SimulationDto;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 @Component
 public class SimulationMapper {
     public Simulation simDtoSim(SimulationDto simulationDto){
-        LinkedList<Participant> participants = new LinkedList<>();
+        ArrayList<Participant> participants = new LinkedList<>();
         for(ParticipantDto x : simulationDto.getSimulationParticipants()){
             Participant bob = new Participant(x.getHorseId(), x.getJockeyId(), null, null, null, x.getluckFactor(), null, null, null);
             participants.add(bob);

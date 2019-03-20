@@ -3,6 +3,7 @@ package at.ac.tuwien.sepm.assignment.individual.entity;
 
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Objects;
 
@@ -10,9 +11,9 @@ public class Simulation {
     private Integer id;
     private String name;
     private LocalDateTime created;
-    private LinkedList<Participant> participants;
+    private ArrayList<Participant> participants;
 
-    public Simulation(Integer id, String name,LocalDateTime created, LinkedList<Participant> participants) {
+    public Simulation(Integer id, String name,LocalDateTime created, ArrayList<Participant> participants) {
         this.id = id;
         this.name = name;
         this.created = created;
@@ -35,11 +36,11 @@ public class Simulation {
         this.created = created;
     }
 
-    public LinkedList<Participant> getParticipants() {
+    public ArrayList<Participant> getParticipants() {
         return participants;
     }
 
-    public void setParticipants(LinkedList<Participant> participants) {
+    public void setParticipants(ArrayList<Participant> participants) {
         this.participants = participants;
     }
 

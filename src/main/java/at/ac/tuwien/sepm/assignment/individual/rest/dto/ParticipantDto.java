@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Objects;
 
 public class ParticipantDto {
+
     @JsonProperty("horseId")
     private Integer horseId;
     @JsonProperty("jockeyId")

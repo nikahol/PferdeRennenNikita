@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Participant {
+    private Integer id;
     private Integer horseId;
     private Integer jockeyId;
     private Integer rank;
@@ -16,7 +17,8 @@ public class Participant {
     private LocalDateTime horseUpdate;
     private LocalDateTime jockeyUpdate;
 
-    public Participant(Integer horseId, Integer jockeyId, Integer rank, Double avgSpeed, Double horseSpeed, Double luck, Double skill, LocalDateTime horseUpdate, LocalDateTime jockeyUpdate) {
+    public Participant(Integer id, Integer horseId, Integer jockeyId, Integer rank, Double avgSpeed, Double horseSpeed, Double luck, Double skill, LocalDateTime horseUpdate, LocalDateTime jockeyUpdate) {
+        this.id = id;
         this.horseId = horseId;
         this.jockeyId = jockeyId;
         this.rank = rank;
@@ -42,6 +44,14 @@ public class Participant {
 
     public void setJockeyId(Integer jockeyId) {
         this.jockeyId = jockeyId;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getRank() {
@@ -105,7 +115,8 @@ public class Participant {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Participant that = (Participant) o;
-        return Objects.equals(horseId, that.horseId) &&
+        return Objects.equals(id, that.id) &&
+            Objects.equals(horseId, that.horseId) &&
             Objects.equals(jockeyId, that.jockeyId) &&
             Objects.equals(rank, that.rank) &&
             Objects.equals(avgSpeed, that.avgSpeed) &&
@@ -118,13 +129,14 @@ public class Participant {
 
     @Override
     public int hashCode() {
-        return Objects.hash(horseId, jockeyId, rank, avgSpeed, horseSpeed, luck, skill, horseUpdate, jockeyUpdate);
+        return Objects.hash(id, horseId, jockeyId, rank, avgSpeed, horseSpeed, luck, skill, horseUpdate, jockeyUpdate);
     }
 
     @Override
     public String toString() {
         return "Participant{" +
-            "horseId=" + horseId +
+            "id=" + id +
+            ", horseId=" + horseId +
             ", jockeyId=" + jockeyId +
             ", rank=" + rank +
             ", avgSpeed=" + avgSpeed +
