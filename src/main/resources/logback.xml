@@ -4,7 +4,7 @@
 
     <timestamp key="day" datePattern="yyyy-MM-dd"/>
 
-    <appender name="THEKEEPER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file> src/main/resources/wendys-rennpferde-${day}.log</file>
         <encoder>
             <pattern class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">%d{HH:mm:ss.SSS} | %-5level | %40logger{0}: %msg%n</pattern>
@@ -26,7 +26,7 @@
 
     <logger name="at.ac.tuwien.sepm.assignment.individual" level="DEBUG" additivity="false">
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="THEKEEPER"/>
+        <appender-ref ref="FILE"/>
     </logger>
 
     <root level="WARN">

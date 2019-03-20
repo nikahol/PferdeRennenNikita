@@ -1,6 +1,5 @@
 package at.ac.tuwien.sepm.assignment.individual.rest;
 
-import at.ac.tuwien.sepm.assignment.individual.entity.Horse;
 import at.ac.tuwien.sepm.assignment.individual.exceptions.BadRequestException;
 import at.ac.tuwien.sepm.assignment.individual.rest.dto.HorseDto;
 import at.ac.tuwien.sepm.assignment.individual.exceptions.NotFoundException;

@@ -47,11 +47,17 @@ CREATE TABLE IF NOT EXISTS jockeyVersions (
 );
 
 CREATE TABLE IF NOT EXISTS simulationRelation(
+  id        BIGINT       AUTO_INCREMENT PRIMARY KEY,
   simID     BIGINT       NOT NULL,
   horseID   BIGINT       NOT NULL,
   horesUp   DATETIME     NOT NULL,
   jockeyID  BIGINT       NOT NULL,
-  jockeyUp  BIGINT       NOT NULL,
+  jockeyUp  DATETIME     NOT NULL,
+  rank      BIGINT       NOT NULL,
+  avgSpeed  DOUBLE       NOT NULL,
+  horseSpeed DOUBLE      NOT NULL,
+  skill     DOUBLE       NOT NULL,
+  luck      DOUBLE       NOT NULL,
   FOREIGN KEY(horseID, horseUp) REFERENCES horseVersions (id, updated),
   FOREIGN KEY(jockeyID, jockeyUp) REFERENCES jockeyVersions (id, updated),
   FOREIGN KEY(simID) REFERENCES simulation (simID)
@@ -59,7 +65,8 @@ CREATE TABLE IF NOT EXISTS simulationRelation(
 
 CREATE TABLE IF NOT EXISTS simulation {
   simID     BIGINT       AUTO_INCREMENT PRIMARY KEY,
-  name      VARCHAR(255) NOT NULL
+  name      VARCHAR(255) NOT NULL,
+  created   DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP
 };
 
 
