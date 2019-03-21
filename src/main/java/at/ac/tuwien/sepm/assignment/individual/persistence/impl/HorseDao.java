@@ -198,7 +198,8 @@ public class HorseDao implements IHorseDao {
         LOGGER.info("Moving horse with ID " + id + " to version table");
         String sql = "INSERT INTO horseVersions (id, name, breed, min_speed, max_speed, created, updated) VALUES (?,?,?,?,?,?,?)";
         try{
-            if(!checkVersionExists(id, horseUpdate)) {
+            System.out.println(checkVersionExists(id, horseUpdate));
+            if(checkVersionExists(id, horseUpdate) == false) {
                 Horse toTransfer = findOneById(id);
                 PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
                 statement.setInt(1, toTransfer.getId());
@@ -206,8 +207,8 @@ public class HorseDao implements IHorseDao {
                 statement.setString(3, toTransfer.getBreed());
                 statement.setDouble(4, toTransfer.getMinSpeed());
                 statement.setDouble(5, toTransfer.getMaxSpeed());
-                statement.setTimestamp(6, Timestamp.valueOf(toTransfer.getUpdated()));
-                statement.setTimestamp(7, Timestamp.valueOf(toTransfer.getCreated()));
+                statement.setTimestamp(6, Timestamp.valueOf(toTransfer.getCreated()));
+                statement.setTimestamp(7, Timestamp.valueOf(toTransfer.getUpdated()));
                 statement.execute();
             }
         }catch(SQLException e){
@@ -223,12 +224,10 @@ public class HorseDao implements IHorseDao {
             statement.setInt(1, id);
             statement.setTimestamp(2, Timestamp.valueOf(horseUpdate));
             ResultSet rs = statement.executeQuery();
-            if(rs.next()){
-                return true;
-            }
+            System.out.println(statement);
+            return rs.next();
         }catch(SQLException e){
             throw new PersistenceException("Could not check version existence " + id + " " + horseUpdate, e);
         }
-        return false;
     }
 }

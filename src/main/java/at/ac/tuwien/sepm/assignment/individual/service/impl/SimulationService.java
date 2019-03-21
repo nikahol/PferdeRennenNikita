@@ -47,9 +47,17 @@ public class SimulationService implements ISimulationService {
             ArrayList<Participant> results = raceSim(jockeyHorses);
             Simulation inserted = simulationDao.insertSimulation(simulation);
             for(Participant x: results){
-                x.setId(simulationDao.insertParticipant(inserted.getId(), x).getId());
                 horseDao.newVersionHorse(x.getHorseId(), x.getHorseUpdate());
+                System.out.println("aye");
                 jockeyDao.newVersionJockey(x.getJockeyId(), x.getJockeyUpdate());
+                System.out.println("la");
+                x.setId(simulationDao.insertParticipant(inserted.getId(), x).getId());
+                System.out.println("mao");
+
+
+
+
+
             }
             inserted.setParticipants(results);
             return inserted;
@@ -120,6 +128,6 @@ public class SimulationService implements ISimulationService {
     private double roundTo4(double r){
         double tmp = r * 10000;
         tmp = Math.round(tmp);
-        return tmp;
+        return (tmp/10000);
     }
 }

@@ -2,6 +2,7 @@ package at.ac.tuwien.sepm.assignment.individual.persistence.impl;
 
 import at.ac.tuwien.sepm.assignment.individual.entity.Participant;
 import at.ac.tuwien.sepm.assignment.individual.entity.Simulation;
+import at.ac.tuwien.sepm.assignment.individual.exceptions.NotFoundException;
 import at.ac.tuwien.sepm.assignment.individual.persistence.ISimulationDao;
 import at.ac.tuwien.sepm.assignment.individual.persistence.exceptions.PersistenceException;
 import at.ac.tuwien.sepm.assignment.individual.persistence.util.DBConnectionManager;
@@ -22,8 +23,36 @@ public class SimulationDao implements ISimulationDao {
         this.dbConnectionManager = dbConnectionManager;
     }
 
+    private static Simulation dbResultToSim(ResultSet result) throws SQLException {
+        return new Simulation(
+            result.getInt(1),
+            result.getString(2),
+            result.getTimestamp(3).toLocalDateTime(),
+            null);
+
+    }
+    private Simulation getOneSimById(Integer id) throws NotFoundException, PersistenceException {
+        LOGGER.info("Getting one sim no race info by ID " + id);
+        String sql = "SELECT * FROM simulation WHERE simID = ?";
+        Simulation ret = null;
+        try{
+            PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
+            statement.setInt(1,id);
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()){
+                ret = dbResultToSim(rs);
+            }
+
+        }catch (SQLException e){
+            throw new PersistenceException("Error finding a sim by id " + id, e);
+        }
+        if(ret == null){
+            throw new NotFoundException("Could not find sim with id " + id);
+        }
+        return ret;
+    }
     @Override
-    public Simulation insertSimulation(Simulation simulation) throws PersistenceException {
+    public Simulation insertSimulation(Simulation simulation) throws PersistenceException, NotFoundException {
         LOGGER.info("Inserting new Sim into the database " + simulation);
         String sql = "INSERT INTO simulation (name, created) VALUES (?, DEFAULT)";
         int id = 0;
@@ -34,11 +63,12 @@ public class SimulationDao implements ISimulationDao {
             statement.execute();
             ResultSet rs = statement.getGeneratedKeys();
             while(rs.next()){
-                id = rs.getInt("id");
-                created = rs.getTimestamp("created").toLocalDateTime();
+                id = rs.getInt("simID");
             }
-            simulation.setCreated(created);
+            Simulation tmp = getOneSimById(id);
+            simulation.setCreated(tmp.getCreated());
             simulation.setId(id);
+
             return simulation;
         }catch (SQLException e){
             throw new PersistenceException("Error inserting simulation into database + " + simulation);
@@ -60,15 +90,20 @@ public class SimulationDao implements ISimulationDao {
             statement.setInt(6, participant.getRank());
             statement.setDouble(7,participant.getAvgSpeed());
             statement.setDouble(8,participant.getLuck());
-            statement.execute();
+            System.out.println("participant: " + statement);
+            statement.executeUpdate();
+            System.out.println("Post execute");
             ResultSet rs = statement.getGeneratedKeys();
+            System.out.println("Pre while participant");
             while(rs.next()){
                 id = rs.getInt("id");
             }
             participant.setId(id);
             return participant;
-        }catch(SQLException e){
+        } catch(SQLException e){
             throw new PersistenceException("Error inserting participant into database " + participant);
+        }catch (Exception e){
+            throw new PersistenceException("Error inserting participant into database G" + participant);
         }
     }
 
