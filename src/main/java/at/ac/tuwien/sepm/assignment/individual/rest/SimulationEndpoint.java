@@ -15,6 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.LinkedList;
+
 
 @RestController
 @RequestMapping("/api/v1/simulations")
@@ -44,5 +46,42 @@ public class SimulationEndpoint {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Input not accepted in POST simulations method " + e.getMessage(), e);
         }
     }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public SimulationSendDto getSimulationByID(@PathVariable("id") Integer id){
+        LOGGER.info("GET "  + BASE_URL + "/" + id);
+        try{
+            return simulationMapper.simToSimSendDto(simulationService.getSimulationByID(id));
+        }catch (ServiceException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error during GET sim with id " + id, e);
+        } catch (NotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error during GET sim with id " + id + e.getMessage(), e);
+        }
+
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public LinkedList<SimulationSendDto> getAllSimulations(){
+        LOGGER.info("GET " + BASE_URL);
+        try{
+            return simulationMapper.simListTosimSendDtoList(simulationService.getAllSimulations());
+        }catch (ServiceException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error during GET all simulations", e);
+        }
+    }
+
+    @RequestMapping(params = {"name"}, method = RequestMethod.GET)
+    public LinkedList<SimulationSendDto> getAllSimulationsFiltered(@RequestParam String name){
+        LOGGER.info("GET " + BASE_URL +" name like " + name);
+        if(name == null){
+            name = "";
+        }
+        try{
+            return simulationMapper.simListTosimSendDtoList(simulationService.getAllSimulationsFiltered(name));
+        }catch (ServiceException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error during GET all simulations", e);
+        }
+    }
+
 }
 

@@ -1,0 +1,272 @@
+13:02:49.968 | INFO  |                     HorseIntegrationTest: Starting HorseIntegrationTest on DESKTOP-9S8DPDA with PID 33296 (started by nikit in C:\Users\nikit\Documents\UNI\SEPM2019\sepm-individual-assignment-java-template\01526589)
+13:02:49.968 | DEBUG |                     HorseIntegrationTest: Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+13:02:49.968 | INFO  |                     HorseIntegrationTest: The following profiles are active: test
+13:02:52.405 | INFO  |                     HorseIntegrationTest: Started HorseIntegrationTest in 2.806 seconds (JVM running for 4.378)
+13:02:53.024 | INFO  |                            HorseEndpoint: POST /api/v1/horses HorseDto{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+13:02:53.040 | INFO  |                             HorseService: Inserting horse in service layer Horse{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+13:02:53.040 | INFO  |                                 HorseDao: insert Horse Horse{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+13:02:53.040 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.040 | INFO  |                      DBConnectionManager: Establish database connection
+13:02:53.261 | INFO  |                                 HorseDao: Get horse with id 1
+13:02:53.261 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.261 | INFO  |                                 HorseDao: Successfully inserted horse with id: 1
+13:02:53.309 | INFO  |                            HorseEndpoint: POST /api/v1/horses HorseDto{id=null, name='Horse2', breed='null', minSpeed=40.0, maxSpeed=60.0, created=null, updated=null}
+13:02:53.309 | INFO  |                             HorseService: Inserting horse in service layer Horse{id=null, name='Horse2', breed='null', minSpeed=40.0, maxSpeed=60.0, created=null, updated=null}
+13:02:53.309 | INFO  |                                 HorseDao: insert Horse Horse{id=null, name='Horse2', breed='null', minSpeed=40.0, maxSpeed=60.0, created=null, updated=null}
+13:02:53.309 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.309 | INFO  |                                 HorseDao: Get horse with id 2
+13:02:53.309 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.309 | INFO  |                                 HorseDao: Successfully inserted horse with id: 2
+13:02:53.309 | INFO  |                            HorseEndpoint: DELETE /api/v1/horses 1
+13:02:53.309 | INFO  |                             HorseService: Deleting horse with id 1 in service layer
+13:02:53.309 | INFO  |                                 HorseDao: deleting horse with id 1
+13:02:53.309 | INFO  |                                 HorseDao: Get horse with id 1
+13:02:53.309 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.325 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.325 | INFO  |                                 HorseDao: Successfully deleted horse with id: 1
+13:02:53.325 | INFO  |                            HorseEndpoint: GET /api/v1/horses
+13:02:53.325 | INFO  |                             HorseService: Getting all horses in service layer
+13:02:53.325 | INFO  |                                 HorseDao: Getting all Horses from database
+13:02:53.325 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.325 | INFO  |                                 HorseDao: Successfully got all horses
+13:02:53.340 | INFO  |                      DBConnectionManager: Close database connection
+13:02:53.356 | INFO  |                            HorseEndpoint: POST /api/v1/horses HorseDto{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+13:02:53.356 | INFO  |                             HorseService: Inserting horse in service layer Horse{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+13:02:53.356 | INFO  |                                 HorseDao: insert Horse Horse{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+13:02:53.356 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.356 | INFO  |                      DBConnectionManager: Establish database connection
+13:02:53.372 | INFO  |                                 HorseDao: Get horse with id 1
+13:02:53.372 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.372 | INFO  |                                 HorseDao: Successfully inserted horse with id: 1
+13:02:53.387 | INFO  |                            HorseEndpoint: POST /api/v1/horses HorseDto{id=null, name='Horse2', breed='null', minSpeed=40.0, maxSpeed=60.0, created=null, updated=null}
+13:02:53.387 | INFO  |                             HorseService: Inserting horse in service layer Horse{id=null, name='Horse2', breed='null', minSpeed=40.0, maxSpeed=60.0, created=null, updated=null}
+13:02:53.387 | INFO  |                                 HorseDao: insert Horse Horse{id=null, name='Horse2', breed='null', minSpeed=40.0, maxSpeed=60.0, created=null, updated=null}
+13:02:53.387 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.387 | INFO  |                                 HorseDao: Get horse with id 2
+13:02:53.387 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.387 | INFO  |                                 HorseDao: Successfully inserted horse with id: 2
+13:02:53.394 | INFO  |                            HorseEndpoint: GET /api/v1/horses
+13:02:53.394 | INFO  |                             HorseService: Getting all horses in service layer
+13:02:53.394 | INFO  |                                 HorseDao: Getting all Horses from database
+13:02:53.394 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.394 | INFO  |                                 HorseDao: Successfully got all horses
+13:02:53.394 | INFO  |                      DBConnectionManager: Close database connection
+13:02:53.409 | INFO  |                            HorseEndpoint: POST /api/v1/horses HorseDto{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+13:02:53.409 | INFO  |                             HorseService: Inserting horse in service layer Horse{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+13:02:53.409 | INFO  |                                 HorseDao: insert Horse Horse{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+13:02:53.409 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.409 | INFO  |                      DBConnectionManager: Establish database connection
+13:02:53.425 | INFO  |                                 HorseDao: Get horse with id 1
+13:02:53.425 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.425 | INFO  |                                 HorseDao: Successfully inserted horse with id: 1
+13:02:53.425 | INFO  |                            HorseEndpoint: GET /api/v1/horses/1
+13:02:53.425 | INFO  |                             HorseService: Get horse with id 1
+13:02:53.425 | INFO  |                                 HorseDao: Get horse with id 1
+13:02:53.425 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.441 | INFO  |                      DBConnectionManager: Close database connection
+13:02:53.456 | INFO  |                            HorseEndpoint: POST /api/v1/horses HorseDto{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+13:02:53.456 | INFO  |                             HorseService: Inserting horse in service layer Horse{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+13:02:53.456 | INFO  |                                 HorseDao: insert Horse Horse{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+13:02:53.456 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.456 | INFO  |                      DBConnectionManager: Establish database connection
+13:02:53.472 | INFO  |                                 HorseDao: Get horse with id 1
+13:02:53.472 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.472 | INFO  |                                 HorseDao: Successfully inserted horse with id: 1
+13:02:53.472 | INFO  |                            HorseEndpoint: GET /api/v1/horses
+13:02:53.472 | INFO  |                             HorseService: Getting all horses in service layer
+13:02:53.472 | INFO  |                                 HorseDao: Getting all Horses from database
+13:02:53.472 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.472 | INFO  |                                 HorseDao: Successfully got all horses
+13:02:53.472 | INFO  |                      DBConnectionManager: Close database connection
+13:02:53.510 | INFO  |                            HorseEndpoint: POST /api/v1/horses HorseDto{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+13:02:53.510 | INFO  |                             HorseService: Inserting horse in service layer Horse{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+13:02:53.510 | INFO  |                                 HorseDao: insert Horse Horse{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+13:02:53.510 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.510 | INFO  |                      DBConnectionManager: Establish database connection
+13:02:53.525 | INFO  |                                 HorseDao: Get horse with id 1
+13:02:53.525 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.525 | INFO  |                                 HorseDao: Successfully inserted horse with id: 1
+13:02:53.525 | INFO  |                      DBConnectionManager: Close database connection
+13:02:53.572 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null}
+13:02:53.572 | INFO  |                            JockeyService: Inserting Jockey: Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null}
+13:02:53.572 | INFO  |                                JockeyDao: insert Jockey Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null}
+13:02:53.572 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.572 | INFO  |                      DBConnectionManager: Establish database connection
+13:02:53.588 | INFO  |                                JockeyDao: Get jockey with id 1
+13:02:53.588 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.588 | INFO  |                                JockeyDao: Successfully inserted jockey with id: 1
+13:02:53.610 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys Jockey{id=null, name='Jockey2', skill=33.33, created=null, updated=null}
+13:02:53.610 | INFO  |                            JockeyService: Inserting Jockey: Jockey{id=null, name='Jockey2', skill=33.33, created=null, updated=null}
+13:02:53.610 | INFO  |                                JockeyDao: insert Jockey Jockey{id=null, name='Jockey2', skill=33.33, created=null, updated=null}
+13:02:53.610 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.610 | INFO  |                                JockeyDao: Get jockey with id 2
+13:02:53.610 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.610 | INFO  |                                JockeyDao: Successfully inserted jockey with id: 2
+13:02:53.610 | INFO  |                           JockeyEndpoint: GET api/v1/jockeys
+13:02:53.610 | INFO  |                            JockeyService: Getting all jockeys in service layer
+13:02:53.610 | INFO  |                                JockeyDao: Getting all jockeys
+13:02:53.610 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.610 | INFO  |                                JockeyDao: Successfully got all jockeys
+13:02:53.610 | INFO  |                      DBConnectionManager: Close database connection
+13:02:53.642 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null}
+13:02:53.642 | INFO  |                            JockeyService: Inserting Jockey: Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null}
+13:02:53.642 | INFO  |                                JockeyDao: insert Jockey Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null}
+13:02:53.642 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.642 | INFO  |                      DBConnectionManager: Establish database connection
+13:02:53.646 | INFO  |                                JockeyDao: Get jockey with id 1
+13:02:53.646 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.646 | INFO  |                                JockeyDao: Successfully inserted jockey with id: 1
+13:02:53.662 | INFO  |                           JockeyEndpoint: GET api/v1/jockeys
+13:02:53.662 | INFO  |                            JockeyService: Getting all jockeys in service layer
+13:02:53.662 | INFO  |                                JockeyDao: Getting all jockeys
+13:02:53.662 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.662 | INFO  |                                JockeyDao: Successfully got all jockeys
+13:02:53.662 | INFO  |                      DBConnectionManager: Close database connection
+13:02:53.677 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null}
+13:02:53.677 | INFO  |                            JockeyService: Inserting Jockey: Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null}
+13:02:53.677 | INFO  |                                JockeyDao: insert Jockey Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null}
+13:02:53.677 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.677 | INFO  |                      DBConnectionManager: Establish database connection
+13:02:53.693 | INFO  |                                JockeyDao: Get jockey with id 1
+13:02:53.693 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.695 | INFO  |                                JockeyDao: Successfully inserted jockey with id: 1
+13:02:53.695 | INFO  |                           JockeyEndpoint: GET api/v1/jockeys/1
+13:02:53.695 | INFO  |                            JockeyService: Get jockey with id 1
+13:02:53.695 | INFO  |                                JockeyDao: Get jockey with id 1
+13:02:53.695 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.695 | INFO  |                      DBConnectionManager: Close database connection
+13:02:53.710 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null}
+13:02:53.710 | INFO  |                            JockeyService: Inserting Jockey: Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null}
+13:02:53.710 | INFO  |                                JockeyDao: insert Jockey Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null}
+13:02:53.710 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.710 | INFO  |                      DBConnectionManager: Establish database connection
+13:02:53.710 | INFO  |                                JockeyDao: Get jockey with id 1
+13:02:53.710 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.710 | INFO  |                                JockeyDao: Successfully inserted jockey with id: 1
+13:02:53.710 | INFO  |                      DBConnectionManager: Close database connection
+13:02:53.741 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null}
+13:02:53.741 | INFO  |                            JockeyService: Inserting Jockey: Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null}
+13:02:53.741 | INFO  |                                JockeyDao: insert Jockey Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null}
+13:02:53.741 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.741 | INFO  |                      DBConnectionManager: Establish database connection
+13:02:53.741 | INFO  |                                JockeyDao: Get jockey with id 1
+13:02:53.741 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.741 | INFO  |                                JockeyDao: Successfully inserted jockey with id: 1
+13:02:53.757 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys Jockey{id=null, name='Jockey2', skill=33.33, created=null, updated=null}
+13:02:53.757 | INFO  |                            JockeyService: Inserting Jockey: Jockey{id=null, name='Jockey2', skill=33.33, created=null, updated=null}
+13:02:53.757 | INFO  |                                JockeyDao: insert Jockey Jockey{id=null, name='Jockey2', skill=33.33, created=null, updated=null}
+13:02:53.757 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.757 | INFO  |                                JockeyDao: Get jockey with id 2
+13:02:53.757 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.757 | INFO  |                                JockeyDao: Successfully inserted jockey with id: 2
+13:02:53.757 | INFO  |                           JockeyEndpoint: DELETE api/v1/jockeys1
+13:02:53.757 | INFO  |                            JockeyService: Deleting Jockey with id 1 in service layer
+13:02:53.757 | INFO  |                                JockeyDao: Deleting jockey with id 1
+13:02:53.757 | INFO  |                                JockeyDao: Get jockey with id 1
+13:02:53.757 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.757 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.757 | INFO  |                                JockeyDao: Successfully deleted jockey with id: 1
+13:02:53.757 | INFO  |                           JockeyEndpoint: GET api/v1/jockeys
+13:02:53.757 | INFO  |                            JockeyService: Getting all jockeys in service layer
+13:02:53.757 | INFO  |                                JockeyDao: Getting all jockeys
+13:02:53.757 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.757 | INFO  |                                JockeyDao: Successfully got all jockeys
+13:02:53.773 | INFO  |                      DBConnectionManager: Close database connection
+13:02:53.788 | INFO  |                            HorseEndpoint: POST /api/v1/horses HorseDto{id=null, name='Horse1', breed='null', minSpeed=40.0, maxSpeed=60.0, created=null, updated=null}
+13:02:53.788 | INFO  |                             HorseService: Inserting horse in service layer Horse{id=null, name='Horse1', breed='null', minSpeed=40.0, maxSpeed=60.0, created=null, updated=null}
+13:02:53.788 | INFO  |                                 HorseDao: insert Horse Horse{id=null, name='Horse1', breed='null', minSpeed=40.0, maxSpeed=60.0, created=null, updated=null}
+13:02:53.788 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.788 | INFO  |                      DBConnectionManager: Establish database connection
+13:02:53.795 | INFO  |                                 HorseDao: Get horse with id 1
+13:02:53.795 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.795 | INFO  |                                 HorseDao: Successfully inserted horse with id: 1
+13:02:53.810 | INFO  |                            HorseEndpoint: POST /api/v1/horses HorseDto{id=null, name='Horse2', breed='null', minSpeed=49.99, maxSpeed=50.0, created=null, updated=null}
+13:02:53.810 | INFO  |                             HorseService: Inserting horse in service layer Horse{id=null, name='Horse2', breed='null', minSpeed=49.99, maxSpeed=50.0, created=null, updated=null}
+13:02:53.810 | INFO  |                                 HorseDao: insert Horse Horse{id=null, name='Horse2', breed='null', minSpeed=49.99, maxSpeed=50.0, created=null, updated=null}
+13:02:53.810 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.810 | INFO  |                                 HorseDao: Get horse with id 2
+13:02:53.810 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.810 | INFO  |                                 HorseDao: Successfully inserted horse with id: 2
+13:02:53.826 | INFO  |                            HorseEndpoint: POST /api/v1/horses HorseDto{id=null, name='Horse3', breed='null', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+13:02:53.826 | INFO  |                             HorseService: Inserting horse in service layer Horse{id=null, name='Horse3', breed='null', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+13:02:53.826 | INFO  |                                 HorseDao: insert Horse Horse{id=null, name='Horse3', breed='null', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}
+13:02:53.826 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.826 | INFO  |                                 HorseDao: Get horse with id 3
+13:02:53.826 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.826 | INFO  |                                 HorseDao: Successfully inserted horse with id: 3
+13:02:53.842 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys Jockey{id=null, name='Jockey1', skill=40.0, created=null, updated=null}
+13:02:53.842 | INFO  |                            JockeyService: Inserting Jockey: Jockey{id=null, name='Jockey1', skill=40.0, created=null, updated=null}
+13:02:53.842 | INFO  |                                JockeyDao: insert Jockey Jockey{id=null, name='Jockey1', skill=40.0, created=null, updated=null}
+13:02:53.842 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.842 | INFO  |                                JockeyDao: Get jockey with id 1
+13:02:53.842 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.842 | INFO  |                                JockeyDao: Successfully inserted jockey with id: 1
+13:02:53.857 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys Jockey{id=null, name='Jockey2', skill=-1000.0, created=null, updated=null}
+13:02:53.857 | INFO  |                            JockeyService: Inserting Jockey: Jockey{id=null, name='Jockey2', skill=-1000.0, created=null, updated=null}
+13:02:53.857 | INFO  |                                JockeyDao: insert Jockey Jockey{id=null, name='Jockey2', skill=-1000.0, created=null, updated=null}
+13:02:53.857 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.857 | INFO  |                                JockeyDao: Get jockey with id 2
+13:02:53.857 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.857 | INFO  |                                JockeyDao: Successfully inserted jockey with id: 2
+13:02:53.873 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys Jockey{id=null, name='Jockey3', skill=0.0, created=null, updated=null}
+13:02:53.873 | INFO  |                            JockeyService: Inserting Jockey: Jockey{id=null, name='Jockey3', skill=0.0, created=null, updated=null}
+13:02:53.873 | INFO  |                                JockeyDao: insert Jockey Jockey{id=null, name='Jockey3', skill=0.0, created=null, updated=null}
+13:02:53.873 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.873 | INFO  |                                JockeyDao: Get jockey with id 3
+13:02:53.873 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.873 | INFO  |                                JockeyDao: Successfully inserted jockey with id: 3
+13:02:53.895 | INFO  |                       SimulationEndpoint: POST /api/v1/simulationsSimulationDto{name='Simulation1', simulationParticipants=[ParticipantDto{horseId=1, jockeyId=1, luckFactor=1.0}, ParticipantDto{horseId=2, jockeyId=2, luckFactor=0.95}, ParticipantDto{horseId=3, jockeyId=3, luckFactor=1.05}]}
+13:02:53.926 | INFO  |                        SimulationService: New Simulation in the Service LayerSimulation{id=null, name='Simulation1', created=null, participants=[Participant{id=null, horseId=1, horseName='null', jockeyName='null', jockeyId=1, rank=null, avgSpeed=null, horseSpeed=null, luck=1.0, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=2, horseName='null', jockeyName='null', jockeyId=2, rank=null, avgSpeed=null, horseSpeed=null, luck=0.95, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=3, horseName='null', jockeyName='null', jockeyId=3, rank=null, avgSpeed=null, horseSpeed=null, luck=1.05, skill=null, horseUpdate=null, jockeyUpdate=null}]}
+13:02:53.926 | INFO  |                                 HorseDao: Get horse with id 1
+13:02:53.926 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.926 | INFO  |                                JockeyDao: Get jockey with id 1
+13:02:53.926 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.926 | INFO  |                                 HorseDao: Get horse with id 2
+13:02:53.926 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.926 | INFO  |                                JockeyDao: Get jockey with id 2
+13:02:53.926 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.926 | INFO  |                                 HorseDao: Get horse with id 3
+13:02:53.926 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.926 | INFO  |                                JockeyDao: Get jockey with id 3
+13:02:53.926 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.926 | INFO  |                            SimulationDao: Inserting new Sim into the database Simulation{id=null, name='Simulation1', created=null, participants=[Participant{id=null, horseId=1, horseName='null', jockeyName='null', jockeyId=1, rank=null, avgSpeed=null, horseSpeed=null, luck=1.0, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=2, horseName='null', jockeyName='null', jockeyId=2, rank=null, avgSpeed=null, horseSpeed=null, luck=0.95, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=3, horseName='null', jockeyName='null', jockeyId=3, rank=null, avgSpeed=null, horseSpeed=null, luck=1.05, skill=null, horseUpdate=null, jockeyUpdate=null}]}
+13:02:53.926 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.926 | INFO  |                            SimulationDao: Getting one sim no race info by ID 1
+13:02:53.926 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.926 | INFO  |                                 HorseDao: Moving horse with ID 2 to version table
+13:02:53.926 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.926 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.926 | INFO  |                                 HorseDao: Get horse with id 2
+13:02:53.926 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.926 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.926 | INFO  |                                JockeyDao: Moving jockey with ID 2 to version table
+13:02:53.926 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.926 | INFO  |                                JockeyDao: Get jockey with id 2
+13:02:53.926 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.926 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.926 | INFO  |                            SimulationDao: Inserting the participantParticipant{id=null, horseId=2, horseName='Horse2', jockeyName='Jockey2', jockeyId=2, rank=1, avgSpeed=43.9382, horseSpeed=49.99, luck=0.95, skill=-1000.0, horseUpdate=2019-03-21T13:02:53.810, jockeyUpdate=2019-03-21T13:02:53.857}
+13:02:53.926 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.926 | INFO  |                                 HorseDao: Moving horse with ID 1 to version table
+13:02:53.926 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.926 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.926 | INFO  |                                 HorseDao: Get horse with id 1
+13:02:53.926 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.926 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.942 | INFO  |                                JockeyDao: Moving jockey with ID 1 to version table
+13:02:53.942 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.942 | INFO  |                                JockeyDao: Get jockey with id 1
+13:02:53.942 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.942 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.942 | INFO  |                            SimulationDao: Inserting the participantParticipant{id=null, horseId=1, horseName='Horse1', jockeyName='Jockey1', jockeyId=1, rank=2, avgSpeed=53.455, horseSpeed=50.0, luck=1.0, skill=40.0, horseUpdate=2019-03-21T13:02:53.795, jockeyUpdate=2019-03-21T13:02:53.842}
+13:02:53.942 | INFO  |                      DBConnectionManager: Get database connection
+13:02:53.942 | INFO  |                      DBConnectionManager: Close database connection
+13:02:53.973 | INFO  |                             HorseDaoTest: Starting HorseDaoTest on DESKTOP-9S8DPDA with PID 33296 (started by nikit in C:\Users\nikit\Documents\UNI\SEPM2019\sepm-individual-assignment-java-template\01526589)
+13:02:53.973 | DEBUG |                             HorseDaoTest: Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+13:02:53.973 | INFO  |                             HorseDaoTest: The following profiles are active: test
+13:02:54.597 | INFO  |                             HorseDaoTest: Started HorseDaoTest in 0.639 seconds (JVM running for 6.578)
+13:02:54.612 | INFO  |                                 HorseDao: Get horse with id 1
+13:02:54.612 | INFO  |                      DBConnectionManager: Get database connection
+13:02:54.612 | INFO  |                      DBConnectionManager: Establish database connection
+13:02:54.628 | INFO  |                      DBConnectionManager: Close database connection
+13:02:54.628 | INFO  |                      DBConnectionManager: Close database connection
+13:02:54.628 | INFO  |                      DBConnectionManager: Close database connection

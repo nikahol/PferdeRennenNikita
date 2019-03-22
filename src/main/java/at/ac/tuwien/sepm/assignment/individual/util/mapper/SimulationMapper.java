@@ -33,5 +33,13 @@ public class SimulationMapper {
        return sim;
     }
 
+    public LinkedList<SimulationSendDto> simListTosimSendDtoList(LinkedList<Simulation> simulations){
+        LinkedList<SimulationSendDto> sendSims = new LinkedList<>();
+        for(Simulation s: simulations){
+            sendSims.add(simToSimSendDto(s));
+        }
+        return sendSims;
+    }
+
 
 }

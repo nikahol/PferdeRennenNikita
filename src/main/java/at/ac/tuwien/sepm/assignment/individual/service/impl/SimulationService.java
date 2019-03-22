@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -35,6 +36,40 @@ public class SimulationService implements ISimulationService {
     }
 
     @Override
+    public LinkedList<Simulation> getAllSimulations() throws ServiceException {
+        LOGGER.info("Getting all simulations");
+        try{
+            return simulationDao.getAllSimulations();
+        }catch(PersistenceException e){
+            throw new ServiceException("Error getting all horses " + e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public LinkedList<Simulation> getAllSimulationsFiltered(String name) throws ServiceException {
+        LOGGER.info("Getting all simulations filtered by " + name);
+        try{
+            return simulationDao.getAllSimulationsFiltered(name);
+        }catch(PersistenceException e){
+            throw new ServiceException("Error getting all horses " + e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public Simulation getSimulationByID(Integer id) throws ServiceException, NotFoundException{
+        LOGGER.info("Gettting one simulation by id in service layer");
+        Simulation ret = null;
+        try{
+            ret = simulationDao.getOneSimById(id);
+            LOGGER.debug("Simulation fetched: " + ret.toString());
+            ArrayList<Participant> participants = simulationDao.getParticipantListByID(id, ret.getCreated());
+            ret.setParticipants(participants);
+            return ret;
+        }catch (PersistenceException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+    @Override
     public Simulation newSimulation(Simulation simulation) throws ServiceException, NotFoundException, BadRequestException{
         LOGGER.info("New Simulation in the Service Layer" + simulation);
         validateSimulation(simulation);
@@ -48,16 +83,8 @@ public class SimulationService implements ISimulationService {
             Simulation inserted = simulationDao.insertSimulation(simulation);
             for(Participant x: results){
                 horseDao.newVersionHorse(x.getHorseId(), x.getHorseUpdate());
-                System.out.println("aye");
                 jockeyDao.newVersionJockey(x.getJockeyId(), x.getJockeyUpdate());
-                System.out.println("la");
                 x.setId(simulationDao.insertParticipant(inserted.getId(), x).getId());
-                System.out.println("mao");
-
-
-
-
-
             }
             inserted.setParticipants(results);
             return inserted;
@@ -69,7 +96,9 @@ public class SimulationService implements ISimulationService {
 
     private ArrayList<Participant> raceSim(LinkedList<JockeyHorse> participants){
         ArrayList<Participant> calculated = new ArrayList<>();
+        LOGGER.debug(" # of Participants entering the race: " + participants.size() + " ");
         for(JockeyHorse horseRider: participants){
+            LOGGER.debug("Processing Participant " + horseRider.getJockey().getId() + " with horse " + horseRider.getHorse().getId());
             double pmin = horseRider.getHorse().getMinSpeed();
             double pmax = horseRider.getHorse().getMaxSpeed();
             double k = horseRider.getJockey().getSkill();
@@ -81,11 +110,16 @@ public class SimulationService implements ISimulationService {
             if(calculated.isEmpty()){
                 calculated.add(bob);
             }else{
+                boolean added = false;
                 for(int i = 0; i < calculated.size(); i++){
-                    if(calculated.get(i).getAvgSpeed() > d){
-                        calculated.add(i, bob);
+                    if(calculated.get(i).getAvgSpeed() < d){
+                        calculated.add((i), bob);
                         i=calculated.size();
+                        added = true;
                     }
+                }
+                if(!added){
+                    calculated.add(bob);
                 }
             }
 
@@ -93,6 +127,7 @@ public class SimulationService implements ISimulationService {
                 calculated.get(i).setRank(i+1);
             }
         }
+        LOGGER.debug("Size of calculated " + calculated.size() + " isEqual: " + (calculated.size() == participants.size()));
         return calculated;
     }
 

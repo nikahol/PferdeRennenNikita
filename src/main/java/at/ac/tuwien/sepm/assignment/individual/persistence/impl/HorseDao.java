@@ -42,7 +42,7 @@ public class HorseDao implements IHorseDao {
     @Override
     public Horse findOneById(Integer id) throws PersistenceException, NotFoundException {
         LOGGER.info("Get horse with id " + id);
-        String sql = "SELECT * FROM Horse WHERE id=?";
+        String sql = "SELECT * FROM Horse WHERE id=? AND deleted = 0";
         Horse horse = null;
         try {
             PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
@@ -55,9 +55,7 @@ public class HorseDao implements IHorseDao {
             LOGGER.error("Problem while executing SQL select statement for reading horse with id " + id, e);
             throw new PersistenceException("Could not read horses with id " + id, e);
         }
-        if(horse.isDeleted()){
-            throw new NotFoundException("Could not find horse with id " + id);
-        }
+
         if (horse != null) {
             return horse;
         } else {
