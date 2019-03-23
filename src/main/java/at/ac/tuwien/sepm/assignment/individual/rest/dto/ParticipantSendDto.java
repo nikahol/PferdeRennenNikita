@@ -10,9 +10,9 @@ public class ParticipantSendDto {
     private Double avgSpeed;
     private Double horseSpeed;
     private Double skill;
-    private Double luck;
+    private Double luckFactor;
 
-    public ParticipantSendDto(Integer id, Integer rank, String horseName, String jockeyName, Double avgSpeed, Double horseSpeed, Double skill, Double luck) {
+    public ParticipantSendDto(Integer id, Integer rank, String horseName, String jockeyName, Double avgSpeed, Double horseSpeed, Double skill, Double luckFactor) {
         this.id = id;
         this.rank = rank;
         this.horseName = horseName;
@@ -20,7 +20,7 @@ public class ParticipantSendDto {
         this.avgSpeed = avgSpeed;
         this.horseSpeed = horseSpeed;
         this.skill = skill;
-        this.luck = luck;
+        this.luckFactor = luckFactor;
     }
 
     public Integer getId() {
@@ -79,12 +79,12 @@ public class ParticipantSendDto {
         this.skill = skill;
     }
 
-    public Double getLuck() {
-        return luck;
+    public Double getLuckFactor() {
+        return luckFactor;
     }
 
-    public void setLuck(Double luck) {
-        this.luck = luck;
+    public void setLuckFactor(Double luckFactor) {
+        this.luckFactor = luckFactor;
     }
 
     @Override
@@ -99,12 +99,12 @@ public class ParticipantSendDto {
             Objects.equals(avgSpeed, that.avgSpeed) &&
             Objects.equals(horseSpeed, that.horseSpeed) &&
             Objects.equals(skill, that.skill) &&
-            Objects.equals(luck, that.luck);
+            Objects.equals(luckFactor, that.luckFactor);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, rank, horseName, jockeyName, avgSpeed, horseSpeed, skill, luck);
+        return Objects.hash(id, rank, horseName, jockeyName, avgSpeed, horseSpeed, skill, luckFactor);
     }
 
     @Override
@@ -117,7 +117,7 @@ public class ParticipantSendDto {
             ", avgSpeed=" + avgSpeed +
             ", horseSpeed=" + horseSpeed +
             ", skill=" + skill +
-            ", luck=" + luck +
+            ", luckFactor=" + luckFactor +
             '}';
     }
 }

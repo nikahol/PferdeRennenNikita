@@ -34,6 +34,7 @@ public class SimulationEndpoint {
     }
 
     @RequestMapping(method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
     public SimulationSendDto newSimulation(@RequestBody SimulationDto simulationDto){
         LOGGER.info("POST " + BASE_URL + simulationDto);
         try {

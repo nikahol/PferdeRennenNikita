@@ -6,6 +6,7 @@ import at.ac.tuwien.sepm.assignment.individual.exceptions.NotFoundException;
 import at.ac.tuwien.sepm.assignment.individual.service.IHorseService;
 import at.ac.tuwien.sepm.assignment.individual.service.exceptions.ServiceException;
 import at.ac.tuwien.sepm.assignment.individual.util.mapper.HorseMapper;
+import org.apache.tomcat.util.http.parser.HttpParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,7 @@ public class HorseEndpoint {
     }
 
     @RequestMapping(method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
     public HorseDto insertHorse(@RequestBody HorseDto horseDto) {
         LOGGER.info("POST " + BASE_URL + " " + horseDto.toString());
         try {

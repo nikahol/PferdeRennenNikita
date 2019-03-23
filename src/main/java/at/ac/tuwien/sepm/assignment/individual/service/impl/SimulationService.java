@@ -106,7 +106,22 @@ public class SimulationService implements ISimulationService {
             double p = roundTo4((g - 0.95) * (pmax-pmin)/(1.05-0.95) + pmin);
             double ka = roundTo4(1 + (0.15 * 1/Math.PI * Math.atan(0.2 * k)));
             double d = roundTo4(p * ka * g);
-            Participant bob = new Participant(null, horseRider.getHorse().getId(), horseRider.getHorse().getName(), horseRider.getJockey().getName(), horseRider.getJockey().getId(),null,d, p, g, k, horseRider.getHorse().getUpdated(), horseRider.getJockey().getUpdated());
+            Participant bob = new Participant(
+                null,
+                horseRider.getHorse().getId(),
+                horseRider.getHorse().getName(),
+                horseRider.getJockey().getName(),
+                horseRider.getJockey().getId(),
+                null,
+                d,
+                p,
+                g,
+                ka,
+                horseRider.getHorse().getUpdated()
+                ,
+                horseRider.getJockey().getUpdated()
+            );
+            System.out.println(bob.getSkill() + " " + ka);
             if(calculated.isEmpty()){
                 calculated.add(bob);
             }else{

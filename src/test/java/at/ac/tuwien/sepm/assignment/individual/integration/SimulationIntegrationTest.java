@@ -101,6 +101,7 @@ public class SimulationIntegrationTest {
         SimulationResultTestDto simulationResponse = response.getBody();
         assertNotNull(simulationResponse);
         assertNotNull(simulationResponse.getId());
+        System.out.println("Id of the simulation " + simulationResponse.getHorseJockeyCombinations().get(1).getId());
         //set created and id to null to enable equals comparison
         simulationResponse.setCreated(null);
         simulationResponse.setId(null);
