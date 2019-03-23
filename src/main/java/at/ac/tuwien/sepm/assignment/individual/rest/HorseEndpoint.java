@@ -35,6 +35,7 @@ public class HorseEndpoint {
     public HorseDto getOneById(@PathVariable("id") Integer id) {
         LOGGER.info("GET " + BASE_URL + "/" + id);
         try {
+            LOGGER.debug("Attempting to find horse with id " + id + " in the database. Currently in endpoint.");
             return horseMapper.entityToDto(horseService.findOneById(id));
         } catch (ServiceException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error during read horse with id " + id, e);
@@ -46,8 +47,9 @@ public class HorseEndpoint {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public HorseDto insertHorse(@RequestBody HorseDto horseDto) {
-        LOGGER.info("POST " + BASE_URL + " " + horseDto.toString());
+        LOGGER.info("POST " + BASE_URL + " " );
         try {
+            LOGGER.debug("Attempting to create horse " + horseDto.toString() + ". Currently in endpoint");
             return horseMapper.entityToDto(horseService.insertHorse(horseMapper.dtoToEntity(horseDto)));
         } catch (ServiceException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to insert horse: " + horseDto.toString(), e);
@@ -63,6 +65,7 @@ public class HorseEndpoint {
         LOGGER.info("POST " + BASE_URL + " " + id);
         horseDto.setId(id);
         try {
+            LOGGER.debug("Attempting to update horse " + id + " with the following values: " + horseDto.toString() + " currently in endpoint");
             return horseMapper.entityToDto(horseService.updateHorse(horseMapper.dtoToEntity(horseDto)));
         } catch (ServiceException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to update horse: " + horseDto.toString(), e);
@@ -78,6 +81,7 @@ public class HorseEndpoint {
     public void deleteHorse(@PathVariable("id") Integer id){
         LOGGER.info("DELETE " + BASE_URL + " " + id);
         try{
+            LOGGER.debug("Attempting to delete horse with id " + id + ". Currently in service layer");
             horseService.deleteHorse(id);
         }catch (ServiceException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to delete horse with id " + id, e);
@@ -90,7 +94,7 @@ public class HorseEndpoint {
     public LinkedList<HorseDto> getAllHorses(){
         LOGGER.info("GET " + BASE_URL);
         try{
-
+            LOGGER.debug("Attempting to get all horses from horse database. Currently in endpoint");
             return horseMapper.horseListToHorseDtoList(horseService.getAllHorses());
         }catch(ServiceException e){
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to get all horses" + e, e);
@@ -115,6 +119,7 @@ public class HorseEndpoint {
         }
         HorseDto horse = new HorseDto(null, name,breed,minSpeed,maxSpeed,null,null);
         try{
+            LOGGER.debug("Attempting to get all horses from database, filtered by: " +horse.toString()+ ". Currently in endpoint");
             return horseMapper.horseListToHorseDtoList(horseService.getAllHorsesFiltered(horseMapper.dtoToEntity(horse)));
 
 

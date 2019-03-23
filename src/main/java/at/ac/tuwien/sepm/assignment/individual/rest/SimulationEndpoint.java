@@ -7,7 +7,6 @@ import at.ac.tuwien.sepm.assignment.individual.rest.dto.SimulationSendDto;
 import at.ac.tuwien.sepm.assignment.individual.service.ISimulationService;
 import at.ac.tuwien.sepm.assignment.individual.service.exceptions.ServiceException;
 import at.ac.tuwien.sepm.assignment.individual.util.mapper.SimulationMapper;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +35,9 @@ public class SimulationEndpoint {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public SimulationSendDto newSimulation(@RequestBody SimulationDto simulationDto){
-        LOGGER.info("POST " + BASE_URL + simulationDto);
+        LOGGER.info("POST " + BASE_URL);
         try {
+            LOGGER.debug("Attempting to create a new simulation with values " + simulationDto + ". Currently in endpoint");
             return simulationMapper.simToSimSendDto(simulationService.newSimulation(simulationMapper.simDtoSim(simulationDto)));
         }catch (ServiceException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to insert simulation: " + simulationDto.toString(), e);
@@ -52,6 +52,7 @@ public class SimulationEndpoint {
     public SimulationSendDto getSimulationByID(@PathVariable("id") Integer id){
         LOGGER.info("GET "  + BASE_URL + "/" + id);
         try{
+            LOGGER.debug("Attempting to get simulation with id " + id + ". Currently in endpoint");
             return simulationMapper.simToSimSendDto(simulationService.getSimulationByID(id));
         }catch (ServiceException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error during GET sim with id " + id, e);
@@ -65,6 +66,7 @@ public class SimulationEndpoint {
     public LinkedList<SimulationSendDto> getAllSimulations(){
         LOGGER.info("GET " + BASE_URL);
         try{
+            LOGGER.debug("Attempting to get all simulations. Currently in endpoint");
             return simulationMapper.simListTosimSendDtoList(simulationService.getAllSimulations());
         }catch (ServiceException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error during GET all simulations", e);
@@ -73,11 +75,12 @@ public class SimulationEndpoint {
 
     @RequestMapping(params = {"name"}, method = RequestMethod.GET)
     public LinkedList<SimulationSendDto> getAllSimulationsFiltered(@RequestParam String name){
-        LOGGER.info("GET " + BASE_URL +" name like " + name);
+        LOGGER.info("GET " + BASE_URL +"?name=" + name);
         if(name == null){
             name = "";
         }
         try{
+            LOGGER.debug("Attempting to get all simulations, filtered by " + name + ". Currently in endpoint");
             return simulationMapper.simListTosimSendDtoList(simulationService.getAllSimulationsFiltered(name));
         }catch (ServiceException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error during GET all simulations", e);

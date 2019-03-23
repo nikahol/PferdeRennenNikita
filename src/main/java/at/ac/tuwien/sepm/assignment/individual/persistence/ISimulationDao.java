@@ -5,7 +5,6 @@ import at.ac.tuwien.sepm.assignment.individual.entity.Simulation;
 import at.ac.tuwien.sepm.assignment.individual.exceptions.NotFoundException;
 import at.ac.tuwien.sepm.assignment.individual.persistence.exceptions.PersistenceException;
 
-import javax.servlet.http.Part;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -17,7 +16,7 @@ public interface ISimulationDao {
      * @throws PersistenceException will be thrown if something goes wrong during the database access.
      * @throws NotFoundException will be thrown if the entry was not entered properly
      */
-    Simulation insertSimulation(Simulation simulation) throws PersistenceException, NotFoundException;
+    Simulation insertSimulation(Simulation simulation) throws PersistenceException;
 
     /**
      *

@@ -15,9 +15,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-
-import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -37,8 +34,8 @@ public class SimulationService implements ISimulationService {
 
     @Override
     public LinkedList<Simulation> getAllSimulations() throws ServiceException {
-        LOGGER.info("Getting all simulations");
         try{
+            LOGGER.debug("Attempting to get all simulations. Currently in service");
             return simulationDao.getAllSimulations();
         }catch(PersistenceException e){
             throw new ServiceException("Error getting all horses " + e.getMessage(), e);
@@ -47,8 +44,8 @@ public class SimulationService implements ISimulationService {
 
     @Override
     public LinkedList<Simulation> getAllSimulationsFiltered(String name) throws ServiceException {
-        LOGGER.info("Getting all simulations filtered by " + name);
         try{
+            LOGGER.debug("Attempting to get all simulations where name is like " + name + ". Currently in service");
             return simulationDao.getAllSimulationsFiltered(name);
         }catch(PersistenceException e){
             throw new ServiceException("Error getting all horses " + e.getMessage(), e);
@@ -57,9 +54,10 @@ public class SimulationService implements ISimulationService {
 
     @Override
     public Simulation getSimulationByID(Integer id) throws ServiceException, NotFoundException{
-        LOGGER.info("Gettting one simulation by id in service layer");
+
         Simulation ret = null;
         try{
+            LOGGER.debug("Attempting to get simulation with id " + id +". Currently in service");
             ret = simulationDao.getOneSimById(id);
             LOGGER.debug("Simulation fetched: " + ret.toString());
             ArrayList<Participant> participants = simulationDao.getParticipantListByID(id, ret.getCreated());
@@ -69,16 +67,17 @@ public class SimulationService implements ISimulationService {
             throw new ServiceException(e.getMessage(), e);
         }
     }
+
     @Override
     public Simulation newSimulation(Simulation simulation) throws ServiceException, NotFoundException, BadRequestException{
-        LOGGER.info("New Simulation in the Service Layer" + simulation);
+        LOGGER.debug("Attempting to create a new simulation based on information " + simulation.toString() + ". Currently in service");
         validateSimulation(simulation);
-
         try{
             LinkedList<JockeyHorse> jockeyHorses = new LinkedList<>();
             for(Participant participant : simulation.getParticipants()){
                 jockeyHorses.add(new JockeyHorse(horseDao.findOneById(participant.getHorseId()), jockeyDao.findOneById(participant.getJockeyId()), participant.getLuck()));
             }
+            LOGGER.debug("Able to fetch all horse/jockey pairs for new simulation");
             ArrayList<Participant> results = raceSim(jockeyHorses);
             Simulation inserted = simulationDao.insertSimulation(simulation);
             for(Participant x: results){
@@ -87,6 +86,7 @@ public class SimulationService implements ISimulationService {
                 x.setId(simulationDao.insertParticipant(inserted.getId(), x).getId());
             }
             inserted.setParticipants(results);
+            LOGGER.info("Inserted new simulation into the database");
             return inserted;
         }catch (PersistenceException e){
             throw new ServiceException(e.getMessage(), e);
@@ -121,7 +121,7 @@ public class SimulationService implements ISimulationService {
                 ,
                 horseRider.getJockey().getUpdated()
             );
-            System.out.println(bob.getSkill() + " " + ka);
+            LOGGER.debug("A participant in the race has been processed. " + bob.toString());
             if(calculated.isEmpty()){
                 calculated.add(bob);
             }else{
@@ -147,27 +147,34 @@ public class SimulationService implements ISimulationService {
     }
 
     private void validateSimulation(Simulation simulation) throws  BadRequestException{
+        LOGGER.debug("Attempting to validate new simulation input");
         if(simulation.getName() == null || simulation.getName().isEmpty()){
+            LOGGER.error("BAD REQUEST NEW SIMULATION SERVICE: Name can neither be neither null nor empty. name " + simulation.getName());
             throw new BadRequestException("Simulation Name cannot be empty " + simulation);
         }
         if(simulation.getParticipants() == null || simulation.getParticipants().isEmpty()){
+            LOGGER.error("BAD REQUEST NEW SIMULATION SERVICE: A simulation mus have at least one participant. Participants " + simulation.getParticipants().toString());
             throw new BadRequestException("Simulation needs participants " + simulation);
         }
         LinkedList<Integer> jockeyParticipants = new LinkedList<>();
         LinkedList<Integer> horseParticipants = new LinkedList<>();
         for(Participant p : simulation.getParticipants()){
             if(p.getHorseId() == null || p.getJockeyId() == null || p.getLuck() == null){
+                LOGGER.error("BAD REQUEST NEW SIMULATION SERVICE: a participant in the simulation was missing a value: horse id " + p.getHorseId() + ", jockeyId " + p.getJockeyId() + ", luck factor " + p.getLuck() );
                 throw new BadRequestException("Participant (" + p.getHorseId() + "," + p.getJockeyId() +","+ p.getLuck() + ") does not have one of the required parameters filled out");
             }
             if(p.getLuck() > 1.05 || p.getLuck() < 0.95){
+                LOGGER.error("BAD REQUEST NEW SIMULATION SERVICE: Luck factor must be between 0.95 and 1.05. luck = " + p.getLuck());
                 throw new BadRequestException("Luck values need to be between 0.95 and 1.05");
             }
             if(jockeyParticipants.contains(p.getJockeyId())){
+                LOGGER.error("BAD REQUEST NEW SIMULATION SERVICE: a jockey cannot participate multiple times in the same simulation. repeating jockey id: " + p.getJockeyId());
                 throw new BadRequestException("The same Jockey cannot participate in the Race multiple times");
             }else{
                 jockeyParticipants.add(p.getJockeyId());
             }
             if(horseParticipants.contains(p.getHorseId())){
+                LOGGER.error("BAD REQUEST NEW SIMULATION SERVICE: a horse cannot participate multiple times in the same simulation. repeating horse id: " + p.getHorseId());
                 throw new BadRequestException("The same Horse cannot participate in the Race multiple times");
             }else{
                 horseParticipants.add(p.getHorseId());

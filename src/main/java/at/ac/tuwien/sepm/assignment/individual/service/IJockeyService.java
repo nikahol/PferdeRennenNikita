@@ -12,7 +12,6 @@ public interface IJockeyService {
         * @param id of the jockey to find.
         * @return the jockey with the specified id.
         * @throws ServiceException  will be thrown if something goes wrong during data processing.
-        * @throws NotFoundException will be thrown if the jockey could not be found in the system.
      */
     Jockey findOneById(Integer id) throws ServiceException, NotFoundException;
     /**
@@ -21,7 +20,7 @@ public interface IJockeyService {
      * @throws ServiceException will be thrown if something goes wrong during data processing.
      * @throws NotFoundException will be thrown if the jockey could not be found in the system
      */
-    Jockey insertJockey(Jockey jockey) throws ServiceException, NotFoundException;
+    Jockey insertJockey(Jockey jockey) throws ServiceException;
 
     /**
      * @param jockey is the jockey we want to update in the system
@@ -44,6 +43,11 @@ public interface IJockeyService {
      */
     LinkedList<Jockey> getAllJockeys() throws ServiceException;
 
+    /**
+     * @param jockey is a container for the information by which the search should be filtered
+     * @return a list of all jockeys matching search criteria
+     * @throws ServiceException will be thrown if something goes wrong during data processing
+     */
     LinkedList<Jockey> getAllJockeysFiltered(Jockey jockey) throws ServiceException;
 
 

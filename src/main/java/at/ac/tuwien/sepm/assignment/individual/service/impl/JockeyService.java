@@ -23,8 +23,8 @@ public class JockeyService implements IJockeyService {
 
     @Override
     public Jockey findOneById(Integer id) throws ServiceException, NotFoundException{
-        LOGGER.info("Get jockey with id " + id);
         try {
+            LOGGER.debug("Attempting to find a jockey by id " + id + ". Currently in service");
             return jockeyDao.findOneById(id);
         } catch (PersistenceException e) {
             throw new ServiceException(e.getMessage(), e);
@@ -32,12 +32,13 @@ public class JockeyService implements IJockeyService {
     }
 
     @Override
-    public Jockey insertJockey(Jockey jockey) throws ServiceException, NotFoundException{
+    public Jockey insertJockey(Jockey jockey) throws ServiceException{
         if(jockey.getName() == null){
+            LOGGER.error("BAD REQUEST INSERT JOCKEY: name cannot be null");
             throw new ServiceException("Jockeys need to have a name and skill level. If you are reading this it is because one of these attributes was missing during creation.", null);
         }
-        LOGGER.info("Inserting Jockey: " + jockey.toString());
         try{
+            LOGGER.debug("Attempting to insert jockey " + jockey.toString() + " into the database. Currently in service");
             return jockeyDao.insertJockey(jockey);
         }catch(PersistenceException e){
             throw new ServiceException(e.getMessage(), e);
@@ -46,7 +47,6 @@ public class JockeyService implements IJockeyService {
 
     @Override
     public Jockey updateJockey(Jockey jockey) throws ServiceException, NotFoundException{
-        LOGGER.info("Updating Jockey in service layer " + jockey.toString());
         try{
             Jockey jockeyCheck = jockeyDao.findOneById(jockey.getId());
             if(jockey.getName() == null || jockey.getName().isEmpty()){
@@ -55,6 +55,7 @@ public class JockeyService implements IJockeyService {
             if(jockey.getSkill() == null){
                 jockey.setSkill(jockeyCheck.getSkill());
             }
+            LOGGER.info("Attempting to update jockey with id " + jockey.getId() +" with values "+ jockey.toString() + ". Currently in service");
             return jockeyDao.updateJockey(jockey);
         }catch (PersistenceException e){
             throw new ServiceException(e.getMessage(), e);
@@ -63,8 +64,8 @@ public class JockeyService implements IJockeyService {
 
     @Override
     public void deleteJockey(Integer id)throws ServiceException, NotFoundException{
-        LOGGER.info("Deleting Jockey with id " + id + " in service layer");
         try{
+            LOGGER.debug("Attempting to delete jockey with id " + id + ". Currently in service");
             jockeyDao.deleteJockey(id);
         }catch (PersistenceException e){
             throw new ServiceException(e.getMessage(), e);
@@ -73,8 +74,8 @@ public class JockeyService implements IJockeyService {
 
     @Override
     public LinkedList<Jockey> getAllJockeys() throws ServiceException{
-        LOGGER.info("Getting all jockeys in service layer");
         try{
+            LOGGER.debug("Attempting to get all jockeys from the database. Currently in service");
             return jockeyDao.getAllJockeys();
         }catch(PersistenceException e){
             throw new ServiceException(e.getMessage(), e);
@@ -83,8 +84,8 @@ public class JockeyService implements IJockeyService {
 
     @Override
     public LinkedList<Jockey> getAllJockeysFiltered(Jockey jockey) throws ServiceException{
-        LOGGER.info("Getting all jockeys in service layer");
         try{
+            LOGGER.debug("Attempting to get all jockeys from the database, filtered by "+ jockey.toString() + ". Currently in service");
             return jockeyDao.getAllJockeysFiltered(jockey);
         }catch(PersistenceException e){
             throw new ServiceException(e.getMessage(), e);

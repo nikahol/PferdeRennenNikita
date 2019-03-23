@@ -27,8 +27,8 @@ public class HorseService implements IHorseService {
 
     @Override
     public Horse findOneById(Integer id) throws ServiceException, NotFoundException {
-        LOGGER.info("Get horse with id " + id);
         try {
+            LOGGER.debug("Attempting to find horse with id " + id + "in the database. Currently in service.");
             return horseDao.findOneById(id);
         } catch (PersistenceException e) {
             throw new ServiceException(e.getMessage(), e);
@@ -37,14 +37,16 @@ public class HorseService implements IHorseService {
 
     @Override
     public Horse insertHorse(Horse horse) throws ServiceException, NotFoundException, BadRequestException{
-        LOGGER.info("Inserting horse in service layer " + horse.toString());
         if(horse.getMinSpeed() == null || horse.getMaxSpeed() == null|| horse.getName() == null || horse.getName().isEmpty()){
+            LOGGER.error("BAD REQUEST INSERT HORSE SERVICE: One of the following is either null or empty: min_speed: " + horse.getMinSpeed() + " max_speed: " + horse.getMaxSpeed() + " name: " + horse.getName());
             throw new BadRequestException("Horses must have a name, min speed and max speed. If you are seeing this message, one of these attributes was not defined during creation");
         }
         if(horse.getMaxSpeed() > 60 || horse.getMinSpeed() < 40 || horse.getMaxSpeed() < horse.getMinSpeed()){
+            LOGGER.error("BAD REQUEST INSERT HORSE SERVICE: One of the following has occurred: max_speed greater than 60, min_speed is less than 40, min_speed is greater than max_speed. max_speed " + horse.getMaxSpeed() + " min_speed: " + horse.getName());
             throw new BadRequestException("Horses cannot be faster than 60 km/h, slower than 40 km/h or have their minimal speed lower than their max speed.");
         }
         try{
+            LOGGER.debug("Attempting to insert horse " + horse.toString() + " into the database. Currently in service.");
             return horseDao.insertHorse(horse);
         }catch (PersistenceException e){
             throw new ServiceException(e.getMessage(), e);
@@ -53,8 +55,8 @@ public class HorseService implements IHorseService {
 
     @Override
     public Horse updateHorse(Horse horse) throws ServiceException, NotFoundException, BadRequestException {
-        LOGGER.info("Updating horse in service layer " + horse.toString());
         if((horse.getMaxSpeed() != null && horse.getMaxSpeed() > 60) || (horse.getMinSpeed() != null && horse.getMinSpeed() < 40) || (horse.getMinSpeed() != null && horse.getMaxSpeed() != null && horse.getMinSpeed() > horse.getMaxSpeed())){
+            LOGGER.error("BAD REQUEST UPDATE HORSE SERVICE: One of the following has occurred: max_speed is not null and greater than 60, min_speed is not null and less than 40, min_speed is greater than max_speed. max_speed " + horse.getMaxSpeed() + " min_speed: " + horse.getName());
             throw new BadRequestException("Horses cannot be faster than 60 km/h, slower than 40 km/h or have their minimal speed lower than their max speed.");
         }
         try{
@@ -71,6 +73,7 @@ public class HorseService implements IHorseService {
             if(horse.getMaxSpeed() < horse.getMinSpeed()){
                 throw new BadRequestException("Horses cannot be faster than 60 km/h, slower than 40 km/h, have their minimal speed lower than their max speed.");
             }
+            LOGGER.debug("Attempting to update horse with id " + horse.getId() + " with values " + horse.toString() + ". Currently in service.");
             return horseDao.updateHorse(horse);
         }catch (PersistenceException e){
             throw new ServiceException(e.getMessage(), e);
@@ -79,8 +82,8 @@ public class HorseService implements IHorseService {
 
     @Override
     public void deleteHorse(Integer id) throws ServiceException, NotFoundException{
-        LOGGER.info("Deleting horse with id " + id + " in service layer");
         try{
+            LOGGER.debug("Attempting to delete horse with id " + id + " from the database. Currently in service");
             horseDao.deleteHorse(id);
         }catch(PersistenceException e){
             throw new ServiceException(e.getMessage(), e);
@@ -89,8 +92,8 @@ public class HorseService implements IHorseService {
 
     @Override
     public LinkedList<Horse> getAllHorses()throws ServiceException{
-        LOGGER.info("Getting all horses in service layer");
         try{
+            LOGGER.debug("Attempting to get all horses from database. Currently in service");
             return horseDao.getAllHorses();
         }catch(PersistenceException e){
             throw new ServiceException(e.getMessage(), e);
@@ -99,8 +102,8 @@ public class HorseService implements IHorseService {
 
     @Override
     public LinkedList<Horse> getAllHorsesFiltered(Horse horse) throws ServiceException{
-        LOGGER.info("Getting all horses filtered in service layer");
         try{
+            LOGGER.debug("Attempting to get all horses from database, filtered by: " + horse.toString() + ". Currently in service");
             return horseDao.getAllHorsesFiltered(horse);
         }catch(PersistenceException e){
             throw new ServiceException(e.getMessage(), e);

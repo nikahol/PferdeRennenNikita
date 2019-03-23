@@ -34,6 +34,7 @@ public class JockeyEndpoint {
     public JockeyDto getOneById(@PathVariable("id") Integer id) {
         LOGGER.info("GET " + BASE_URL + "/" + id);
         try {
+            LOGGER.debug("Attempting to get jockey with id " + id + ". Currently in endpoint");
             return jockeyMapper.jockeyToJockeyDto(jockeyService.findOneById(id));
         } catch (ServiceException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error during read jockey with id " + id, e);
@@ -45,13 +46,12 @@ public class JockeyEndpoint {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public JockeyDto insertJockey(@RequestBody JockeyDto jockeyDto) {
-        LOGGER.info("POST " + BASE_URL + " " + jockeyDto.toString());
+        LOGGER.info("POST " + BASE_URL + " ");
         try {
+            LOGGER.debug("Attempting to insert jockey " + jockeyDto.toString() + "into the database. Currently in endpoint");
             return jockeyMapper.jockeyToJockeyDto(jockeyService.insertJockey(jockeyMapper.jockeyDtoToJockey(jockeyDto)));
         } catch (ServiceException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to insert jockey: " + jockeyDto.toString(), e);
-        } catch (NotFoundException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Error attempting to insert jockey " + e.getMessage(), e);
         }
     }
 
@@ -60,6 +60,7 @@ public class JockeyEndpoint {
         LOGGER.info("PUT" + BASE_URL + " " + id);
         jockeyDto.setId(id);
         try {
+            LOGGER.debug("Attempting to update jockey with id " + id + " with values " + jockeyDto.toString() + ". Currently in endpoint");
             return jockeyMapper.jockeyToJockeyDto((jockeyService.updateJockey(jockeyMapper.jockeyDtoToJockey(jockeyDto))));
         } catch (ServiceException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to update jockey: " + jockeyDto.toString(), e);
@@ -73,6 +74,7 @@ public class JockeyEndpoint {
     public void deleteJockey(@PathVariable("id") Integer id){
         LOGGER.info("DELETE " + BASE_URL + id);
         try{
+            LOGGER.debug("Attempting to delete jockey with id " + id + ". Currently in endpoint");
             jockeyService.deleteJockey(id);
         }catch (ServiceException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to delete jockey with id " + id, e);
@@ -85,7 +87,7 @@ public class JockeyEndpoint {
     public LinkedList<JockeyDto> getAllJockeys(){
         LOGGER.info("GET " + BASE_URL);
         try{
-
+            LOGGER.debug("Attempting to get all jockeys from the database. Currently in endpoint");
             return jockeyMapper.jockeyListToJockeyDtoList(jockeyService.getAllJockeys());
         }catch(ServiceException e){
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to get all jockeys" + e, e);
@@ -102,9 +104,8 @@ public class JockeyEndpoint {
         }
         JockeyDto jockey = new JockeyDto(null, name, skill, null, null);
         try{
+            LOGGER.debug("Attempting to get all jockeys form the database, filtered by " + jockey.toString() + ". Currently in endpoint");
             return jockeyMapper.jockeyListToJockeyDtoList(jockeyService.getAllJockeysFiltered(jockeyMapper.jockeyDtoToJockey(jockey)));
-
-
         }catch(ServiceException e){
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error attempting to get all jockeys " + e, e);
         }

@@ -56,7 +56,6 @@ public class SimulationDao implements ISimulationDao {
 
     @Override
     public  ArrayList<Participant> getParticipantListByID(Integer id, LocalDateTime created) throws PersistenceException, NotFoundException{
-        LOGGER.info("Getting Participant List with sim id: " + id);
         String sql = "SELECT s.id, s.rank, h.name, j.name, s.avgSpeed, h.min_speed, h.max_speed, j.skill, s.luck FROM simulationRelation s INNER JOIN jockeyversions j ON  j.id = s.jockeyID INNER JOIN horseversions h  ON h.id = s.horseid WHERE simID = ? AND h.created <= ? AND j.created <= ?";
         ArrayList<Participant> participants = new ArrayList<>();
         try {
@@ -64,6 +63,7 @@ public class SimulationDao implements ISimulationDao {
             statement.setInt(1, id);
             statement.setTimestamp(2,Timestamp.valueOf(created));
             statement.setTimestamp(3,Timestamp.valueOf(created));
+            LOGGER.debug("About to execute statement " + statement);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 Participant bob = dbResultToParticipant(rs);
@@ -84,43 +84,49 @@ public class SimulationDao implements ISimulationDao {
                 }
             }
         }catch(SQLException e){
-            throw new PersistenceException("Error getting Participant list");
+            LOGGER.error("SQLEXCEPTION GET PARTICIPANTS SIMULATION DAO: Problem getting list of participants" + e.getMessage());
+            throw new PersistenceException("Error getting Participant list", e);
         }
         if(participants.isEmpty()){
+            LOGGER.error("NOT FOUND GET PARTICIPANTS SIMULATION DAO: Could not find any participants in simulation with id " + id);
             throw new NotFoundException("Could not find any participants in simulation with id " + id);
         }
+        LOGGER.debug("Participant list for simulation " + id + " has been obtained");
         return participants;
 
     }
     @Override
     public Simulation getOneSimById(Integer id) throws NotFoundException, PersistenceException {
-        LOGGER.info("Getting one sim no race info by ID " + id);
         String sql = "SELECT * FROM simulation WHERE simID = ?";
         Simulation ret = null;
         try{
             PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
             statement.setInt(1,id);
+            LOGGER.debug("About to execute statement " + statement);
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
                 ret = dbResultToSim(rs);
             }
         }catch (SQLException e){
+            LOGGER.error("SQLEXCEPTION GET ONE BY ID SIMULATION DAO: Problem getting simulation with id " + id);
             throw new PersistenceException("Error finding a sim by id " + id, e);
         }
         if(ret == null){
+            LOGGER.error("NOT FOUND GET ONE BY ID SIMULATION DAO: Could not find simulation with id " + id);
             throw new NotFoundException("Could not find sim with id " + id);
         }
+        LOGGER.debug("Obtained simulation with id " + id);
         return ret;
     }
     @Override
-    public Simulation insertSimulation(Simulation simulation) throws PersistenceException, NotFoundException {
-        LOGGER.info("Inserting new Sim into the database " + simulation);
+    public Simulation insertSimulation(Simulation simulation) throws PersistenceException {
+
         String sql = "INSERT INTO simulation (name, created) VALUES (?, DEFAULT)";
         int id = 0;
-        LocalDateTime created = null;
         try{
             PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, simulation.getName());
+            LOGGER.debug("About to execute statement " + statement);
             statement.execute();
             ResultSet rs = statement.getGeneratedKeys();
             while(rs.next()){
@@ -129,20 +135,25 @@ public class SimulationDao implements ISimulationDao {
             Simulation tmp = getOneSimById(id);
             simulation.setCreated(tmp.getCreated());
             simulation.setId(id);
-
+            LOGGER.info("Inserted simulation into the database " + simulation);
             return simulation;
         }catch (SQLException e){
-            throw new PersistenceException("Error inserting simulation into database + " + simulation);
+            LOGGER.error("SQLEXCEPTION INSERT SIMULATION DAO: Problem inserting simulation " + simulation.toString());
+            throw new PersistenceException("Error inserting simulation into database + " + simulation, e);
+        }catch(NotFoundException e){
+            LOGGER.error("NOT FOUND INSERT SIMULATION DAO: Unexpected not found error while creating new simulation " + simulation);
+            throw new PersistenceException("Error inserting simulation into database + " + simulation, e);
         }
     }
 
     @Override
     public LinkedList<Simulation> getAllSimulations() throws PersistenceException{
-        LOGGER.info("Getting all Simulations in DAO");
         String sql = "SELECT * FROM simulation";
         LinkedList<Simulation> simulations = new LinkedList<>();
         try{
             PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
+            LOGGER.debug("About to execute statement " + statement);
+
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
                 Simulation sim = dbResultToSim(rs);
@@ -150,21 +161,24 @@ public class SimulationDao implements ISimulationDao {
                 simulations.add(sim);
             }
         }catch(SQLException e){
-            throw new PersistenceException("Error getting all simulations " + e.getMessage());
+            LOGGER.error("SQLEXCEPTION GET ALL SIMULATION DAO: Problem getting all simulations");
+            throw new PersistenceException("Error getting all simulations " + e.getMessage(), e);
         }catch(NotFoundException e){
-            throw new PersistenceException("Error finding participants" + e.getMessage());
+            LOGGER.error("NOT FOUND GET ALL SIMULATION DAO: Problem getting all simulations");
+            throw new PersistenceException("Error finding participants" + e.getMessage(),e );
         }
+        LOGGER.info("Got all simulations");
         return simulations;
     }
 
     @Override
     public LinkedList<Simulation> getAllSimulationsFiltered(String name) throws PersistenceException{
-        LOGGER.info("Getting all simulations filtered by " + name);
         String sql = "SELECT * FROM simulation WHERE name LIKE ?";
         LinkedList<Simulation> simulations = new LinkedList<>();
         try{
             PreparedStatement statement = dbConnectionManager.getConnection().prepareStatement(sql);
             statement.setString(1,"%" + name + "%");
+            LOGGER.debug("About to execute statement " + statement);
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
                 Simulation sim = dbResultToSim(rs);
@@ -172,15 +186,17 @@ public class SimulationDao implements ISimulationDao {
                 simulations.add(sim);
             }
         }catch(SQLException e){
-            throw new PersistenceException("Error getting all simulations " + e.getMessage());
+            LOGGER.error("SQLEXCEPTION GET ALL FILTERED SIMULATION DAO: Problem getting all simulations, filtered by " + name);
+            throw new PersistenceException("Error getting all simulations " + e.getMessage(), e);
         }catch(NotFoundException e){
-            throw new PersistenceException("Error finding participants" + e.getMessage());
+            LOGGER.error("NOT FOUND GET ALL FILTERED SIMULATION DAO: Problem getting all simulations, filtered by " + name);
+            throw new PersistenceException("Error finding participants" + e.getMessage(), e);
         }
+        LOGGER.info("Got all simulation where name like " + name);
         return simulations;
     }
     @Override
     public Participant insertParticipant(Integer simID, Participant participant) throws PersistenceException{
-        LOGGER.info("Inserting the participant" + participant.toString());
         String sql = "INSERT INTO simulationRelation (simID, horseID, horseUp, jockeyID, jockeyUp, rank, avgSpeed, luck) VALUES (?,?,?,?,?,?,?,?)";
         int id = 0;
         try{
@@ -193,17 +209,18 @@ public class SimulationDao implements ISimulationDao {
             statement.setInt(6, participant.getRank());
             statement.setDouble(7,participant.getAvgSpeed());
             statement.setDouble(8,participant.getLuck());
+            LOGGER.debug("About to execute statement " + statement);
             statement.executeUpdate();
             ResultSet rs = statement.getGeneratedKeys();
             while(rs.next()){
                 id = rs.getInt("id");
             }
             participant.setId(id);
+            LOGGER.debug("Inserted Participant " + participant.getId() );
             return participant;
         } catch(SQLException e){
+            LOGGER.error("SQLEXCEPTION INSERT PARTICIPANT SIMULATION DAO: Problem inserting participant belonging to simulation " + id + " with attributes " + participant.toString());
             throw new PersistenceException("Error inserting participant into database " + participant);
-        }catch (Exception e){
-            throw new PersistenceException("Error inserting participant into database G" + participant);
         }
     }
 
