@@ -11,8 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.xml.transform.Result;
-import java.nio.file.LinkOption;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -46,9 +44,9 @@ public class SimulationDao implements ISimulationDao {
            null,
            result.getInt(2),
            result.getDouble(5),
-           ((result.getDouble(9) - 0.95) * (result.getDouble(7) - result.getDouble(6))/0.1 + result.getDouble(6)),
+           roundTo4(((result.getDouble(9) - 0.95) * (result.getDouble(7) - result.getDouble(6))/0.1 + result.getDouble(6))),
            result.getDouble(9),
-           (1 + ( 0.15 * 1/Math.PI * Math.atan(0.2*result.getDouble(8)))),
+           roundTo4((1 + ( 0.15 * 1/Math.PI * Math.atan(0.2*result.getDouble(8))))),
            null,
            null
        );
@@ -86,10 +84,6 @@ public class SimulationDao implements ISimulationDao {
         }catch(SQLException e){
             LOGGER.error("SQLEXCEPTION GET PARTICIPANTS SIMULATION DAO: Problem getting list of participants" + e.getMessage());
             throw new PersistenceException("Error getting Participant list", e);
-        }
-        if(participants.isEmpty()){
-            LOGGER.error("NOT FOUND GET PARTICIPANTS SIMULATION DAO: Could not find any participants in simulation with id " + id);
-            throw new NotFoundException("Could not find any participants in simulation with id " + id);
         }
         LOGGER.debug("Participant list for simulation " + id + " has been obtained");
         return participants;
@@ -222,6 +216,12 @@ public class SimulationDao implements ISimulationDao {
             LOGGER.error("SQLEXCEPTION INSERT PARTICIPANT SIMULATION DAO: Problem inserting participant belonging to simulation " + id + " with attributes " + participant.toString());
             throw new PersistenceException("Error inserting participant into database " + participant);
         }
+    }
+
+    private static double roundTo4(double r){
+        double tmp = r * 10000;
+        tmp = Math.round(tmp);
+        return (tmp/10000);
     }
 
 }

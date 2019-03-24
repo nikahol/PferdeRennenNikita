@@ -17,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -35,6 +36,7 @@ public class HorseIntegrationTest {
     private static final String HORSE_URL = "/api/v1/horses";
     private static final HorseTestDto HORSE_1 = new HorseTestDto("Horse1", "Breed1", 45.0, 55.0);
     private static final HorseTestDto HORSE_2 = new HorseTestDto("Horse2", 40.0, 60.0);
+    private static final HorseTestDto HORSE_3 = new HorseTestDto("Horse3", 30.0, 70.0);
 
     @LocalServerPort
     private int port;
@@ -103,12 +105,21 @@ public class HorseIntegrationTest {
         assertEquals(1, horses.size());
     }
 
+    @Test(expected = HttpClientErrorException.BadRequest.class)
+    public void givenBadHorse_whenPostHorse_thenBadRequest(){
+        postHorse3();
+    }
+
     private void postHorse1() {
         REST_TEMPLATE.postForObject(BASE_URL + port + HORSE_URL, new HttpEntity<>(HORSE_1), HorseTestDto.class);
     }
 
     private void postHorse2() {
         REST_TEMPLATE.postForObject(BASE_URL + port + HORSE_URL, new HttpEntity<>(HORSE_2), HorseTestDto.class);
+    }
+
+    private void postHorse3() {
+        REST_TEMPLATE.postForObject(BASE_URL + port + HORSE_URL, new HttpEntity<>(HORSE_3), HorseTestDto.class);
     }
 
 }

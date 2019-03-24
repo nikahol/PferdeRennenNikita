@@ -11,12 +11,14 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -57,6 +59,8 @@ public class SimulationIntegrationTest {
     private static final List<HorseJockeyCombinationTestDto> HORSE_JOCKEY_COMBINATIONS_1 = new ArrayList<>();
     private static final SimulationResultTestDto SIMULATION_1 = new SimulationResultTestDto("Simulation1", HORSE_JOCKEY_COMBINATIONS_1);
 
+    private static final SimulationResultTestDto SIMULATION_2 = new SimulationResultTestDto("Simulation2", HORSE_JOCKEY_COMBINATIONS_1);
+    private static final SimulationInputTestDto SIMULATION_INPUT2 = new SimulationInputTestDto("Simulation2", SIMULATION_PARTICIPANTS);
 
     @LocalServerPort
     private int port;
@@ -68,7 +72,16 @@ public class SimulationIntegrationTest {
      */
     @After
     public void afterEachTest() throws PersistenceException {
+        SIMULATION_PARTICIPANTS.remove(SIMULATION_PARTICIPANT_1);
+        SIMULATION_PARTICIPANTS.remove(SIMULATION_PARTICIPANT_2);
+        SIMULATION_PARTICIPANTS.remove(SIMULATION_PARTICIPANT_3);
+
+
+        HORSE_JOCKEY_COMBINATIONS_1.remove(HORSE_JOCKEY_COMBINATION_1);
+        HORSE_JOCKEY_COMBINATIONS_1.remove(HORSE_JOCKEY_COMBINATION_2);
+        HORSE_JOCKEY_COMBINATIONS_1.remove(HORSE_JOCKEY_COMBINATION_3);
         dbConnectionManager.closeConnection();
+
     }
 
     @Before
@@ -107,6 +120,29 @@ public class SimulationIntegrationTest {
         simulationResponse.setId(null);
         assertEquals(SIMULATION_1, simulationResponse);
     }
+    @Test
+    public void givenOneSimulation_whenFindThisSimulationByID_thenStatus200AndGetThisSimulation(){
+        postSimulation1();
+        HttpEntity<SimulationInputTestDto> request = new HttpEntity<>(SIMULATION_INPUT);
+        ResponseEntity<SimulationResultTestDto> response = REST_TEMPLATE.exchange(BASE_URL + port + SIMULATION_URL + "/1", HttpMethod.GET, request, SimulationResultTestDto.class);
+        SimulationResultTestDto simulations = response.getBody();
+        assertEquals(SIMULATION_1.getName(), simulations.getName());
+        assertEquals(SIMULATION_1.getHorseJockeyCombinations(), simulations.getHorseJockeyCombinations());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+    }
+
+
+
+    @Test
+    public void givenTwoSimulations_WhenFindAll_thenStatus200andGetList(){
+        postSimulation1();
+        postSimulation2();
+        ResponseEntity<List<SimulationResultTestDto>> response = REST_TEMPLATE.exchange(BASE_URL + port + SIMULATION_URL, HttpMethod.GET, null, new ParameterizedTypeReference<List<SimulationResultTestDto>>() {
+        });
+        List<SimulationResultTestDto> simulations = response.getBody();
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(2,simulations.size() );
+    }
 
     private void postHorse(HorseTestDto horse) {
         REST_TEMPLATE.postForObject(BASE_URL + port + HORSE_URL, new HttpEntity<>(horse), HorseTestDto.class);
@@ -114,6 +150,13 @@ public class SimulationIntegrationTest {
 
     private void postJockey(JockeyTestDto jockey) {
         REST_TEMPLATE.postForObject(BASE_URL + port + JOCKEY_URL, new HttpEntity<>(jockey), JockeyTestDto.class);
+    }
+
+    private void postSimulation1(){
+        REST_TEMPLATE.postForObject(BASE_URL + port+ SIMULATION_URL, new HttpEntity<>(SIMULATION_INPUT), SimulationInputTestDto.class);
+    }
+    private void postSimulation2(){
+        REST_TEMPLATE.postForObject(BASE_URL + port+ SIMULATION_URL, new HttpEntity<>(SIMULATION_INPUT2), SimulationInputTestDto.class);
     }
 
 }

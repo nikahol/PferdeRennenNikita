@@ -1,6 +1,7 @@
 package at.ac.tuwien.sepm.assignment.individual.integration;
 
 
+import at.ac.tuwien.sepm.assignment.individual.exceptions.NotFoundException;
 import at.ac.tuwien.sepm.assignment.individual.integration.dto.JockeyTestDto;
 import at.ac.tuwien.sepm.assignment.individual.persistence.exceptions.PersistenceException;
 import at.ac.tuwien.sepm.assignment.individual.persistence.util.DBConnectionManager;
@@ -17,12 +18,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 
 @RunWith(SpringRunner.class)
@@ -66,6 +68,15 @@ public class JockeyIntegrationTest {
         JockeyTestDto jockey = REST_TEMPLATE.getForObject(BASE_URL + port + JOCKEY_URL + "/1", JockeyTestDto.class);
         assertEquals(JOCKEY_1.getName(), jockey.getName());
         assertEquals(JOCKEY_1.getSkill(), jockey.getSkill());
+    }
+
+    @Test(expected = HttpClientErrorException.NotFound.class)
+    public void givenOneJockey_deleteJockeyAndWhenSearchJockey_thenStatus404(){
+        postJockey1();
+        REST_TEMPLATE.delete(BASE_URL + port + JOCKEY_URL + "/1");
+        ResponseEntity<JockeyTestDto> response = REST_TEMPLATE
+            .exchange(BASE_URL + port + JOCKEY_URL + "/1", HttpMethod.GET, null, JockeyTestDto.class);
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 
     @Test

@@ -152,9 +152,8 @@ public class SimulationService implements ISimulationService {
             LOGGER.error("BAD REQUEST NEW SIMULATION SERVICE: Name can neither be neither null nor empty. name " + simulation.getName());
             throw new BadRequestException("Simulation Name cannot be empty " + simulation);
         }
-        if(simulation.getParticipants() == null || simulation.getParticipants().isEmpty()){
-            LOGGER.error("BAD REQUEST NEW SIMULATION SERVICE: A simulation mus have at least one participant. Participants " + simulation.getParticipants().toString());
-            throw new BadRequestException("Simulation needs participants " + simulation);
+        if(simulation.getParticipants() == null){
+            simulation.setParticipants(new ArrayList<Participant>());
         }
         LinkedList<Integer> jockeyParticipants = new LinkedList<>();
         LinkedList<Integer> horseParticipants = new LinkedList<>();
