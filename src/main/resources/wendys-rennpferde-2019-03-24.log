@@ -2832,3 +2832,1056 @@
 13:45:08.424 | INFO  |                      DBConnectionManager: Close database connection
 13:45:08.424 | INFO  |                      DBConnectionManager: Close database connection
 13:45:08.424 | INFO  |                      DBConnectionManager: Close database connection
+13:58:27.785 | INFO  |                     HorseIntegrationTest: Starting HorseIntegrationTest on DESKTOP-9S8DPDA with PID 24808 (started by nikit in C:\Users\nikit\Documents\UNI\SEPM2019\sepm-individual-assignment-java-template\01526589)
+13:58:27.789 | DEBUG |                     HorseIntegrationTest: Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+13:58:27.789 | INFO  |                     HorseIntegrationTest: The following profiles are active: test
+13:58:32.570 | INFO  |                     HorseIntegrationTest: Started HorseIntegrationTest in 5.409 seconds (JVM running for 8.466)
+13:58:33.853 | INFO  |                            HorseEndpoint: POST /api/v1/horses 
+13:58:33.889 | DEBUG |                            HorseEndpoint: Attempting to create horse HorseDto{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}. Currently in endpoint
+13:58:33.893 | DEBUG |                             HorseService: Attempting to insert horse Horse{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null} into the database. Currently in service.
+13:58:33.893 | INFO  |                      DBConnectionManager: Get database connection
+13:58:33.893 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:34.386 | DEBUG |                                 HorseDao: About to execute sql statement prep0: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'Horse1', 2: 'Breed1', 3: 45.0, 4: 55.0}
+13:58:34.404 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.404 | DEBUG |                                 HorseDao: About to execute sql statement prep1: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:34.408 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:34.408 | INFO  |                                 HorseDao: Horse with id 1 inserted into the database
+13:58:34.474 | INFO  |                            HorseEndpoint: POST /api/v1/horses 
+13:58:34.474 | DEBUG |                            HorseEndpoint: Attempting to create horse HorseDto{id=null, name='Horse2', breed='null', minSpeed=40.0, maxSpeed=60.0, created=null, updated=null}. Currently in endpoint
+13:58:34.474 | DEBUG |                             HorseService: Attempting to insert horse Horse{id=null, name='Horse2', breed='null', minSpeed=40.0, maxSpeed=60.0, created=null, updated=null} into the database. Currently in service.
+13:58:34.474 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.474 | DEBUG |                                 HorseDao: About to execute sql statement prep2: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'Horse2', 2: NULL, 3: 40.0, 4: 60.0}
+13:58:34.478 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.478 | DEBUG |                                 HorseDao: About to execute sql statement prep3: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 2}
+13:58:34.478 | DEBUG |                                 HorseDao: Horse with id 2 found in the database.
+13:58:34.478 | INFO  |                                 HorseDao: Horse with id 2 inserted into the database
+13:58:34.498 | INFO  |                            HorseEndpoint: DELETE /api/v1/horses 1
+13:58:34.502 | DEBUG |                            HorseEndpoint: Attempting to delete horse with id 1. Currently in service layer
+13:58:34.502 | DEBUG |                             HorseService: Attempting to delete horse with id 1 from the database. Currently in service
+13:58:34.502 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.502 | DEBUG |                                 HorseDao: About to execute sql statement prep4: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:34.502 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:34.506 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.506 | DEBUG |                                 HorseDao: About to execute sql statement prep5: UPDATE horse SET deleted = 1 WHERE id = ? {1: 1}
+13:58:34.510 | INFO  |                                 HorseDao: Deleted horse with id 1
+13:58:34.522 | INFO  |                            HorseEndpoint: GET /api/v1/horses
+13:58:34.522 | DEBUG |                            HorseEndpoint: Attempting to get all horses from horse database. Currently in endpoint
+13:58:34.522 | DEBUG |                             HorseService: Attempting to get all horses from database. Currently in service
+13:58:34.522 | INFO  |                                 HorseDao: Getting all Horses from database
+13:58:34.522 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.526 | DEBUG |                                 HorseDao: About to execute sql statement prep6: SELECT * FROM horse Where deleted=0
+13:58:34.526 | INFO  |                                 HorseDao: Successfully got all horses
+13:58:34.541 | INFO  |                      DBConnectionManager: Close database connection
+13:58:34.557 | INFO  |                            HorseEndpoint: POST /api/v1/horses 
+13:58:34.557 | DEBUG |                            HorseEndpoint: Attempting to create horse HorseDto{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}. Currently in endpoint
+13:58:34.557 | DEBUG |                             HorseService: Attempting to insert horse Horse{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null} into the database. Currently in service.
+13:58:34.557 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.557 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:34.581 | DEBUG |                                 HorseDao: About to execute sql statement prep7: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'Horse1', 2: 'Breed1', 3: 45.0, 4: 55.0}
+13:58:34.585 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.585 | DEBUG |                                 HorseDao: About to execute sql statement prep8: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:34.585 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:34.585 | INFO  |                                 HorseDao: Horse with id 1 inserted into the database
+13:58:34.593 | INFO  |                            HorseEndpoint: POST /api/v1/horses 
+13:58:34.593 | DEBUG |                            HorseEndpoint: Attempting to create horse HorseDto{id=null, name='Horse2', breed='null', minSpeed=40.0, maxSpeed=60.0, created=null, updated=null}. Currently in endpoint
+13:58:34.593 | DEBUG |                             HorseService: Attempting to insert horse Horse{id=null, name='Horse2', breed='null', minSpeed=40.0, maxSpeed=60.0, created=null, updated=null} into the database. Currently in service.
+13:58:34.593 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.597 | DEBUG |                                 HorseDao: About to execute sql statement prep9: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'Horse2', 2: NULL, 3: 40.0, 4: 60.0}
+13:58:34.597 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.597 | DEBUG |                                 HorseDao: About to execute sql statement prep10: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 2}
+13:58:34.601 | DEBUG |                                 HorseDao: Horse with id 2 found in the database.
+13:58:34.601 | INFO  |                                 HorseDao: Horse with id 2 inserted into the database
+13:58:34.609 | INFO  |                            HorseEndpoint: GET /api/v1/horses
+13:58:34.609 | DEBUG |                            HorseEndpoint: Attempting to get all horses from horse database. Currently in endpoint
+13:58:34.609 | DEBUG |                             HorseService: Attempting to get all horses from database. Currently in service
+13:58:34.609 | INFO  |                                 HorseDao: Getting all Horses from database
+13:58:34.609 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.613 | DEBUG |                                 HorseDao: About to execute sql statement prep11: SELECT * FROM horse Where deleted=0
+13:58:34.613 | INFO  |                                 HorseDao: Successfully got all horses
+13:58:34.621 | INFO  |                      DBConnectionManager: Close database connection
+13:58:34.633 | INFO  |                            HorseEndpoint: POST /api/v1/horses 
+13:58:34.637 | DEBUG |                            HorseEndpoint: Attempting to create horse HorseDto{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}. Currently in endpoint
+13:58:34.637 | DEBUG |                             HorseService: Attempting to insert horse Horse{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null} into the database. Currently in service.
+13:58:34.637 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.637 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:34.665 | DEBUG |                                 HorseDao: About to execute sql statement prep12: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'Horse1', 2: 'Breed1', 3: 45.0, 4: 55.0}
+13:58:34.665 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.665 | DEBUG |                                 HorseDao: About to execute sql statement prep13: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:34.665 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:34.665 | INFO  |                                 HorseDao: Horse with id 1 inserted into the database
+13:58:34.673 | INFO  |                            HorseEndpoint: GET /api/v1/horses/1
+13:58:34.673 | DEBUG |                            HorseEndpoint: Attempting to find horse with id 1 in the database. Currently in endpoint.
+13:58:34.677 | DEBUG |                             HorseService: Attempting to find horse with id 1in the database. Currently in service.
+13:58:34.677 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.677 | DEBUG |                                 HorseDao: About to execute sql statement prep14: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:34.677 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:34.681 | INFO  |                      DBConnectionManager: Close database connection
+13:58:34.693 | INFO  |                            HorseEndpoint: POST /api/v1/horses 
+13:58:34.697 | DEBUG |                            HorseEndpoint: Attempting to create horse HorseDto{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}. Currently in endpoint
+13:58:34.697 | DEBUG |                             HorseService: Attempting to insert horse Horse{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null} into the database. Currently in service.
+13:58:34.697 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.697 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:34.725 | DEBUG |                                 HorseDao: About to execute sql statement prep15: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'Horse1', 2: 'Breed1', 3: 45.0, 4: 55.0}
+13:58:34.725 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.725 | DEBUG |                                 HorseDao: About to execute sql statement prep16: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:34.729 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:34.729 | INFO  |                                 HorseDao: Horse with id 1 inserted into the database
+13:58:34.733 | INFO  |                            HorseEndpoint: GET /api/v1/horses
+13:58:34.733 | DEBUG |                            HorseEndpoint: Attempting to get all horses from horse database. Currently in endpoint
+13:58:34.733 | DEBUG |                             HorseService: Attempting to get all horses from database. Currently in service
+13:58:34.733 | INFO  |                                 HorseDao: Getting all Horses from database
+13:58:34.733 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.737 | DEBUG |                                 HorseDao: About to execute sql statement prep17: SELECT * FROM horse Where deleted=0
+13:58:34.737 | INFO  |                                 HorseDao: Successfully got all horses
+13:58:34.741 | INFO  |                      DBConnectionManager: Close database connection
+13:58:34.757 | INFO  |                            HorseEndpoint: POST /api/v1/horses 
+13:58:34.761 | DEBUG |                            HorseEndpoint: Attempting to create horse HorseDto{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}. Currently in endpoint
+13:58:34.761 | DEBUG |                             HorseService: Attempting to insert horse Horse{id=null, name='Horse1', breed='Breed1', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null} into the database. Currently in service.
+13:58:34.761 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.761 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:34.785 | DEBUG |                                 HorseDao: About to execute sql statement prep18: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'Horse1', 2: 'Breed1', 3: 45.0, 4: 55.0}
+13:58:34.789 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.789 | DEBUG |                                 HorseDao: About to execute sql statement prep19: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:34.789 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:34.789 | INFO  |                                 HorseDao: Horse with id 1 inserted into the database
+13:58:34.793 | INFO  |                      DBConnectionManager: Close database connection
+13:58:34.801 | INFO  |                            HorseEndpoint: POST /api/v1/horses 
+13:58:34.805 | DEBUG |                            HorseEndpoint: Attempting to create horse HorseDto{id=null, name='Horse3', breed='null', minSpeed=30.0, maxSpeed=70.0, created=null, updated=null}. Currently in endpoint
+13:58:34.813 | ERROR |                             HorseService: BAD REQUEST INSERT HORSE SERVICE: One of the following has occurred: max_speed greater than 60, min_speed is less than 40, min_speed is greater than max_speed. max_speed 70.0 min_speed: Horse3
+13:58:34.817 | ERROR |                      BadRequestException: Error: Horses cannot be faster than 60 km/h, slower than 40 km/h or have their minimal speed lower than their max speed.
+13:58:34.853 | INFO  |                      DBConnectionManager: Close database connection
+13:58:34.885 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys 
+13:58:34.905 | DEBUG |                           JockeyEndpoint: Attempting to insert jockey Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null}into the database. Currently in endpoint
+13:58:34.909 | DEBUG |                            JockeyService: Attempting to insert jockey Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null} into the database. Currently in service
+13:58:34.909 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.909 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:34.933 | DEBUG |                                JockeyDao: About to execute statement prep20: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jockey1', 2: -2000.0}
+13:58:34.937 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:34.937 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.937 | INFO  |                                JockeyDao: Inserted jockey with id: 1
+13:58:34.949 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys 
+13:58:34.953 | DEBUG |                           JockeyEndpoint: Attempting to insert jockey Jockey{id=null, name='Jockey2', skill=33.33, created=null, updated=null}into the database. Currently in endpoint
+13:58:34.953 | DEBUG |                            JockeyService: Attempting to insert jockey Jockey{id=null, name='Jockey2', skill=33.33, created=null, updated=null} into the database. Currently in service
+13:58:34.953 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.953 | DEBUG |                                JockeyDao: About to execute statement prep22: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jockey2', 2: 33.33}
+13:58:34.957 | INFO  |                                JockeyDao: Get jockey with id 2
+13:58:34.957 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.957 | INFO  |                                JockeyDao: Inserted jockey with id: 2
+13:58:34.965 | INFO  |                           JockeyEndpoint: GET api/v1/jockeys
+13:58:34.965 | DEBUG |                           JockeyEndpoint: Attempting to get all jockeys from the database. Currently in endpoint
+13:58:34.965 | DEBUG |                            JockeyService: Attempting to get all jockeys from the database. Currently in service
+13:58:34.965 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.965 | DEBUG |                                JockeyDao: About to execute statement prep24: SELECT * FROM jockey WHERE deleted = 0
+13:58:34.965 | INFO  |                                JockeyDao: Successfully got all jockeys
+13:58:34.973 | INFO  |                      DBConnectionManager: Close database connection
+13:58:34.985 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys 
+13:58:34.985 | DEBUG |                           JockeyEndpoint: Attempting to insert jockey Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null}into the database. Currently in endpoint
+13:58:34.985 | DEBUG |                            JockeyService: Attempting to insert jockey Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null} into the database. Currently in service
+13:58:34.985 | INFO  |                      DBConnectionManager: Get database connection
+13:58:34.985 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:35.009 | DEBUG |                                JockeyDao: About to execute statement prep25: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jockey1', 2: -2000.0}
+13:58:35.009 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:35.009 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.013 | INFO  |                                JockeyDao: Inserted jockey with id: 1
+13:58:35.017 | INFO  |                           JockeyEndpoint: GET api/v1/jockeys
+13:58:35.021 | DEBUG |                           JockeyEndpoint: Attempting to get all jockeys from the database. Currently in endpoint
+13:58:35.021 | DEBUG |                            JockeyService: Attempting to get all jockeys from the database. Currently in service
+13:58:35.021 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.021 | DEBUG |                                JockeyDao: About to execute statement prep27: SELECT * FROM jockey WHERE deleted = 0
+13:58:35.021 | INFO  |                                JockeyDao: Successfully got all jockeys
+13:58:35.025 | INFO  |                      DBConnectionManager: Close database connection
+13:58:35.037 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys 
+13:58:35.041 | DEBUG |                           JockeyEndpoint: Attempting to insert jockey Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null}into the database. Currently in endpoint
+13:58:35.041 | DEBUG |                            JockeyService: Attempting to insert jockey Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null} into the database. Currently in service
+13:58:35.041 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.041 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:35.061 | DEBUG |                                JockeyDao: About to execute statement prep28: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jockey1', 2: -2000.0}
+13:58:35.061 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:35.061 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.061 | INFO  |                                JockeyDao: Inserted jockey with id: 1
+13:58:35.069 | INFO  |                           JockeyEndpoint: DELETE api/v1/jockeys1
+13:58:35.073 | DEBUG |                           JockeyEndpoint: Attempting to delete jockey with id 1. Currently in endpoint
+13:58:35.073 | DEBUG |                            JockeyService: Attempting to delete jockey with id 1. Currently in service
+13:58:35.073 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:35.073 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.073 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.073 | DEBUG |                                JockeyDao: About to execute statement prep31: UPDATE jockey SET deleted = 1 WHERE id = ? {1: 1}
+13:58:35.077 | INFO  |                                JockeyDao: Deleted jockey with id: 1
+13:58:35.081 | INFO  |                           JockeyEndpoint: GET api/v1/jockeys/1
+13:58:35.081 | DEBUG |                           JockeyEndpoint: Attempting to get jockey with id 1. Currently in endpoint
+13:58:35.081 | DEBUG |                            JockeyService: Attempting to find a jockey by id 1. Currently in service
+13:58:35.081 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:35.081 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.089 | INFO  |                      DBConnectionManager: Close database connection
+13:58:35.101 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys 
+13:58:35.101 | DEBUG |                           JockeyEndpoint: Attempting to insert jockey Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null}into the database. Currently in endpoint
+13:58:35.105 | DEBUG |                            JockeyService: Attempting to insert jockey Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null} into the database. Currently in service
+13:58:35.105 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.105 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:35.121 | DEBUG |                                JockeyDao: About to execute statement prep33: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jockey1', 2: -2000.0}
+13:58:35.125 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:35.125 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.125 | INFO  |                                JockeyDao: Inserted jockey with id: 1
+13:58:35.133 | INFO  |                           JockeyEndpoint: GET api/v1/jockeys/1
+13:58:35.133 | DEBUG |                           JockeyEndpoint: Attempting to get jockey with id 1. Currently in endpoint
+13:58:35.133 | DEBUG |                            JockeyService: Attempting to find a jockey by id 1. Currently in service
+13:58:35.133 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:35.133 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.137 | INFO  |                      DBConnectionManager: Close database connection
+13:58:35.149 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys 
+13:58:35.149 | DEBUG |                           JockeyEndpoint: Attempting to insert jockey Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null}into the database. Currently in endpoint
+13:58:35.149 | DEBUG |                            JockeyService: Attempting to insert jockey Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null} into the database. Currently in service
+13:58:35.149 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.149 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:35.169 | DEBUG |                                JockeyDao: About to execute statement prep36: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jockey1', 2: -2000.0}
+13:58:35.169 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:35.169 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.169 | INFO  |                                JockeyDao: Inserted jockey with id: 1
+13:58:35.173 | INFO  |                      DBConnectionManager: Close database connection
+13:58:35.193 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys 
+13:58:35.193 | DEBUG |                           JockeyEndpoint: Attempting to insert jockey Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null}into the database. Currently in endpoint
+13:58:35.193 | DEBUG |                            JockeyService: Attempting to insert jockey Jockey{id=null, name='Jockey1', skill=-2000.0, created=null, updated=null} into the database. Currently in service
+13:58:35.193 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.193 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:35.209 | DEBUG |                                JockeyDao: About to execute statement prep38: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jockey1', 2: -2000.0}
+13:58:35.209 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:35.209 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.213 | INFO  |                                JockeyDao: Inserted jockey with id: 1
+13:58:35.217 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys 
+13:58:35.217 | DEBUG |                           JockeyEndpoint: Attempting to insert jockey Jockey{id=null, name='Jockey2', skill=33.33, created=null, updated=null}into the database. Currently in endpoint
+13:58:35.217 | DEBUG |                            JockeyService: Attempting to insert jockey Jockey{id=null, name='Jockey2', skill=33.33, created=null, updated=null} into the database. Currently in service
+13:58:35.217 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.217 | DEBUG |                                JockeyDao: About to execute statement prep40: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jockey2', 2: 33.33}
+13:58:35.221 | INFO  |                                JockeyDao: Get jockey with id 2
+13:58:35.221 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.221 | INFO  |                                JockeyDao: Inserted jockey with id: 2
+13:58:35.229 | INFO  |                           JockeyEndpoint: DELETE api/v1/jockeys1
+13:58:35.229 | DEBUG |                           JockeyEndpoint: Attempting to delete jockey with id 1. Currently in endpoint
+13:58:35.229 | DEBUG |                            JockeyService: Attempting to delete jockey with id 1. Currently in service
+13:58:35.229 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:35.229 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.229 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.229 | DEBUG |                                JockeyDao: About to execute statement prep43: UPDATE jockey SET deleted = 1 WHERE id = ? {1: 1}
+13:58:35.229 | INFO  |                                JockeyDao: Deleted jockey with id: 1
+13:58:35.233 | INFO  |                           JockeyEndpoint: GET api/v1/jockeys
+13:58:35.233 | DEBUG |                           JockeyEndpoint: Attempting to get all jockeys from the database. Currently in endpoint
+13:58:35.233 | DEBUG |                            JockeyService: Attempting to get all jockeys from the database. Currently in service
+13:58:35.233 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.233 | DEBUG |                                JockeyDao: About to execute statement prep44: SELECT * FROM jockey WHERE deleted = 0
+13:58:35.233 | INFO  |                                JockeyDao: Successfully got all jockeys
+13:58:35.237 | INFO  |                      DBConnectionManager: Close database connection
+13:58:35.261 | INFO  |                            HorseEndpoint: POST /api/v1/horses 
+13:58:35.261 | DEBUG |                            HorseEndpoint: Attempting to create horse HorseDto{id=null, name='Horse1', breed='null', minSpeed=40.0, maxSpeed=60.0, created=null, updated=null}. Currently in endpoint
+13:58:35.261 | DEBUG |                             HorseService: Attempting to insert horse Horse{id=null, name='Horse1', breed='null', minSpeed=40.0, maxSpeed=60.0, created=null, updated=null} into the database. Currently in service.
+13:58:35.261 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.261 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:35.277 | DEBUG |                                 HorseDao: About to execute sql statement prep45: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'Horse1', 2: NULL, 3: 40.0, 4: 60.0}
+13:58:35.281 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.281 | DEBUG |                                 HorseDao: About to execute sql statement prep46: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:35.281 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:35.281 | INFO  |                                 HorseDao: Horse with id 1 inserted into the database
+13:58:35.289 | INFO  |                            HorseEndpoint: POST /api/v1/horses 
+13:58:35.289 | DEBUG |                            HorseEndpoint: Attempting to create horse HorseDto{id=null, name='Horse2', breed='null', minSpeed=49.99, maxSpeed=50.0, created=null, updated=null}. Currently in endpoint
+13:58:35.289 | DEBUG |                             HorseService: Attempting to insert horse Horse{id=null, name='Horse2', breed='null', minSpeed=49.99, maxSpeed=50.0, created=null, updated=null} into the database. Currently in service.
+13:58:35.289 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.289 | DEBUG |                                 HorseDao: About to execute sql statement prep47: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'Horse2', 2: NULL, 3: 49.99, 4: 50.0}
+13:58:35.293 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.293 | DEBUG |                                 HorseDao: About to execute sql statement prep48: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 2}
+13:58:35.293 | DEBUG |                                 HorseDao: Horse with id 2 found in the database.
+13:58:35.297 | INFO  |                                 HorseDao: Horse with id 2 inserted into the database
+13:58:35.309 | INFO  |                            HorseEndpoint: POST /api/v1/horses 
+13:58:35.309 | DEBUG |                            HorseEndpoint: Attempting to create horse HorseDto{id=null, name='Horse3', breed='null', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}. Currently in endpoint
+13:58:35.313 | DEBUG |                             HorseService: Attempting to insert horse Horse{id=null, name='Horse3', breed='null', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null} into the database. Currently in service.
+13:58:35.313 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.313 | DEBUG |                                 HorseDao: About to execute sql statement prep49: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'Horse3', 2: NULL, 3: 45.0, 4: 55.0}
+13:58:35.313 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.313 | DEBUG |                                 HorseDao: About to execute sql statement prep50: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 3}
+13:58:35.313 | DEBUG |                                 HorseDao: Horse with id 3 found in the database.
+13:58:35.317 | INFO  |                                 HorseDao: Horse with id 3 inserted into the database
+13:58:35.333 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys 
+13:58:35.333 | DEBUG |                           JockeyEndpoint: Attempting to insert jockey Jockey{id=null, name='Jockey1', skill=40.0, created=null, updated=null}into the database. Currently in endpoint
+13:58:35.333 | DEBUG |                            JockeyService: Attempting to insert jockey Jockey{id=null, name='Jockey1', skill=40.0, created=null, updated=null} into the database. Currently in service
+13:58:35.333 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.333 | DEBUG |                                JockeyDao: About to execute statement prep51: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jockey1', 2: 40.0}
+13:58:35.333 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:35.333 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.333 | INFO  |                                JockeyDao: Inserted jockey with id: 1
+13:58:35.345 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys 
+13:58:35.345 | DEBUG |                           JockeyEndpoint: Attempting to insert jockey Jockey{id=null, name='Jockey2', skill=-1000.0, created=null, updated=null}into the database. Currently in endpoint
+13:58:35.345 | DEBUG |                            JockeyService: Attempting to insert jockey Jockey{id=null, name='Jockey2', skill=-1000.0, created=null, updated=null} into the database. Currently in service
+13:58:35.345 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.349 | DEBUG |                                JockeyDao: About to execute statement prep53: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jockey2', 2: -1000.0}
+13:58:35.349 | INFO  |                                JockeyDao: Get jockey with id 2
+13:58:35.349 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.349 | INFO  |                                JockeyDao: Inserted jockey with id: 2
+13:58:35.357 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys 
+13:58:35.361 | DEBUG |                           JockeyEndpoint: Attempting to insert jockey Jockey{id=null, name='Jockey3', skill=0.0, created=null, updated=null}into the database. Currently in endpoint
+13:58:35.361 | DEBUG |                            JockeyService: Attempting to insert jockey Jockey{id=null, name='Jockey3', skill=0.0, created=null, updated=null} into the database. Currently in service
+13:58:35.361 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.361 | DEBUG |                                JockeyDao: About to execute statement prep55: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jockey3', 2: 0.0}
+13:58:35.361 | INFO  |                                JockeyDao: Get jockey with id 3
+13:58:35.361 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.361 | INFO  |                                JockeyDao: Inserted jockey with id: 3
+13:58:35.401 | INFO  |                       SimulationEndpoint: POST /api/v1/simulations
+13:58:35.417 | DEBUG |                       SimulationEndpoint: Attempting to create a new simulation with values SimulationDto{name='Simulation1', simulationParticipants=[ParticipantDto{horseId=1, jockeyId=1, luckFactor=1.0}, ParticipantDto{horseId=2, jockeyId=2, luckFactor=0.95}, ParticipantDto{horseId=3, jockeyId=3, luckFactor=1.05}]}. Currently in endpoint
+13:58:35.469 | DEBUG |                        SimulationService: Attempting to create a new simulation based on information Simulation{id=null, name='Simulation1', created=null, participants=[Participant{id=null, horseId=1, horseName='null', jockeyName='null', jockeyId=1, rank=null, avgSpeed=null, horseSpeed=null, luck=1.0, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=2, horseName='null', jockeyName='null', jockeyId=2, rank=null, avgSpeed=null, horseSpeed=null, luck=0.95, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=3, horseName='null', jockeyName='null', jockeyId=3, rank=null, avgSpeed=null, horseSpeed=null, luck=1.05, skill=null, horseUpdate=null, jockeyUpdate=null}]}. Currently in service
+13:58:35.469 | DEBUG |                        SimulationService: Attempting to validate new simulation input
+13:58:35.469 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.469 | DEBUG |                                 HorseDao: About to execute sql statement prep57: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:35.469 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:35.469 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:35.469 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.473 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.473 | DEBUG |                                 HorseDao: About to execute sql statement prep59: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 2}
+13:58:35.473 | DEBUG |                                 HorseDao: Horse with id 2 found in the database.
+13:58:35.473 | INFO  |                                JockeyDao: Get jockey with id 2
+13:58:35.473 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.473 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.473 | DEBUG |                                 HorseDao: About to execute sql statement prep61: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 3}
+13:58:35.473 | DEBUG |                                 HorseDao: Horse with id 3 found in the database.
+13:58:35.473 | INFO  |                                JockeyDao: Get jockey with id 3
+13:58:35.477 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.477 | DEBUG |                        SimulationService: Able to fetch all horse/jockey pairs for new simulation
+13:58:35.477 | DEBUG |                        SimulationService:  # of Participants entering the race: 3 
+13:58:35.477 | DEBUG |                        SimulationService: Processing Participant 1 with horse 1
+13:58:35.481 | DEBUG |                        SimulationService: A participant in the race has been processed. Participant{id=null, horseId=1, horseName='Horse1', jockeyName='Jockey1', jockeyId=1, rank=null, avgSpeed=53.455, horseSpeed=50.0, luck=1.0, skill=1.0691, horseUpdate=2019-03-24T13:58:35.281, jockeyUpdate=2019-03-24T13:58:35.333}
+13:58:35.481 | DEBUG |                        SimulationService: Processing Participant 2 with horse 2
+13:58:35.481 | DEBUG |                        SimulationService: A participant in the race has been processed. Participant{id=null, horseId=2, horseName='Horse2', jockeyName='Jockey2', jockeyId=2, rank=null, avgSpeed=43.9382, horseSpeed=49.99, luck=0.95, skill=0.9252, horseUpdate=2019-03-24T13:58:35.293, jockeyUpdate=2019-03-24T13:58:35.349}
+13:58:35.481 | DEBUG |                        SimulationService: Processing Participant 3 with horse 3
+13:58:35.481 | DEBUG |                        SimulationService: A participant in the race has been processed. Participant{id=null, horseId=3, horseName='Horse3', jockeyName='Jockey3', jockeyId=3, rank=null, avgSpeed=57.75, horseSpeed=55.0, luck=1.05, skill=1.0, horseUpdate=2019-03-24T13:58:35.313, jockeyUpdate=2019-03-24T13:58:35.361}
+13:58:35.485 | DEBUG |                        SimulationService: Size of calculated 3 isEqual: true
+13:58:35.485 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.485 | DEBUG |                            SimulationDao: About to execute statement prep63: INSERT INTO simulation (name, created) VALUES (?, DEFAULT) {1: 'Simulation1'}
+13:58:35.489 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.489 | DEBUG |                            SimulationDao: About to execute statement prep64: SELECT * FROM simulation WHERE simID = ? {1: 1}
+13:58:35.489 | DEBUG |                            SimulationDao: Obtained simulation with id 1
+13:58:35.489 | INFO  |                            SimulationDao: Inserted simulation into the database Simulation{id=1, name='Simulation1', created=2019-03-24T13:58:35.489, participants=[Participant{id=null, horseId=1, horseName='null', jockeyName='null', jockeyId=1, rank=null, avgSpeed=null, horseSpeed=null, luck=1.0, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=2, horseName='null', jockeyName='null', jockeyId=2, rank=null, avgSpeed=null, horseSpeed=null, luck=0.95, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=3, horseName='null', jockeyName='null', jockeyId=3, rank=null, avgSpeed=null, horseSpeed=null, luck=1.05, skill=null, horseUpdate=null, jockeyUpdate=null}]}
+13:58:35.489 | DEBUG |                                 HorseDao: Moving horse with ID 3 to version table
+13:58:35.489 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.493 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.493 | DEBUG |                                 HorseDao: About to execute sql statement prep66: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 3}
+13:58:35.493 | DEBUG |                                 HorseDao: Horse with id 3 found in the database.
+13:58:35.493 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.493 | DEBUG |                                 HorseDao: About to execute sql statement prep67: INSERT INTO horseVersions (id, name, breed, min_speed, max_speed, created, updated) VALUES (?,?,?,?,?,?,?) {1: 3, 2: 'Horse3', 3: NULL, 4: 45.0, 5: 55.0, 6: TIMESTAMP '2019-03-24 13:58:35.313', 7: TIMESTAMP '2019-03-24 13:58:35.313'}
+13:58:35.493 | DEBUG |                                JockeyDao: Moving jockey with ID 3 to version table
+13:58:35.493 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.497 | INFO  |                                JockeyDao: Get jockey with id 3
+13:58:35.497 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.497 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.497 | DEBUG |                                JockeyDao: About to execute statement prep70: INSERT INTO jockeyVersions (id, name, skill, created, updated) VALUES (?,?,?,?,?) {1: 3, 2: 'Jockey3', 3: 0.0, 4: TIMESTAMP '2019-03-24 13:58:35.361', 5: TIMESTAMP '2019-03-24 13:58:35.361'}
+13:58:35.497 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.497 | DEBUG |                            SimulationDao: About to execute statement prep71: INSERT INTO simulationRelation (simID, horseID, horseUp, jockeyID, jockeyUp, rank, avgSpeed, luck) VALUES (?,?,?,?,?,?,?,?) {1: 1, 2: 3, 3: TIMESTAMP '2019-03-24 13:58:35.313', 4: 3, 5: TIMESTAMP '2019-03-24 13:58:35.361', 6: 1, 7: 57.75, 8: 1.05}
+13:58:35.497 | DEBUG |                            SimulationDao: Inserted Participant 1
+13:58:35.497 | DEBUG |                                 HorseDao: Moving horse with ID 1 to version table
+13:58:35.497 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.501 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.501 | DEBUG |                                 HorseDao: About to execute sql statement prep73: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:35.501 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:35.501 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.501 | DEBUG |                                 HorseDao: About to execute sql statement prep74: INSERT INTO horseVersions (id, name, breed, min_speed, max_speed, created, updated) VALUES (?,?,?,?,?,?,?) {1: 1, 2: 'Horse1', 3: NULL, 4: 40.0, 5: 60.0, 6: TIMESTAMP '2019-03-24 13:58:35.281', 7: TIMESTAMP '2019-03-24 13:58:35.281'}
+13:58:35.501 | DEBUG |                                JockeyDao: Moving jockey with ID 1 to version table
+13:58:35.501 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.501 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:35.501 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.501 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.505 | DEBUG |                                JockeyDao: About to execute statement prep77: INSERT INTO jockeyVersions (id, name, skill, created, updated) VALUES (?,?,?,?,?) {1: 1, 2: 'Jockey1', 3: 40.0, 4: TIMESTAMP '2019-03-24 13:58:35.333', 5: TIMESTAMP '2019-03-24 13:58:35.333'}
+13:58:35.505 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.505 | DEBUG |                            SimulationDao: About to execute statement prep78: INSERT INTO simulationRelation (simID, horseID, horseUp, jockeyID, jockeyUp, rank, avgSpeed, luck) VALUES (?,?,?,?,?,?,?,?) {1: 1, 2: 1, 3: TIMESTAMP '2019-03-24 13:58:35.281', 4: 1, 5: TIMESTAMP '2019-03-24 13:58:35.333', 6: 2, 7: 53.455, 8: 1.0}
+13:58:35.505 | DEBUG |                            SimulationDao: Inserted Participant 2
+13:58:35.505 | DEBUG |                                 HorseDao: Moving horse with ID 2 to version table
+13:58:35.505 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.505 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.505 | DEBUG |                                 HorseDao: About to execute sql statement prep80: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 2}
+13:58:35.505 | DEBUG |                                 HorseDao: Horse with id 2 found in the database.
+13:58:35.505 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.505 | DEBUG |                                 HorseDao: About to execute sql statement prep81: INSERT INTO horseVersions (id, name, breed, min_speed, max_speed, created, updated) VALUES (?,?,?,?,?,?,?) {1: 2, 2: 'Horse2', 3: NULL, 4: 49.99, 5: 50.0, 6: TIMESTAMP '2019-03-24 13:58:35.293', 7: TIMESTAMP '2019-03-24 13:58:35.293'}
+13:58:35.509 | DEBUG |                                JockeyDao: Moving jockey with ID 2 to version table
+13:58:35.509 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.509 | INFO  |                                JockeyDao: Get jockey with id 2
+13:58:35.509 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.509 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.509 | DEBUG |                                JockeyDao: About to execute statement prep84: INSERT INTO jockeyVersions (id, name, skill, created, updated) VALUES (?,?,?,?,?) {1: 2, 2: 'Jockey2', 3: -1000.0, 4: TIMESTAMP '2019-03-24 13:58:35.349', 5: TIMESTAMP '2019-03-24 13:58:35.349'}
+13:58:35.509 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.513 | DEBUG |                            SimulationDao: About to execute statement prep85: INSERT INTO simulationRelation (simID, horseID, horseUp, jockeyID, jockeyUp, rank, avgSpeed, luck) VALUES (?,?,?,?,?,?,?,?) {1: 1, 2: 2, 3: TIMESTAMP '2019-03-24 13:58:35.293', 4: 2, 5: TIMESTAMP '2019-03-24 13:58:35.349', 6: 3, 7: 43.9382, 8: 0.95}
+13:58:35.513 | DEBUG |                            SimulationDao: Inserted Participant 3
+13:58:35.513 | INFO  |                        SimulationService: Inserted new simulation into the database
+13:58:35.529 | INFO  |                      DBConnectionManager: Close database connection
+13:58:35.545 | INFO  |                            HorseEndpoint: POST /api/v1/horses 
+13:58:35.545 | DEBUG |                            HorseEndpoint: Attempting to create horse HorseDto{id=null, name='Horse1', breed='null', minSpeed=40.0, maxSpeed=60.0, created=null, updated=null}. Currently in endpoint
+13:58:35.545 | DEBUG |                             HorseService: Attempting to insert horse Horse{id=null, name='Horse1', breed='null', minSpeed=40.0, maxSpeed=60.0, created=null, updated=null} into the database. Currently in service.
+13:58:35.545 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.545 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:35.569 | DEBUG |                                 HorseDao: About to execute sql statement prep86: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'Horse1', 2: NULL, 3: 40.0, 4: 60.0}
+13:58:35.569 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.569 | DEBUG |                                 HorseDao: About to execute sql statement prep87: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:35.569 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:35.569 | INFO  |                                 HorseDao: Horse with id 1 inserted into the database
+13:58:35.585 | INFO  |                            HorseEndpoint: POST /api/v1/horses 
+13:58:35.585 | DEBUG |                            HorseEndpoint: Attempting to create horse HorseDto{id=null, name='Horse2', breed='null', minSpeed=49.99, maxSpeed=50.0, created=null, updated=null}. Currently in endpoint
+13:58:35.585 | DEBUG |                             HorseService: Attempting to insert horse Horse{id=null, name='Horse2', breed='null', minSpeed=49.99, maxSpeed=50.0, created=null, updated=null} into the database. Currently in service.
+13:58:35.585 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.589 | DEBUG |                                 HorseDao: About to execute sql statement prep88: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'Horse2', 2: NULL, 3: 49.99, 4: 50.0}
+13:58:35.589 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.589 | DEBUG |                                 HorseDao: About to execute sql statement prep89: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 2}
+13:58:35.589 | DEBUG |                                 HorseDao: Horse with id 2 found in the database.
+13:58:35.589 | INFO  |                                 HorseDao: Horse with id 2 inserted into the database
+13:58:35.597 | INFO  |                            HorseEndpoint: POST /api/v1/horses 
+13:58:35.597 | DEBUG |                            HorseEndpoint: Attempting to create horse HorseDto{id=null, name='Horse3', breed='null', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}. Currently in endpoint
+13:58:35.601 | DEBUG |                             HorseService: Attempting to insert horse Horse{id=null, name='Horse3', breed='null', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null} into the database. Currently in service.
+13:58:35.601 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.601 | DEBUG |                                 HorseDao: About to execute sql statement prep90: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'Horse3', 2: NULL, 3: 45.0, 4: 55.0}
+13:58:35.601 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.605 | DEBUG |                                 HorseDao: About to execute sql statement prep91: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 3}
+13:58:35.605 | DEBUG |                                 HorseDao: Horse with id 3 found in the database.
+13:58:35.605 | INFO  |                                 HorseDao: Horse with id 3 inserted into the database
+13:58:35.613 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys 
+13:58:35.613 | DEBUG |                           JockeyEndpoint: Attempting to insert jockey Jockey{id=null, name='Jockey1', skill=40.0, created=null, updated=null}into the database. Currently in endpoint
+13:58:35.613 | DEBUG |                            JockeyService: Attempting to insert jockey Jockey{id=null, name='Jockey1', skill=40.0, created=null, updated=null} into the database. Currently in service
+13:58:35.613 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.613 | DEBUG |                                JockeyDao: About to execute statement prep92: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jockey1', 2: 40.0}
+13:58:35.617 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:35.617 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.617 | INFO  |                                JockeyDao: Inserted jockey with id: 1
+13:58:35.625 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys 
+13:58:35.625 | DEBUG |                           JockeyEndpoint: Attempting to insert jockey Jockey{id=null, name='Jockey2', skill=-1000.0, created=null, updated=null}into the database. Currently in endpoint
+13:58:35.625 | DEBUG |                            JockeyService: Attempting to insert jockey Jockey{id=null, name='Jockey2', skill=-1000.0, created=null, updated=null} into the database. Currently in service
+13:58:35.625 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.625 | DEBUG |                                JockeyDao: About to execute statement prep94: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jockey2', 2: -1000.0}
+13:58:35.629 | INFO  |                                JockeyDao: Get jockey with id 2
+13:58:35.629 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.629 | INFO  |                                JockeyDao: Inserted jockey with id: 2
+13:58:35.637 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys 
+13:58:35.637 | DEBUG |                           JockeyEndpoint: Attempting to insert jockey Jockey{id=null, name='Jockey3', skill=0.0, created=null, updated=null}into the database. Currently in endpoint
+13:58:35.637 | DEBUG |                            JockeyService: Attempting to insert jockey Jockey{id=null, name='Jockey3', skill=0.0, created=null, updated=null} into the database. Currently in service
+13:58:35.637 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.637 | DEBUG |                                JockeyDao: About to execute statement prep96: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jockey3', 2: 0.0}
+13:58:35.637 | INFO  |                                JockeyDao: Get jockey with id 3
+13:58:35.637 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.641 | INFO  |                                JockeyDao: Inserted jockey with id: 3
+13:58:35.649 | INFO  |                       SimulationEndpoint: POST /api/v1/simulations
+13:58:35.649 | DEBUG |                       SimulationEndpoint: Attempting to create a new simulation with values SimulationDto{name='Simulation1', simulationParticipants=[ParticipantDto{horseId=1, jockeyId=1, luckFactor=1.0}, ParticipantDto{horseId=2, jockeyId=2, luckFactor=0.95}, ParticipantDto{horseId=3, jockeyId=3, luckFactor=1.05}]}. Currently in endpoint
+13:58:35.649 | DEBUG |                        SimulationService: Attempting to create a new simulation based on information Simulation{id=null, name='Simulation1', created=null, participants=[Participant{id=null, horseId=1, horseName='null', jockeyName='null', jockeyId=1, rank=null, avgSpeed=null, horseSpeed=null, luck=1.0, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=2, horseName='null', jockeyName='null', jockeyId=2, rank=null, avgSpeed=null, horseSpeed=null, luck=0.95, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=3, horseName='null', jockeyName='null', jockeyId=3, rank=null, avgSpeed=null, horseSpeed=null, luck=1.05, skill=null, horseUpdate=null, jockeyUpdate=null}]}. Currently in service
+13:58:35.649 | DEBUG |                        SimulationService: Attempting to validate new simulation input
+13:58:35.649 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.649 | DEBUG |                                 HorseDao: About to execute sql statement prep98: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:35.649 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:35.649 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:35.653 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.653 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.653 | DEBUG |                                 HorseDao: About to execute sql statement prep100: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 2}
+13:58:35.653 | DEBUG |                                 HorseDao: Horse with id 2 found in the database.
+13:58:35.653 | INFO  |                                JockeyDao: Get jockey with id 2
+13:58:35.653 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.653 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.653 | DEBUG |                                 HorseDao: About to execute sql statement prep102: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 3}
+13:58:35.653 | DEBUG |                                 HorseDao: Horse with id 3 found in the database.
+13:58:35.653 | INFO  |                                JockeyDao: Get jockey with id 3
+13:58:35.653 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.657 | DEBUG |                        SimulationService: Able to fetch all horse/jockey pairs for new simulation
+13:58:35.657 | DEBUG |                        SimulationService:  # of Participants entering the race: 3 
+13:58:35.657 | DEBUG |                        SimulationService: Processing Participant 1 with horse 1
+13:58:35.657 | DEBUG |                        SimulationService: A participant in the race has been processed. Participant{id=null, horseId=1, horseName='Horse1', jockeyName='Jockey1', jockeyId=1, rank=null, avgSpeed=53.455, horseSpeed=50.0, luck=1.0, skill=1.0691, horseUpdate=2019-03-24T13:58:35.569, jockeyUpdate=2019-03-24T13:58:35.617}
+13:58:35.657 | DEBUG |                        SimulationService: Processing Participant 2 with horse 2
+13:58:35.657 | DEBUG |                        SimulationService: A participant in the race has been processed. Participant{id=null, horseId=2, horseName='Horse2', jockeyName='Jockey2', jockeyId=2, rank=null, avgSpeed=43.9382, horseSpeed=49.99, luck=0.95, skill=0.9252, horseUpdate=2019-03-24T13:58:35.589, jockeyUpdate=2019-03-24T13:58:35.625}
+13:58:35.657 | DEBUG |                        SimulationService: Processing Participant 3 with horse 3
+13:58:35.657 | DEBUG |                        SimulationService: A participant in the race has been processed. Participant{id=null, horseId=3, horseName='Horse3', jockeyName='Jockey3', jockeyId=3, rank=null, avgSpeed=57.75, horseSpeed=55.0, luck=1.05, skill=1.0, horseUpdate=2019-03-24T13:58:35.601, jockeyUpdate=2019-03-24T13:58:35.637}
+13:58:35.657 | DEBUG |                        SimulationService: Size of calculated 3 isEqual: true
+13:58:35.657 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.657 | DEBUG |                            SimulationDao: About to execute statement prep104: INSERT INTO simulation (name, created) VALUES (?, DEFAULT) {1: 'Simulation1'}
+13:58:35.657 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.657 | DEBUG |                            SimulationDao: About to execute statement prep105: SELECT * FROM simulation WHERE simID = ? {1: 1}
+13:58:35.657 | DEBUG |                            SimulationDao: Obtained simulation with id 1
+13:58:35.661 | INFO  |                            SimulationDao: Inserted simulation into the database Simulation{id=1, name='Simulation1', created=2019-03-24T13:58:35.657, participants=[Participant{id=null, horseId=1, horseName='null', jockeyName='null', jockeyId=1, rank=null, avgSpeed=null, horseSpeed=null, luck=1.0, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=2, horseName='null', jockeyName='null', jockeyId=2, rank=null, avgSpeed=null, horseSpeed=null, luck=0.95, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=3, horseName='null', jockeyName='null', jockeyId=3, rank=null, avgSpeed=null, horseSpeed=null, luck=1.05, skill=null, horseUpdate=null, jockeyUpdate=null}]}
+13:58:35.661 | DEBUG |                                 HorseDao: Moving horse with ID 3 to version table
+13:58:35.661 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.661 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.661 | DEBUG |                                 HorseDao: About to execute sql statement prep107: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 3}
+13:58:35.661 | DEBUG |                                 HorseDao: Horse with id 3 found in the database.
+13:58:35.661 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.661 | DEBUG |                                 HorseDao: About to execute sql statement prep108: INSERT INTO horseVersions (id, name, breed, min_speed, max_speed, created, updated) VALUES (?,?,?,?,?,?,?) {1: 3, 2: 'Horse3', 3: NULL, 4: 45.0, 5: 55.0, 6: TIMESTAMP '2019-03-24 13:58:35.601', 7: TIMESTAMP '2019-03-24 13:58:35.601'}
+13:58:35.661 | DEBUG |                                JockeyDao: Moving jockey with ID 3 to version table
+13:58:35.661 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.661 | INFO  |                                JockeyDao: Get jockey with id 3
+13:58:35.665 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.665 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.665 | DEBUG |                                JockeyDao: About to execute statement prep111: INSERT INTO jockeyVersions (id, name, skill, created, updated) VALUES (?,?,?,?,?) {1: 3, 2: 'Jockey3', 3: 0.0, 4: TIMESTAMP '2019-03-24 13:58:35.637', 5: TIMESTAMP '2019-03-24 13:58:35.637'}
+13:58:35.665 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.665 | DEBUG |                            SimulationDao: About to execute statement prep112: INSERT INTO simulationRelation (simID, horseID, horseUp, jockeyID, jockeyUp, rank, avgSpeed, luck) VALUES (?,?,?,?,?,?,?,?) {1: 1, 2: 3, 3: TIMESTAMP '2019-03-24 13:58:35.601', 4: 3, 5: TIMESTAMP '2019-03-24 13:58:35.637', 6: 1, 7: 57.75, 8: 1.05}
+13:58:35.665 | DEBUG |                            SimulationDao: Inserted Participant 1
+13:58:35.665 | DEBUG |                                 HorseDao: Moving horse with ID 1 to version table
+13:58:35.665 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.669 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.669 | DEBUG |                                 HorseDao: About to execute sql statement prep114: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:35.669 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:35.669 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.669 | DEBUG |                                 HorseDao: About to execute sql statement prep115: INSERT INTO horseVersions (id, name, breed, min_speed, max_speed, created, updated) VALUES (?,?,?,?,?,?,?) {1: 1, 2: 'Horse1', 3: NULL, 4: 40.0, 5: 60.0, 6: TIMESTAMP '2019-03-24 13:58:35.569', 7: TIMESTAMP '2019-03-24 13:58:35.569'}
+13:58:35.669 | DEBUG |                                JockeyDao: Moving jockey with ID 1 to version table
+13:58:35.669 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.669 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:35.669 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.669 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.673 | DEBUG |                                JockeyDao: About to execute statement prep118: INSERT INTO jockeyVersions (id, name, skill, created, updated) VALUES (?,?,?,?,?) {1: 1, 2: 'Jockey1', 3: 40.0, 4: TIMESTAMP '2019-03-24 13:58:35.617', 5: TIMESTAMP '2019-03-24 13:58:35.617'}
+13:58:35.673 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.673 | DEBUG |                            SimulationDao: About to execute statement prep119: INSERT INTO simulationRelation (simID, horseID, horseUp, jockeyID, jockeyUp, rank, avgSpeed, luck) VALUES (?,?,?,?,?,?,?,?) {1: 1, 2: 1, 3: TIMESTAMP '2019-03-24 13:58:35.569', 4: 1, 5: TIMESTAMP '2019-03-24 13:58:35.617', 6: 2, 7: 53.455, 8: 1.0}
+13:58:35.673 | DEBUG |                            SimulationDao: Inserted Participant 2
+13:58:35.673 | DEBUG |                                 HorseDao: Moving horse with ID 2 to version table
+13:58:35.673 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.673 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.673 | DEBUG |                                 HorseDao: About to execute sql statement prep121: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 2}
+13:58:35.673 | DEBUG |                                 HorseDao: Horse with id 2 found in the database.
+13:58:35.673 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.673 | DEBUG |                                 HorseDao: About to execute sql statement prep122: INSERT INTO horseVersions (id, name, breed, min_speed, max_speed, created, updated) VALUES (?,?,?,?,?,?,?) {1: 2, 2: 'Horse2', 3: NULL, 4: 49.99, 5: 50.0, 6: TIMESTAMP '2019-03-24 13:58:35.589', 7: TIMESTAMP '2019-03-24 13:58:35.589'}
+13:58:35.673 | DEBUG |                                JockeyDao: Moving jockey with ID 2 to version table
+13:58:35.673 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.677 | INFO  |                                JockeyDao: Get jockey with id 2
+13:58:35.677 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.677 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.677 | DEBUG |                                JockeyDao: About to execute statement prep125: INSERT INTO jockeyVersions (id, name, skill, created, updated) VALUES (?,?,?,?,?) {1: 2, 2: 'Jockey2', 3: -1000.0, 4: TIMESTAMP '2019-03-24 13:58:35.625', 5: TIMESTAMP '2019-03-24 13:58:35.625'}
+13:58:35.677 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.677 | DEBUG |                            SimulationDao: About to execute statement prep126: INSERT INTO simulationRelation (simID, horseID, horseUp, jockeyID, jockeyUp, rank, avgSpeed, luck) VALUES (?,?,?,?,?,?,?,?) {1: 1, 2: 2, 3: TIMESTAMP '2019-03-24 13:58:35.589', 4: 2, 5: TIMESTAMP '2019-03-24 13:58:35.625', 6: 3, 7: 43.9382, 8: 0.95}
+13:58:35.677 | DEBUG |                            SimulationDao: Inserted Participant 3
+13:58:35.677 | INFO  |                        SimulationService: Inserted new simulation into the database
+13:58:35.685 | INFO  |                       SimulationEndpoint: POST /api/v1/simulations
+13:58:35.685 | DEBUG |                       SimulationEndpoint: Attempting to create a new simulation with values SimulationDto{name='Simulation2', simulationParticipants=[ParticipantDto{horseId=1, jockeyId=1, luckFactor=1.0}, ParticipantDto{horseId=2, jockeyId=2, luckFactor=0.95}, ParticipantDto{horseId=3, jockeyId=3, luckFactor=1.05}]}. Currently in endpoint
+13:58:35.685 | DEBUG |                        SimulationService: Attempting to create a new simulation based on information Simulation{id=null, name='Simulation2', created=null, participants=[Participant{id=null, horseId=1, horseName='null', jockeyName='null', jockeyId=1, rank=null, avgSpeed=null, horseSpeed=null, luck=1.0, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=2, horseName='null', jockeyName='null', jockeyId=2, rank=null, avgSpeed=null, horseSpeed=null, luck=0.95, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=3, horseName='null', jockeyName='null', jockeyId=3, rank=null, avgSpeed=null, horseSpeed=null, luck=1.05, skill=null, horseUpdate=null, jockeyUpdate=null}]}. Currently in service
+13:58:35.689 | DEBUG |                        SimulationService: Attempting to validate new simulation input
+13:58:35.689 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.689 | DEBUG |                                 HorseDao: About to execute sql statement prep127: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:35.689 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:35.689 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:35.689 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.689 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.689 | DEBUG |                                 HorseDao: About to execute sql statement prep129: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 2}
+13:58:35.689 | DEBUG |                                 HorseDao: Horse with id 2 found in the database.
+13:58:35.689 | INFO  |                                JockeyDao: Get jockey with id 2
+13:58:35.689 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.689 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.693 | DEBUG |                                 HorseDao: About to execute sql statement prep131: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 3}
+13:58:35.693 | DEBUG |                                 HorseDao: Horse with id 3 found in the database.
+13:58:35.693 | INFO  |                                JockeyDao: Get jockey with id 3
+13:58:35.693 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.693 | DEBUG |                        SimulationService: Able to fetch all horse/jockey pairs for new simulation
+13:58:35.693 | DEBUG |                        SimulationService:  # of Participants entering the race: 3 
+13:58:35.693 | DEBUG |                        SimulationService: Processing Participant 1 with horse 1
+13:58:35.693 | DEBUG |                        SimulationService: A participant in the race has been processed. Participant{id=null, horseId=1, horseName='Horse1', jockeyName='Jockey1', jockeyId=1, rank=null, avgSpeed=53.455, horseSpeed=50.0, luck=1.0, skill=1.0691, horseUpdate=2019-03-24T13:58:35.569, jockeyUpdate=2019-03-24T13:58:35.617}
+13:58:35.693 | DEBUG |                        SimulationService: Processing Participant 2 with horse 2
+13:58:35.693 | DEBUG |                        SimulationService: A participant in the race has been processed. Participant{id=null, horseId=2, horseName='Horse2', jockeyName='Jockey2', jockeyId=2, rank=null, avgSpeed=43.9382, horseSpeed=49.99, luck=0.95, skill=0.9252, horseUpdate=2019-03-24T13:58:35.589, jockeyUpdate=2019-03-24T13:58:35.625}
+13:58:35.693 | DEBUG |                        SimulationService: Processing Participant 3 with horse 3
+13:58:35.693 | DEBUG |                        SimulationService: A participant in the race has been processed. Participant{id=null, horseId=3, horseName='Horse3', jockeyName='Jockey3', jockeyId=3, rank=null, avgSpeed=57.75, horseSpeed=55.0, luck=1.05, skill=1.0, horseUpdate=2019-03-24T13:58:35.601, jockeyUpdate=2019-03-24T13:58:35.637}
+13:58:35.693 | DEBUG |                        SimulationService: Size of calculated 3 isEqual: true
+13:58:35.693 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.693 | DEBUG |                            SimulationDao: About to execute statement prep133: INSERT INTO simulation (name, created) VALUES (?, DEFAULT) {1: 'Simulation2'}
+13:58:35.697 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.697 | DEBUG |                            SimulationDao: About to execute statement prep134: SELECT * FROM simulation WHERE simID = ? {1: 2}
+13:58:35.697 | DEBUG |                            SimulationDao: Obtained simulation with id 2
+13:58:35.697 | INFO  |                            SimulationDao: Inserted simulation into the database Simulation{id=2, name='Simulation2', created=2019-03-24T13:58:35.693, participants=[Participant{id=null, horseId=1, horseName='null', jockeyName='null', jockeyId=1, rank=null, avgSpeed=null, horseSpeed=null, luck=1.0, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=2, horseName='null', jockeyName='null', jockeyId=2, rank=null, avgSpeed=null, horseSpeed=null, luck=0.95, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=3, horseName='null', jockeyName='null', jockeyId=3, rank=null, avgSpeed=null, horseSpeed=null, luck=1.05, skill=null, horseUpdate=null, jockeyUpdate=null}]}
+13:58:35.697 | DEBUG |                                 HorseDao: Moving horse with ID 3 to version table
+13:58:35.697 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.697 | DEBUG |                                 HorseDao: Horse with id 3 and update time 2019-03-24T13:58:35.601 is already in version table.
+13:58:35.697 | DEBUG |                                JockeyDao: Moving jockey with ID 3 to version table
+13:58:35.697 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.701 | DEBUG |                                JockeyDao: Jockey with id 3 and updated 2019-03-24T13:58:35.637 already exists in the version table
+13:58:35.701 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.701 | DEBUG |                            SimulationDao: About to execute statement prep137: INSERT INTO simulationRelation (simID, horseID, horseUp, jockeyID, jockeyUp, rank, avgSpeed, luck) VALUES (?,?,?,?,?,?,?,?) {1: 2, 2: 3, 3: TIMESTAMP '2019-03-24 13:58:35.601', 4: 3, 5: TIMESTAMP '2019-03-24 13:58:35.637', 6: 1, 7: 57.75, 8: 1.05}
+13:58:35.701 | DEBUG |                            SimulationDao: Inserted Participant 4
+13:58:35.701 | DEBUG |                                 HorseDao: Moving horse with ID 1 to version table
+13:58:35.701 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.705 | DEBUG |                                 HorseDao: Horse with id 1 and update time 2019-03-24T13:58:35.569 is already in version table.
+13:58:35.705 | DEBUG |                                JockeyDao: Moving jockey with ID 1 to version table
+13:58:35.705 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.705 | DEBUG |                                JockeyDao: Jockey with id 1 and updated 2019-03-24T13:58:35.617 already exists in the version table
+13:58:35.705 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.705 | DEBUG |                            SimulationDao: About to execute statement prep140: INSERT INTO simulationRelation (simID, horseID, horseUp, jockeyID, jockeyUp, rank, avgSpeed, luck) VALUES (?,?,?,?,?,?,?,?) {1: 2, 2: 1, 3: TIMESTAMP '2019-03-24 13:58:35.569', 4: 1, 5: TIMESTAMP '2019-03-24 13:58:35.617', 6: 2, 7: 53.455, 8: 1.0}
+13:58:35.705 | DEBUG |                            SimulationDao: Inserted Participant 5
+13:58:35.705 | DEBUG |                                 HorseDao: Moving horse with ID 2 to version table
+13:58:35.705 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.705 | DEBUG |                                 HorseDao: Horse with id 2 and update time 2019-03-24T13:58:35.589 is already in version table.
+13:58:35.705 | DEBUG |                                JockeyDao: Moving jockey with ID 2 to version table
+13:58:35.705 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.705 | DEBUG |                                JockeyDao: Jockey with id 2 and updated 2019-03-24T13:58:35.625 already exists in the version table
+13:58:35.705 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.705 | DEBUG |                            SimulationDao: About to execute statement prep143: INSERT INTO simulationRelation (simID, horseID, horseUp, jockeyID, jockeyUp, rank, avgSpeed, luck) VALUES (?,?,?,?,?,?,?,?) {1: 2, 2: 2, 3: TIMESTAMP '2019-03-24 13:58:35.589', 4: 2, 5: TIMESTAMP '2019-03-24 13:58:35.625', 6: 3, 7: 43.9382, 8: 0.95}
+13:58:35.709 | DEBUG |                            SimulationDao: Inserted Participant 6
+13:58:35.709 | INFO  |                        SimulationService: Inserted new simulation into the database
+13:58:35.713 | INFO  |                       SimulationEndpoint: GET /api/v1/simulations
+13:58:35.713 | DEBUG |                       SimulationEndpoint: Attempting to get all simulations. Currently in endpoint
+13:58:35.713 | DEBUG |                        SimulationService: Attempting to get all simulations. Currently in service
+13:58:35.713 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.713 | DEBUG |                            SimulationDao: About to execute statement prep144: SELECT * FROM simulation
+13:58:35.713 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.717 | DEBUG |                            SimulationDao: About to execute statement prep145: SELECT s.id, s.rank, h.name, j.name, s.avgSpeed, h.min_speed, h.max_speed, j.skill, s.luck FROM simulationRelation s INNER JOIN jockeyversions j ON  j.id = s.jockeyID INNER JOIN horseversions h  ON h.id = s.horseid WHERE simID = ? AND h.created <= ? AND j.created <= ? {1: 1, 2: TIMESTAMP '2019-03-24 13:58:35.657', 3: TIMESTAMP '2019-03-24 13:58:35.657'}
+13:58:35.721 | DEBUG |                            SimulationDao: Participant list for simulation 1 has been obtained
+13:58:35.721 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.721 | DEBUG |                            SimulationDao: About to execute statement prep146: SELECT s.id, s.rank, h.name, j.name, s.avgSpeed, h.min_speed, h.max_speed, j.skill, s.luck FROM simulationRelation s INNER JOIN jockeyversions j ON  j.id = s.jockeyID INNER JOIN horseversions h  ON h.id = s.horseid WHERE simID = ? AND h.created <= ? AND j.created <= ? {1: 2, 2: TIMESTAMP '2019-03-24 13:58:35.693', 3: TIMESTAMP '2019-03-24 13:58:35.693'}
+13:58:35.721 | DEBUG |                            SimulationDao: Participant list for simulation 2 has been obtained
+13:58:35.721 | INFO  |                            SimulationDao: Got all simulations
+13:58:35.729 | INFO  |                      DBConnectionManager: Close database connection
+13:58:35.741 | INFO  |                            HorseEndpoint: POST /api/v1/horses 
+13:58:35.741 | DEBUG |                            HorseEndpoint: Attempting to create horse HorseDto{id=null, name='Horse1', breed='null', minSpeed=40.0, maxSpeed=60.0, created=null, updated=null}. Currently in endpoint
+13:58:35.741 | DEBUG |                             HorseService: Attempting to insert horse Horse{id=null, name='Horse1', breed='null', minSpeed=40.0, maxSpeed=60.0, created=null, updated=null} into the database. Currently in service.
+13:58:35.741 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.741 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:35.761 | DEBUG |                                 HorseDao: About to execute sql statement prep147: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'Horse1', 2: NULL, 3: 40.0, 4: 60.0}
+13:58:35.761 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.761 | DEBUG |                                 HorseDao: About to execute sql statement prep148: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:35.761 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:35.761 | INFO  |                                 HorseDao: Horse with id 1 inserted into the database
+13:58:35.777 | INFO  |                            HorseEndpoint: POST /api/v1/horses 
+13:58:35.777 | DEBUG |                            HorseEndpoint: Attempting to create horse HorseDto{id=null, name='Horse2', breed='null', minSpeed=49.99, maxSpeed=50.0, created=null, updated=null}. Currently in endpoint
+13:58:35.777 | DEBUG |                             HorseService: Attempting to insert horse Horse{id=null, name='Horse2', breed='null', minSpeed=49.99, maxSpeed=50.0, created=null, updated=null} into the database. Currently in service.
+13:58:35.777 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.777 | DEBUG |                                 HorseDao: About to execute sql statement prep149: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'Horse2', 2: NULL, 3: 49.99, 4: 50.0}
+13:58:35.777 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.777 | DEBUG |                                 HorseDao: About to execute sql statement prep150: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 2}
+13:58:35.777 | DEBUG |                                 HorseDao: Horse with id 2 found in the database.
+13:58:35.777 | INFO  |                                 HorseDao: Horse with id 2 inserted into the database
+13:58:35.785 | INFO  |                            HorseEndpoint: POST /api/v1/horses 
+13:58:35.785 | DEBUG |                            HorseEndpoint: Attempting to create horse HorseDto{id=null, name='Horse3', breed='null', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null}. Currently in endpoint
+13:58:35.785 | DEBUG |                             HorseService: Attempting to insert horse Horse{id=null, name='Horse3', breed='null', minSpeed=45.0, maxSpeed=55.0, created=null, updated=null} into the database. Currently in service.
+13:58:35.785 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.785 | DEBUG |                                 HorseDao: About to execute sql statement prep151: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'Horse3', 2: NULL, 3: 45.0, 4: 55.0}
+13:58:35.785 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.785 | DEBUG |                                 HorseDao: About to execute sql statement prep152: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 3}
+13:58:35.785 | DEBUG |                                 HorseDao: Horse with id 3 found in the database.
+13:58:35.785 | INFO  |                                 HorseDao: Horse with id 3 inserted into the database
+13:58:35.793 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys 
+13:58:35.793 | DEBUG |                           JockeyEndpoint: Attempting to insert jockey Jockey{id=null, name='Jockey1', skill=40.0, created=null, updated=null}into the database. Currently in endpoint
+13:58:35.793 | DEBUG |                            JockeyService: Attempting to insert jockey Jockey{id=null, name='Jockey1', skill=40.0, created=null, updated=null} into the database. Currently in service
+13:58:35.793 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.793 | DEBUG |                                JockeyDao: About to execute statement prep153: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jockey1', 2: 40.0}
+13:58:35.793 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:35.793 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.797 | INFO  |                                JockeyDao: Inserted jockey with id: 1
+13:58:35.809 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys 
+13:58:35.809 | DEBUG |                           JockeyEndpoint: Attempting to insert jockey Jockey{id=null, name='Jockey2', skill=-1000.0, created=null, updated=null}into the database. Currently in endpoint
+13:58:35.809 | DEBUG |                            JockeyService: Attempting to insert jockey Jockey{id=null, name='Jockey2', skill=-1000.0, created=null, updated=null} into the database. Currently in service
+13:58:35.809 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.809 | DEBUG |                                JockeyDao: About to execute statement prep155: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jockey2', 2: -1000.0}
+13:58:35.809 | INFO  |                                JockeyDao: Get jockey with id 2
+13:58:35.809 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.809 | INFO  |                                JockeyDao: Inserted jockey with id: 2
+13:58:35.817 | INFO  |                           JockeyEndpoint: POST api/v1/jockeys 
+13:58:35.817 | DEBUG |                           JockeyEndpoint: Attempting to insert jockey Jockey{id=null, name='Jockey3', skill=0.0, created=null, updated=null}into the database. Currently in endpoint
+13:58:35.817 | DEBUG |                            JockeyService: Attempting to insert jockey Jockey{id=null, name='Jockey3', skill=0.0, created=null, updated=null} into the database. Currently in service
+13:58:35.817 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.817 | DEBUG |                                JockeyDao: About to execute statement prep157: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jockey3', 2: 0.0}
+13:58:35.817 | INFO  |                                JockeyDao: Get jockey with id 3
+13:58:35.817 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.817 | INFO  |                                JockeyDao: Inserted jockey with id: 3
+13:58:35.825 | INFO  |                       SimulationEndpoint: POST /api/v1/simulations
+13:58:35.825 | DEBUG |                       SimulationEndpoint: Attempting to create a new simulation with values SimulationDto{name='Simulation1', simulationParticipants=[ParticipantDto{horseId=1, jockeyId=1, luckFactor=1.0}, ParticipantDto{horseId=2, jockeyId=2, luckFactor=0.95}, ParticipantDto{horseId=3, jockeyId=3, luckFactor=1.05}]}. Currently in endpoint
+13:58:35.825 | DEBUG |                        SimulationService: Attempting to create a new simulation based on information Simulation{id=null, name='Simulation1', created=null, participants=[Participant{id=null, horseId=1, horseName='null', jockeyName='null', jockeyId=1, rank=null, avgSpeed=null, horseSpeed=null, luck=1.0, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=2, horseName='null', jockeyName='null', jockeyId=2, rank=null, avgSpeed=null, horseSpeed=null, luck=0.95, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=3, horseName='null', jockeyName='null', jockeyId=3, rank=null, avgSpeed=null, horseSpeed=null, luck=1.05, skill=null, horseUpdate=null, jockeyUpdate=null}]}. Currently in service
+13:58:35.825 | DEBUG |                        SimulationService: Attempting to validate new simulation input
+13:58:35.825 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.829 | DEBUG |                                 HorseDao: About to execute sql statement prep159: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:35.829 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:35.829 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:35.829 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.829 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.829 | DEBUG |                                 HorseDao: About to execute sql statement prep161: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 2}
+13:58:35.829 | DEBUG |                                 HorseDao: Horse with id 2 found in the database.
+13:58:35.829 | INFO  |                                JockeyDao: Get jockey with id 2
+13:58:35.829 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.829 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.829 | DEBUG |                                 HorseDao: About to execute sql statement prep163: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 3}
+13:58:35.829 | DEBUG |                                 HorseDao: Horse with id 3 found in the database.
+13:58:35.829 | INFO  |                                JockeyDao: Get jockey with id 3
+13:58:35.829 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.833 | DEBUG |                        SimulationService: Able to fetch all horse/jockey pairs for new simulation
+13:58:35.833 | DEBUG |                        SimulationService:  # of Participants entering the race: 3 
+13:58:35.833 | DEBUG |                        SimulationService: Processing Participant 1 with horse 1
+13:58:35.833 | DEBUG |                        SimulationService: A participant in the race has been processed. Participant{id=null, horseId=1, horseName='Horse1', jockeyName='Jockey1', jockeyId=1, rank=null, avgSpeed=53.455, horseSpeed=50.0, luck=1.0, skill=1.0691, horseUpdate=2019-03-24T13:58:35.761, jockeyUpdate=2019-03-24T13:58:35.793}
+13:58:35.833 | DEBUG |                        SimulationService: Processing Participant 2 with horse 2
+13:58:35.833 | DEBUG |                        SimulationService: A participant in the race has been processed. Participant{id=null, horseId=2, horseName='Horse2', jockeyName='Jockey2', jockeyId=2, rank=null, avgSpeed=43.9382, horseSpeed=49.99, luck=0.95, skill=0.9252, horseUpdate=2019-03-24T13:58:35.777, jockeyUpdate=2019-03-24T13:58:35.809}
+13:58:35.833 | DEBUG |                        SimulationService: Processing Participant 3 with horse 3
+13:58:35.833 | DEBUG |                        SimulationService: A participant in the race has been processed. Participant{id=null, horseId=3, horseName='Horse3', jockeyName='Jockey3', jockeyId=3, rank=null, avgSpeed=57.75, horseSpeed=55.0, luck=1.05, skill=1.0, horseUpdate=2019-03-24T13:58:35.785, jockeyUpdate=2019-03-24T13:58:35.817}
+13:58:35.833 | DEBUG |                        SimulationService: Size of calculated 3 isEqual: true
+13:58:35.833 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.833 | DEBUG |                            SimulationDao: About to execute statement prep165: INSERT INTO simulation (name, created) VALUES (?, DEFAULT) {1: 'Simulation1'}
+13:58:35.833 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.833 | DEBUG |                            SimulationDao: About to execute statement prep166: SELECT * FROM simulation WHERE simID = ? {1: 1}
+13:58:35.833 | DEBUG |                            SimulationDao: Obtained simulation with id 1
+13:58:35.833 | INFO  |                            SimulationDao: Inserted simulation into the database Simulation{id=1, name='Simulation1', created=2019-03-24T13:58:35.833, participants=[Participant{id=null, horseId=1, horseName='null', jockeyName='null', jockeyId=1, rank=null, avgSpeed=null, horseSpeed=null, luck=1.0, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=2, horseName='null', jockeyName='null', jockeyId=2, rank=null, avgSpeed=null, horseSpeed=null, luck=0.95, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=3, horseName='null', jockeyName='null', jockeyId=3, rank=null, avgSpeed=null, horseSpeed=null, luck=1.05, skill=null, horseUpdate=null, jockeyUpdate=null}]}
+13:58:35.833 | DEBUG |                                 HorseDao: Moving horse with ID 3 to version table
+13:58:35.833 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.833 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.833 | DEBUG |                                 HorseDao: About to execute sql statement prep168: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 3}
+13:58:35.837 | DEBUG |                                 HorseDao: Horse with id 3 found in the database.
+13:58:35.837 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.837 | DEBUG |                                 HorseDao: About to execute sql statement prep169: INSERT INTO horseVersions (id, name, breed, min_speed, max_speed, created, updated) VALUES (?,?,?,?,?,?,?) {1: 3, 2: 'Horse3', 3: NULL, 4: 45.0, 5: 55.0, 6: TIMESTAMP '2019-03-24 13:58:35.785', 7: TIMESTAMP '2019-03-24 13:58:35.785'}
+13:58:35.837 | DEBUG |                                JockeyDao: Moving jockey with ID 3 to version table
+13:58:35.837 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.837 | INFO  |                                JockeyDao: Get jockey with id 3
+13:58:35.837 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.837 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.837 | DEBUG |                                JockeyDao: About to execute statement prep172: INSERT INTO jockeyVersions (id, name, skill, created, updated) VALUES (?,?,?,?,?) {1: 3, 2: 'Jockey3', 3: 0.0, 4: TIMESTAMP '2019-03-24 13:58:35.817', 5: TIMESTAMP '2019-03-24 13:58:35.817'}
+13:58:35.837 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.837 | DEBUG |                            SimulationDao: About to execute statement prep173: INSERT INTO simulationRelation (simID, horseID, horseUp, jockeyID, jockeyUp, rank, avgSpeed, luck) VALUES (?,?,?,?,?,?,?,?) {1: 1, 2: 3, 3: TIMESTAMP '2019-03-24 13:58:35.785', 4: 3, 5: TIMESTAMP '2019-03-24 13:58:35.817', 6: 1, 7: 57.75, 8: 1.05}
+13:58:35.841 | DEBUG |                            SimulationDao: Inserted Participant 1
+13:58:35.841 | DEBUG |                                 HorseDao: Moving horse with ID 1 to version table
+13:58:35.841 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.841 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.841 | DEBUG |                                 HorseDao: About to execute sql statement prep175: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:35.841 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:35.841 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.841 | DEBUG |                                 HorseDao: About to execute sql statement prep176: INSERT INTO horseVersions (id, name, breed, min_speed, max_speed, created, updated) VALUES (?,?,?,?,?,?,?) {1: 1, 2: 'Horse1', 3: NULL, 4: 40.0, 5: 60.0, 6: TIMESTAMP '2019-03-24 13:58:35.761', 7: TIMESTAMP '2019-03-24 13:58:35.761'}
+13:58:35.841 | DEBUG |                                JockeyDao: Moving jockey with ID 1 to version table
+13:58:35.841 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.841 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:35.841 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.841 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.841 | DEBUG |                                JockeyDao: About to execute statement prep179: INSERT INTO jockeyVersions (id, name, skill, created, updated) VALUES (?,?,?,?,?) {1: 1, 2: 'Jockey1', 3: 40.0, 4: TIMESTAMP '2019-03-24 13:58:35.793', 5: TIMESTAMP '2019-03-24 13:58:35.793'}
+13:58:35.845 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.845 | DEBUG |                            SimulationDao: About to execute statement prep180: INSERT INTO simulationRelation (simID, horseID, horseUp, jockeyID, jockeyUp, rank, avgSpeed, luck) VALUES (?,?,?,?,?,?,?,?) {1: 1, 2: 1, 3: TIMESTAMP '2019-03-24 13:58:35.761', 4: 1, 5: TIMESTAMP '2019-03-24 13:58:35.793', 6: 2, 7: 53.455, 8: 1.0}
+13:58:35.845 | DEBUG |                            SimulationDao: Inserted Participant 2
+13:58:35.845 | DEBUG |                                 HorseDao: Moving horse with ID 2 to version table
+13:58:35.845 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.845 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.845 | DEBUG |                                 HorseDao: About to execute sql statement prep182: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 2}
+13:58:35.845 | DEBUG |                                 HorseDao: Horse with id 2 found in the database.
+13:58:35.845 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.845 | DEBUG |                                 HorseDao: About to execute sql statement prep183: INSERT INTO horseVersions (id, name, breed, min_speed, max_speed, created, updated) VALUES (?,?,?,?,?,?,?) {1: 2, 2: 'Horse2', 3: NULL, 4: 49.99, 5: 50.0, 6: TIMESTAMP '2019-03-24 13:58:35.777', 7: TIMESTAMP '2019-03-24 13:58:35.777'}
+13:58:35.845 | DEBUG |                                JockeyDao: Moving jockey with ID 2 to version table
+13:58:35.845 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.845 | INFO  |                                JockeyDao: Get jockey with id 2
+13:58:35.845 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.849 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.849 | DEBUG |                                JockeyDao: About to execute statement prep186: INSERT INTO jockeyVersions (id, name, skill, created, updated) VALUES (?,?,?,?,?) {1: 2, 2: 'Jockey2', 3: -1000.0, 4: TIMESTAMP '2019-03-24 13:58:35.809', 5: TIMESTAMP '2019-03-24 13:58:35.809'}
+13:58:35.849 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.849 | DEBUG |                            SimulationDao: About to execute statement prep187: INSERT INTO simulationRelation (simID, horseID, horseUp, jockeyID, jockeyUp, rank, avgSpeed, luck) VALUES (?,?,?,?,?,?,?,?) {1: 1, 2: 2, 3: TIMESTAMP '2019-03-24 13:58:35.777', 4: 2, 5: TIMESTAMP '2019-03-24 13:58:35.809', 6: 3, 7: 43.9382, 8: 0.95}
+13:58:35.849 | DEBUG |                            SimulationDao: Inserted Participant 3
+13:58:35.849 | INFO  |                        SimulationService: Inserted new simulation into the database
+13:58:35.857 | INFO  |                       SimulationEndpoint: GET /api/v1/simulations/1
+13:58:35.857 | DEBUG |                       SimulationEndpoint: Attempting to get simulation with id 1. Currently in endpoint
+13:58:35.857 | DEBUG |                        SimulationService: Attempting to get simulation with id 1. Currently in service
+13:58:35.857 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.857 | DEBUG |                            SimulationDao: About to execute statement prep188: SELECT * FROM simulation WHERE simID = ? {1: 1}
+13:58:35.857 | DEBUG |                            SimulationDao: Obtained simulation with id 1
+13:58:35.857 | DEBUG |                        SimulationService: Simulation fetched: Simulation{id=1, name='Simulation1', created=2019-03-24T13:58:35.833, participants=null}
+13:58:35.857 | INFO  |                      DBConnectionManager: Get database connection
+13:58:35.861 | DEBUG |                            SimulationDao: About to execute statement prep189: SELECT s.id, s.rank, h.name, j.name, s.avgSpeed, h.min_speed, h.max_speed, j.skill, s.luck FROM simulationRelation s INNER JOIN jockeyversions j ON  j.id = s.jockeyID INNER JOIN horseversions h  ON h.id = s.horseid WHERE simID = ? AND h.created <= ? AND j.created <= ? {1: 1, 2: TIMESTAMP '2019-03-24 13:58:35.833', 3: TIMESTAMP '2019-03-24 13:58:35.833'}
+13:58:35.861 | DEBUG |                            SimulationDao: Participant list for simulation 1 has been obtained
+13:58:35.865 | INFO  |                      DBConnectionManager: Close database connection
+13:58:35.941 | INFO  |                    SimulationServiceTest: Starting SimulationServiceTest on DESKTOP-9S8DPDA with PID 24808 (started by nikit in C:\Users\nikit\Documents\UNI\SEPM2019\sepm-individual-assignment-java-template\01526589)
+13:58:35.941 | DEBUG |                    SimulationServiceTest: Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+13:58:35.941 | INFO  |                    SimulationServiceTest: The following profiles are active: test
+13:58:37.270 | INFO  |                    SimulationServiceTest: Started SimulationServiceTest in 1.389 seconds (JVM running for 13.168)
+13:58:37.290 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.290 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:37.309 | DEBUG |                                 HorseDao: About to execute sql statement prep190: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'blar', 2: 'black lightning', 3: 45.0, 4: 55.0}
+13:58:37.309 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.313 | DEBUG |                                 HorseDao: About to execute sql statement prep191: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:37.313 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:37.313 | INFO  |                                 HorseDao: Horse with id 1 inserted into the database
+13:58:37.313 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.313 | DEBUG |                                JockeyDao: About to execute statement prep192: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jack', 2: 55.0}
+13:58:37.313 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:37.313 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.313 | INFO  |                                JockeyDao: Inserted jockey with id: 1
+13:58:37.313 | DEBUG |                        SimulationService: Attempting to create a new simulation based on information Simulation{id=null, name='testSim,', created=null, participants=[Participant{id=null, horseId=1, horseName='null', jockeyName='null', jockeyId=1, rank=null, avgSpeed=null, horseSpeed=null, luck=1.06, skill=null, horseUpdate=null, jockeyUpdate=null}]}. Currently in service
+13:58:37.313 | DEBUG |                        SimulationService: Attempting to validate new simulation input
+13:58:37.313 | ERROR |                        SimulationService: BAD REQUEST NEW SIMULATION SERVICE: Luck factor must be between 0.95 and 1.05. luck = 1.06
+13:58:37.313 | ERROR |                      BadRequestException: Error: Luck values need to be between 0.95 and 1.05
+13:58:37.313 | INFO  |                      DBConnectionManager: Close database connection
+13:58:37.321 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.321 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:37.333 | DEBUG |                                 HorseDao: About to execute sql statement prep194: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'blar', 2: 'black lightning', 3: 45.0, 4: 55.0}
+13:58:37.333 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.337 | DEBUG |                                 HorseDao: About to execute sql statement prep195: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:37.337 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:37.337 | INFO  |                                 HorseDao: Horse with id 1 inserted into the database
+13:58:37.337 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.337 | DEBUG |                                JockeyDao: About to execute statement prep196: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jack', 2: 55.0}
+13:58:37.337 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:37.337 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.337 | INFO  |                                JockeyDao: Inserted jockey with id: 1
+13:58:37.337 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.337 | DEBUG |                                 HorseDao: About to execute sql statement prep198: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'bor', 2: 'red', 3: 42.0, 4: 57.0}
+13:58:37.337 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.337 | DEBUG |                                 HorseDao: About to execute sql statement prep199: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 2}
+13:58:37.337 | DEBUG |                                 HorseDao: Horse with id 2 found in the database.
+13:58:37.341 | INFO  |                                 HorseDao: Horse with id 2 inserted into the database
+13:58:37.341 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.341 | DEBUG |                                JockeyDao: About to execute statement prep200: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Rock', 2: 728.8}
+13:58:37.341 | INFO  |                                JockeyDao: Get jockey with id 2
+13:58:37.341 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.341 | INFO  |                                JockeyDao: Inserted jockey with id: 2
+13:58:37.341 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.341 | DEBUG |                                 HorseDao: About to execute sql statement prep202: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'ewe', 2: 'blue streak', 3: 46.0, 4: 51.0}
+13:58:37.341 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.341 | DEBUG |                                 HorseDao: About to execute sql statement prep203: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 3}
+13:58:37.345 | DEBUG |                                 HorseDao: Horse with id 3 found in the database.
+13:58:37.345 | INFO  |                                 HorseDao: Horse with id 3 inserted into the database
+13:58:37.345 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.345 | DEBUG |                                JockeyDao: About to execute statement prep204: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'borat', 2: 421.21}
+13:58:37.345 | INFO  |                                JockeyDao: Get jockey with id 3
+13:58:37.345 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.345 | INFO  |                                JockeyDao: Inserted jockey with id: 3
+13:58:37.345 | DEBUG |                        SimulationService: Attempting to create a new simulation based on information Simulation{id=null, name='testSim,', created=null, participants=[Participant{id=null, horseId=1, horseName='null', jockeyName='null', jockeyId=1, rank=null, avgSpeed=null, horseSpeed=null, luck=1.03, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=2, horseName='null', jockeyName='null', jockeyId=2, rank=null, avgSpeed=null, horseSpeed=null, luck=0.97, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=3, horseName='null', jockeyName='null', jockeyId=3, rank=null, avgSpeed=null, horseSpeed=null, luck=1.0, skill=null, horseUpdate=null, jockeyUpdate=null}]}. Currently in service
+13:58:37.345 | DEBUG |                        SimulationService: Attempting to validate new simulation input
+13:58:37.345 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.345 | DEBUG |                                 HorseDao: About to execute sql statement prep206: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:37.349 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:37.349 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:37.349 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.349 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.349 | DEBUG |                                 HorseDao: About to execute sql statement prep208: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 2}
+13:58:37.349 | DEBUG |                                 HorseDao: Horse with id 2 found in the database.
+13:58:37.349 | INFO  |                                JockeyDao: Get jockey with id 2
+13:58:37.349 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.349 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.349 | DEBUG |                                 HorseDao: About to execute sql statement prep210: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 3}
+13:58:37.349 | DEBUG |                                 HorseDao: Horse with id 3 found in the database.
+13:58:37.349 | INFO  |                                JockeyDao: Get jockey with id 3
+13:58:37.349 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.349 | DEBUG |                        SimulationService: Able to fetch all horse/jockey pairs for new simulation
+13:58:37.349 | DEBUG |                        SimulationService:  # of Participants entering the race: 3 
+13:58:37.349 | DEBUG |                        SimulationService: Processing Participant 1 with horse 1
+13:58:37.349 | DEBUG |                        SimulationService: A participant in the race has been processed. Participant{id=null, horseId=1, horseName='blar', jockeyName='Jack', jockeyId=1, rank=null, avgSpeed=58.4495, horseSpeed=53.0, luck=1.03, skill=1.0707, horseUpdate=2019-03-24T13:58:37.333, jockeyUpdate=2019-03-24T13:58:37.337}
+13:58:37.349 | DEBUG |                        SimulationService: Processing Participant 2 with horse 2
+13:58:37.349 | DEBUG |                        SimulationService: A participant in the race has been processed. Participant{id=null, horseId=2, horseName='bor', jockeyName='Rock', jockeyId=2, rank=null, avgSpeed=46.9107, horseSpeed=45.0, luck=0.97, skill=1.0747, horseUpdate=2019-03-24T13:58:37.337, jockeyUpdate=2019-03-24T13:58:37.341}
+13:58:37.349 | DEBUG |                        SimulationService: Processing Participant 3 with horse 3
+13:58:37.349 | DEBUG |                        SimulationService: A participant in the race has been processed. Participant{id=null, horseId=3, horseName='ewe', jockeyName='borat', jockeyId=3, rank=null, avgSpeed=52.1084, horseSpeed=48.5, luck=1.0, skill=1.0744, horseUpdate=2019-03-24T13:58:37.341, jockeyUpdate=2019-03-24T13:58:37.345}
+13:58:37.349 | DEBUG |                        SimulationService: Size of calculated 3 isEqual: true
+13:58:37.353 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.353 | DEBUG |                            SimulationDao: About to execute statement prep212: INSERT INTO simulation (name, created) VALUES (?, DEFAULT) {1: 'testSim,'}
+13:58:37.353 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.353 | DEBUG |                            SimulationDao: About to execute statement prep213: SELECT * FROM simulation WHERE simID = ? {1: 1}
+13:58:37.353 | DEBUG |                            SimulationDao: Obtained simulation with id 1
+13:58:37.353 | INFO  |                            SimulationDao: Inserted simulation into the database Simulation{id=1, name='testSim,', created=2019-03-24T13:58:37.353, participants=[Participant{id=null, horseId=1, horseName='null', jockeyName='null', jockeyId=1, rank=null, avgSpeed=null, horseSpeed=null, luck=1.03, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=2, horseName='null', jockeyName='null', jockeyId=2, rank=null, avgSpeed=null, horseSpeed=null, luck=0.97, skill=null, horseUpdate=null, jockeyUpdate=null}, Participant{id=null, horseId=3, horseName='null', jockeyName='null', jockeyId=3, rank=null, avgSpeed=null, horseSpeed=null, luck=1.0, skill=null, horseUpdate=null, jockeyUpdate=null}]}
+13:58:37.353 | DEBUG |                                 HorseDao: Moving horse with ID 1 to version table
+13:58:37.353 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.353 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.353 | DEBUG |                                 HorseDao: About to execute sql statement prep215: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:37.357 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:37.357 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.357 | DEBUG |                                 HorseDao: About to execute sql statement prep216: INSERT INTO horseVersions (id, name, breed, min_speed, max_speed, created, updated) VALUES (?,?,?,?,?,?,?) {1: 1, 2: 'blar', 3: 'black lightning', 4: 45.0, 5: 55.0, 6: TIMESTAMP '2019-03-24 13:58:37.333', 7: TIMESTAMP '2019-03-24 13:58:37.333'}
+13:58:37.357 | DEBUG |                                JockeyDao: Moving jockey with ID 1 to version table
+13:58:37.357 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.357 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:37.357 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.357 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.357 | DEBUG |                                JockeyDao: About to execute statement prep219: INSERT INTO jockeyVersions (id, name, skill, created, updated) VALUES (?,?,?,?,?) {1: 1, 2: 'Jack', 3: 55.0, 4: TIMESTAMP '2019-03-24 13:58:37.337', 5: TIMESTAMP '2019-03-24 13:58:37.337'}
+13:58:37.357 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.357 | DEBUG |                            SimulationDao: About to execute statement prep220: INSERT INTO simulationRelation (simID, horseID, horseUp, jockeyID, jockeyUp, rank, avgSpeed, luck) VALUES (?,?,?,?,?,?,?,?) {1: 1, 2: 1, 3: TIMESTAMP '2019-03-24 13:58:37.333', 4: 1, 5: TIMESTAMP '2019-03-24 13:58:37.337', 6: 1, 7: 58.4495, 8: 1.03}
+13:58:37.357 | DEBUG |                            SimulationDao: Inserted Participant 1
+13:58:37.357 | DEBUG |                                 HorseDao: Moving horse with ID 3 to version table
+13:58:37.357 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.361 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.361 | DEBUG |                                 HorseDao: About to execute sql statement prep222: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 3}
+13:58:37.361 | DEBUG |                                 HorseDao: Horse with id 3 found in the database.
+13:58:37.361 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.361 | DEBUG |                                 HorseDao: About to execute sql statement prep223: INSERT INTO horseVersions (id, name, breed, min_speed, max_speed, created, updated) VALUES (?,?,?,?,?,?,?) {1: 3, 2: 'ewe', 3: 'blue streak', 4: 46.0, 5: 51.0, 6: TIMESTAMP '2019-03-24 13:58:37.341', 7: TIMESTAMP '2019-03-24 13:58:37.341'}
+13:58:37.361 | DEBUG |                                JockeyDao: Moving jockey with ID 3 to version table
+13:58:37.361 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.361 | INFO  |                                JockeyDao: Get jockey with id 3
+13:58:37.361 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.361 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.361 | DEBUG |                                JockeyDao: About to execute statement prep226: INSERT INTO jockeyVersions (id, name, skill, created, updated) VALUES (?,?,?,?,?) {1: 3, 2: 'borat', 3: 421.21, 4: TIMESTAMP '2019-03-24 13:58:37.345', 5: TIMESTAMP '2019-03-24 13:58:37.345'}
+13:58:37.361 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.365 | DEBUG |                            SimulationDao: About to execute statement prep227: INSERT INTO simulationRelation (simID, horseID, horseUp, jockeyID, jockeyUp, rank, avgSpeed, luck) VALUES (?,?,?,?,?,?,?,?) {1: 1, 2: 3, 3: TIMESTAMP '2019-03-24 13:58:37.341', 4: 3, 5: TIMESTAMP '2019-03-24 13:58:37.345', 6: 2, 7: 52.1084, 8: 1.0}
+13:58:37.365 | DEBUG |                            SimulationDao: Inserted Participant 2
+13:58:37.365 | DEBUG |                                 HorseDao: Moving horse with ID 2 to version table
+13:58:37.365 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.365 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.365 | DEBUG |                                 HorseDao: About to execute sql statement prep229: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 2}
+13:58:37.365 | DEBUG |                                 HorseDao: Horse with id 2 found in the database.
+13:58:37.365 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.365 | DEBUG |                                 HorseDao: About to execute sql statement prep230: INSERT INTO horseVersions (id, name, breed, min_speed, max_speed, created, updated) VALUES (?,?,?,?,?,?,?) {1: 2, 2: 'bor', 3: 'red', 4: 42.0, 5: 57.0, 6: TIMESTAMP '2019-03-24 13:58:37.337', 7: TIMESTAMP '2019-03-24 13:58:37.337'}
+13:58:37.365 | DEBUG |                                JockeyDao: Moving jockey with ID 2 to version table
+13:58:37.365 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.365 | INFO  |                                JockeyDao: Get jockey with id 2
+13:58:37.365 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.365 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.365 | DEBUG |                                JockeyDao: About to execute statement prep233: INSERT INTO jockeyVersions (id, name, skill, created, updated) VALUES (?,?,?,?,?) {1: 2, 2: 'Rock', 3: 728.8, 4: TIMESTAMP '2019-03-24 13:58:37.341', 5: TIMESTAMP '2019-03-24 13:58:37.341'}
+13:58:37.369 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.369 | DEBUG |                            SimulationDao: About to execute statement prep234: INSERT INTO simulationRelation (simID, horseID, horseUp, jockeyID, jockeyUp, rank, avgSpeed, luck) VALUES (?,?,?,?,?,?,?,?) {1: 1, 2: 2, 3: TIMESTAMP '2019-03-24 13:58:37.337', 4: 2, 5: TIMESTAMP '2019-03-24 13:58:37.341', 6: 3, 7: 46.9107, 8: 0.97}
+13:58:37.369 | DEBUG |                            SimulationDao: Inserted Participant 3
+13:58:37.369 | INFO  |                        SimulationService: Inserted new simulation into the database
+13:58:37.369 | INFO  |                      DBConnectionManager: Close database connection
+13:58:37.373 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.373 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:37.393 | DEBUG |                                 HorseDao: About to execute sql statement prep235: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'blar', 2: 'black lightning', 3: 45.0, 4: 55.0}
+13:58:37.393 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.393 | DEBUG |                                 HorseDao: About to execute sql statement prep236: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:37.393 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:37.393 | INFO  |                                 HorseDao: Horse with id 1 inserted into the database
+13:58:37.393 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.393 | DEBUG |                                JockeyDao: About to execute statement prep237: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jack', 2: 55.0}
+13:58:37.397 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:37.397 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.397 | INFO  |                                JockeyDao: Inserted jockey with id: 1
+13:58:37.397 | DEBUG |                        SimulationService: Attempting to create a new simulation based on information Simulation{id=null, name='testSim,', created=null, participants=[Participant{id=null, horseId=1, horseName='null', jockeyName='null', jockeyId=1, rank=null, avgSpeed=null, horseSpeed=null, luck=1.03, skill=null, horseUpdate=null, jockeyUpdate=null}]}. Currently in service
+13:58:37.397 | DEBUG |                        SimulationService: Attempting to validate new simulation input
+13:58:37.397 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.397 | DEBUG |                                 HorseDao: About to execute sql statement prep239: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:37.397 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:37.401 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:37.401 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.401 | DEBUG |                        SimulationService: Able to fetch all horse/jockey pairs for new simulation
+13:58:37.401 | DEBUG |                        SimulationService:  # of Participants entering the race: 1 
+13:58:37.401 | DEBUG |                        SimulationService: Processing Participant 1 with horse 1
+13:58:37.401 | DEBUG |                        SimulationService: A participant in the race has been processed. Participant{id=null, horseId=1, horseName='blar', jockeyName='Jack', jockeyId=1, rank=null, avgSpeed=58.4495, horseSpeed=53.0, luck=1.03, skill=1.0707, horseUpdate=2019-03-24T13:58:37.393, jockeyUpdate=2019-03-24T13:58:37.397}
+13:58:37.401 | DEBUG |                        SimulationService: Size of calculated 1 isEqual: true
+13:58:37.401 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.401 | DEBUG |                            SimulationDao: About to execute statement prep241: INSERT INTO simulation (name, created) VALUES (?, DEFAULT) {1: 'testSim,'}
+13:58:37.405 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.405 | DEBUG |                            SimulationDao: About to execute statement prep242: SELECT * FROM simulation WHERE simID = ? {1: 1}
+13:58:37.405 | DEBUG |                            SimulationDao: Obtained simulation with id 1
+13:58:37.405 | INFO  |                            SimulationDao: Inserted simulation into the database Simulation{id=1, name='testSim,', created=2019-03-24T13:58:37.405, participants=[Participant{id=null, horseId=1, horseName='null', jockeyName='null', jockeyId=1, rank=null, avgSpeed=null, horseSpeed=null, luck=1.03, skill=null, horseUpdate=null, jockeyUpdate=null}]}
+13:58:37.409 | DEBUG |                                 HorseDao: Moving horse with ID 1 to version table
+13:58:37.409 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.409 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.409 | DEBUG |                                 HorseDao: About to execute sql statement prep244: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:37.409 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:37.409 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.413 | DEBUG |                                 HorseDao: About to execute sql statement prep245: INSERT INTO horseVersions (id, name, breed, min_speed, max_speed, created, updated) VALUES (?,?,?,?,?,?,?) {1: 1, 2: 'blar', 3: 'black lightning', 4: 45.0, 5: 55.0, 6: TIMESTAMP '2019-03-24 13:58:37.393', 7: TIMESTAMP '2019-03-24 13:58:37.393'}
+13:58:37.413 | DEBUG |                                JockeyDao: Moving jockey with ID 1 to version table
+13:58:37.413 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.413 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:37.413 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.413 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.413 | DEBUG |                                JockeyDao: About to execute statement prep248: INSERT INTO jockeyVersions (id, name, skill, created, updated) VALUES (?,?,?,?,?) {1: 1, 2: 'Jack', 3: 55.0, 4: TIMESTAMP '2019-03-24 13:58:37.397', 5: TIMESTAMP '2019-03-24 13:58:37.397'}
+13:58:37.413 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.417 | DEBUG |                            SimulationDao: About to execute statement prep249: INSERT INTO simulationRelation (simID, horseID, horseUp, jockeyID, jockeyUp, rank, avgSpeed, luck) VALUES (?,?,?,?,?,?,?,?) {1: 1, 2: 1, 3: TIMESTAMP '2019-03-24 13:58:37.393', 4: 1, 5: TIMESTAMP '2019-03-24 13:58:37.397', 6: 1, 7: 58.4495, 8: 1.03}
+13:58:37.417 | DEBUG |                            SimulationDao: Inserted Participant 1
+13:58:37.417 | INFO  |                        SimulationService: Inserted new simulation into the database
+13:58:37.417 | DEBUG |                        SimulationService: Attempting to get simulation with id 1. Currently in service
+13:58:37.417 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.417 | DEBUG |                            SimulationDao: About to execute statement prep250: SELECT * FROM simulation WHERE simID = ? {1: 1}
+13:58:37.417 | DEBUG |                            SimulationDao: Obtained simulation with id 1
+13:58:37.417 | DEBUG |                        SimulationService: Simulation fetched: Simulation{id=1, name='testSim,', created=2019-03-24T13:58:37.405, participants=null}
+13:58:37.417 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.417 | DEBUG |                            SimulationDao: About to execute statement prep251: SELECT s.id, s.rank, h.name, j.name, s.avgSpeed, h.min_speed, h.max_speed, j.skill, s.luck FROM simulationRelation s INNER JOIN jockeyversions j ON  j.id = s.jockeyID INNER JOIN horseversions h  ON h.id = s.horseid WHERE simID = ? AND h.created <= ? AND j.created <= ? {1: 1, 2: TIMESTAMP '2019-03-24 13:58:37.405', 3: TIMESTAMP '2019-03-24 13:58:37.405'}
+13:58:37.421 | DEBUG |                            SimulationDao: Participant list for simulation 1 has been obtained
+13:58:37.421 | INFO  |                      DBConnectionManager: Close database connection
+13:58:37.429 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.429 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:37.449 | DEBUG |                                 HorseDao: About to execute sql statement prep252: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'blar', 2: 'black lightning', 3: 45.0, 4: 55.0}
+13:58:37.453 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.453 | DEBUG |                                 HorseDao: About to execute sql statement prep253: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:37.453 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:37.453 | INFO  |                                 HorseDao: Horse with id 1 inserted into the database
+13:58:37.453 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.453 | DEBUG |                                JockeyDao: About to execute statement prep254: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jack', 2: 55.0}
+13:58:37.457 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:37.457 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.457 | INFO  |                                JockeyDao: Inserted jockey with id: 1
+13:58:37.457 | DEBUG |                        SimulationService: Attempting to create a new simulation based on information Simulation{id=null, name='testSim,', created=null, participants=[Participant{id=null, horseId=1, horseName='null', jockeyName='null', jockeyId=1, rank=null, avgSpeed=null, horseSpeed=null, luck=1.03, skill=null, horseUpdate=null, jockeyUpdate=null}]}. Currently in service
+13:58:37.457 | DEBUG |                        SimulationService: Attempting to validate new simulation input
+13:58:37.457 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.457 | DEBUG |                                 HorseDao: About to execute sql statement prep256: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:37.457 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:37.457 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:37.457 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.457 | DEBUG |                        SimulationService: Able to fetch all horse/jockey pairs for new simulation
+13:58:37.457 | DEBUG |                        SimulationService:  # of Participants entering the race: 1 
+13:58:37.457 | DEBUG |                        SimulationService: Processing Participant 1 with horse 1
+13:58:37.457 | DEBUG |                        SimulationService: A participant in the race has been processed. Participant{id=null, horseId=1, horseName='blar', jockeyName='Jack', jockeyId=1, rank=null, avgSpeed=58.4495, horseSpeed=53.0, luck=1.03, skill=1.0707, horseUpdate=2019-03-24T13:58:37.449, jockeyUpdate=2019-03-24T13:58:37.457}
+13:58:37.457 | DEBUG |                        SimulationService: Size of calculated 1 isEqual: true
+13:58:37.457 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.457 | DEBUG |                            SimulationDao: About to execute statement prep258: INSERT INTO simulation (name, created) VALUES (?, DEFAULT) {1: 'testSim,'}
+13:58:37.461 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.461 | DEBUG |                            SimulationDao: About to execute statement prep259: SELECT * FROM simulation WHERE simID = ? {1: 1}
+13:58:37.461 | DEBUG |                            SimulationDao: Obtained simulation with id 1
+13:58:37.461 | INFO  |                            SimulationDao: Inserted simulation into the database Simulation{id=1, name='testSim,', created=2019-03-24T13:58:37.461, participants=[Participant{id=null, horseId=1, horseName='null', jockeyName='null', jockeyId=1, rank=null, avgSpeed=null, horseSpeed=null, luck=1.03, skill=null, horseUpdate=null, jockeyUpdate=null}]}
+13:58:37.461 | DEBUG |                                 HorseDao: Moving horse with ID 1 to version table
+13:58:37.461 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.461 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.465 | DEBUG |                                 HorseDao: About to execute sql statement prep261: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:37.469 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:37.469 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.469 | DEBUG |                                 HorseDao: About to execute sql statement prep262: INSERT INTO horseVersions (id, name, breed, min_speed, max_speed, created, updated) VALUES (?,?,?,?,?,?,?) {1: 1, 2: 'blar', 3: 'black lightning', 4: 45.0, 5: 55.0, 6: TIMESTAMP '2019-03-24 13:58:37.449', 7: TIMESTAMP '2019-03-24 13:58:37.449'}
+13:58:37.469 | DEBUG |                                JockeyDao: Moving jockey with ID 1 to version table
+13:58:37.469 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.469 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:37.473 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.473 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.473 | DEBUG |                                JockeyDao: About to execute statement prep265: INSERT INTO jockeyVersions (id, name, skill, created, updated) VALUES (?,?,?,?,?) {1: 1, 2: 'Jack', 3: 55.0, 4: TIMESTAMP '2019-03-24 13:58:37.457', 5: TIMESTAMP '2019-03-24 13:58:37.457'}
+13:58:37.473 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.473 | DEBUG |                            SimulationDao: About to execute statement prep266: INSERT INTO simulationRelation (simID, horseID, horseUp, jockeyID, jockeyUp, rank, avgSpeed, luck) VALUES (?,?,?,?,?,?,?,?) {1: 1, 2: 1, 3: TIMESTAMP '2019-03-24 13:58:37.449', 4: 1, 5: TIMESTAMP '2019-03-24 13:58:37.457', 6: 1, 7: 58.4495, 8: 1.03}
+13:58:37.473 | DEBUG |                            SimulationDao: Inserted Participant 1
+13:58:37.473 | INFO  |                        SimulationService: Inserted new simulation into the database
+13:58:37.473 | INFO  |                      DBConnectionManager: Close database connection
+13:58:37.481 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.481 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:37.509 | DEBUG |                                 HorseDao: About to execute sql statement prep267: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:37.509 | ERROR |                                 HorseDao: NOT FOUND FIND ONE BY ID HORSE DAO: Horse with id 1 was not found in the database.
+13:58:37.509 | INFO  |                      DBConnectionManager: Close database connection
+13:58:37.521 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.521 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:37.537 | DEBUG |                                 HorseDao: About to execute sql statement prep268: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'blar', 2: 'black lightning', 3: 45.0, 4: 55.0}
+13:58:37.540 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.540 | DEBUG |                                 HorseDao: About to execute sql statement prep269: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:37.540 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:37.540 | INFO  |                                 HorseDao: Horse with id 1 inserted into the database
+13:58:37.540 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.540 | DEBUG |                                 HorseDao: About to execute sql statement prep270: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:37.544 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:37.544 | INFO  |                      DBConnectionManager: Close database connection
+13:58:37.556 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:37.556 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.556 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:37.572 | INFO  |                      DBConnectionManager: Close database connection
+13:58:37.579 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.579 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:37.595 | DEBUG |                                JockeyDao: About to execute statement prep272: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jack', 2: 55.0}
+13:58:37.595 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:37.595 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.599 | INFO  |                                JockeyDao: Inserted jockey with id: 1
+13:58:37.603 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:37.603 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.603 | INFO  |                      DBConnectionManager: Close database connection
+13:58:37.623 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.623 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:37.655 | DEBUG |                                 HorseDao: About to execute sql statement prep275: INSERT INTO horse (name, breed, min_speed, max_speed, created, updated, deleted) VALUES (?,?,?,?, DEFAULT, DEFAULT, DEFAULT) {1: 'blar', 2: 'black lightning', 3: 45.0, 4: 55.0}
+13:58:37.655 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.655 | DEBUG |                                 HorseDao: About to execute sql statement prep276: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:37.655 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:37.659 | INFO  |                                 HorseDao: Horse with id 1 inserted into the database
+13:58:37.659 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.659 | DEBUG |                                JockeyDao: About to execute statement prep277: INSERT INTO jockey (name, skill, created, updated) VALUES (?, ?, DEFAULT, DEFAULT) {1: 'Jack', 2: 55.0}
+13:58:37.659 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:37.659 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.659 | INFO  |                                JockeyDao: Inserted jockey with id: 1
+13:58:37.659 | DEBUG |                                 HorseDao: Moving horse with ID 1 to version table
+13:58:37.659 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.659 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.659 | DEBUG |                                 HorseDao: About to execute sql statement prep280: SELECT * FROM Horse WHERE id=? AND deleted = 0 {1: 1}
+13:58:37.659 | DEBUG |                                 HorseDao: Horse with id 1 found in the database.
+13:58:37.659 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.659 | DEBUG |                                 HorseDao: About to execute sql statement prep281: INSERT INTO horseVersions (id, name, breed, min_speed, max_speed, created, updated) VALUES (?,?,?,?,?,?,?) {1: 1, 2: 'blar', 3: 'black lightning', 4: 45.0, 5: 55.0, 6: TIMESTAMP '2019-03-24 13:58:37.655', 7: TIMESTAMP '2019-03-24 13:58:37.655'}
+13:58:37.663 | DEBUG |                                JockeyDao: Moving jockey with ID 1 to version table
+13:58:37.663 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.663 | INFO  |                                JockeyDao: Get jockey with id 1
+13:58:37.663 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.663 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.663 | DEBUG |                                JockeyDao: About to execute statement prep284: INSERT INTO jockeyVersions (id, name, skill, created, updated) VALUES (?,?,?,?,?) {1: 1, 2: 'Jack', 3: 55.0, 4: TIMESTAMP '2019-03-24 13:58:37.659', 5: TIMESTAMP '2019-03-24 13:58:37.659'}
+13:58:37.663 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.667 | DEBUG |                            SimulationDao: About to execute statement prep285: INSERT INTO simulation (name, created) VALUES (?, DEFAULT) {1: 'testSim'}
+13:58:37.667 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.667 | DEBUG |                            SimulationDao: About to execute statement prep286: SELECT * FROM simulation WHERE simID = ? {1: 1}
+13:58:37.667 | DEBUG |                            SimulationDao: Obtained simulation with id 1
+13:58:37.667 | INFO  |                            SimulationDao: Inserted simulation into the database Simulation{id=1, name='testSim', created=2019-03-24T13:58:37.667, participants=[Participant{id=null, horseId=1, horseName='blar', jockeyName='Jack', jockeyId=1, rank=1, avgSpeed=55.0, horseSpeed=50.0, luck=1.0, skill=1.0442, horseUpdate=2019-03-24T13:58:37.655, jockeyUpdate=2019-03-24T13:58:37.659}]}
+13:58:37.667 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.667 | DEBUG |                            SimulationDao: About to execute statement prep287: INSERT INTO simulationRelation (simID, horseID, horseUp, jockeyID, jockeyUp, rank, avgSpeed, luck) VALUES (?,?,?,?,?,?,?,?) {1: 1, 2: 1, 3: TIMESTAMP '2019-03-24 13:58:37.655', 4: 1, 5: TIMESTAMP '2019-03-24 13:58:37.659', 6: 1, 7: 55.0, 8: 1.0}
+13:58:37.667 | DEBUG |                            SimulationDao: Inserted Participant 1
+13:58:37.667 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.667 | DEBUG |                            SimulationDao: About to execute statement prep288: SELECT * FROM simulation WHERE simID = ? {1: 1}
+13:58:37.667 | DEBUG |                            SimulationDao: Obtained simulation with id 1
+13:58:37.667 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.671 | DEBUG |                            SimulationDao: About to execute statement prep289: SELECT s.id, s.rank, h.name, j.name, s.avgSpeed, h.min_speed, h.max_speed, j.skill, s.luck FROM simulationRelation s INNER JOIN jockeyversions j ON  j.id = s.jockeyID INNER JOIN horseversions h  ON h.id = s.horseid WHERE simID = ? AND h.created <= ? AND j.created <= ? {1: 1, 2: TIMESTAMP '2019-03-24 13:58:37.667', 3: TIMESTAMP '2019-03-24 13:58:37.667'}
+13:58:37.671 | DEBUG |                            SimulationDao: Participant list for simulation 1 has been obtained
+13:58:37.671 | INFO  |                      DBConnectionManager: Close database connection
+13:58:37.675 | INFO  |                      DBConnectionManager: Get database connection
+13:58:37.675 | INFO  |                      DBConnectionManager: Establish database connection
+13:58:37.691 | DEBUG |                            SimulationDao: About to execute statement prep290: SELECT * FROM simulation WHERE simID = ? {1: 1}
+13:58:37.691 | ERROR |                            SimulationDao: NOT FOUND GET ONE BY ID SIMULATION DAO: Could not find simulation with id 1
+13:58:37.691 | INFO  |                      DBConnectionManager: Close database connection
+13:58:37.699 | INFO  |                      DBConnectionManager: Close database connection
+13:58:37.699 | INFO  |                      DBConnectionManager: Close database connection
+14:01:53.483 | INFO  |              WendysRennpferdeApplication: Starting WendysRennpferdeApplication on DESKTOP-9S8DPDA with PID 4124 (C:\Users\nikit\Documents\UNI\SEPM2019\sepm-individual-assignment-java-template\01526589\target\classes started by nikit in C:\Users\nikit\Documents\UNI\SEPM2019\sepm-individual-assignment-java-template\01526589)
+14:01:53.483 | DEBUG |              WendysRennpferdeApplication: Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+14:01:53.483 | INFO  |              WendysRennpferdeApplication: No active profile set, falling back to default profiles: default
+14:01:56.237 | INFO  |              WendysRennpferdeApplication: Started WendysRennpferdeApplication in 3.453 seconds (JVM running for 30.442)
+14:01:59.344 | INFO  |                      DBConnectionManager: Close database connection
